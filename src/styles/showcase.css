@@ -1,0 +1,148 @@
+:root{
+    --background-color:#e7e7e7;
+    --text-color: #000000;
+}
+
+[data-theme="dark"]{
+    --background-color: #000000;
+    --text-color:#ffffff;
+
+}
+
+body {
+    background-color: var(--background-color); 
+    color: var(--text-color, #000000); 
+    margin: 0; 
+    padding: 0; 
+    line-height: 1.5; 
+    font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
+    font-size: 16px; 
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale; 
+    text-rendering: optimizeLegibility; 
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.showcase {
+    position: relative;
+    width: auto;
+    height: 40vh; /* 40% of the viewport height */
+     /* Ensures the image and overlay don’t exceed the container */
+  }
+  
+  /* Showcase Image */
+  .showcase-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image scales proportionally to fill the container */
+    display: block;
+  }
+  
+  /* Black Transparent Overlay */
+  .showcase::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Black color with 50% transparency */
+    z-index: 1; /* Ensure it stays above the image */
+  }
+  
+  /* Logo Container */
+  .logo-container {
+    position: absolute;
+    top: 40%;
+    left: 30px; /* Align to the left side with some margin */
+    transform: translateY(-50%); /* Vertically center the logo */
+    z-index: 2; /* Ensure it appears above the overlay */
+  }
+  
+  /* Logo Image */
+  .logo {
+    width: 130px; /* Increase size of the logo */
+    height: auto;
+  }
+  
+
+
+/* Search Container */
+.search-container {
+  position: absolute;
+  top: 50%;
+  right: 80px;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 5px 10px;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  width: 40px; /* Collapsed width */
+  overflow: hidden; /* Hide the input when collapsed */
+  opacity: 0.8;
+}
+
+.search-container:hover,
+.search-container:focus-within {
+  width: 400px; /* Expanded width */
+  opacity: 3;
+}
+
+.search-icon {
+  color: #333;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.search-input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding: 5px;
+  margin-left: 10px;
+  font-size: 16px;
+  background: transparent;
+  color: #333;
+  display: none;
+}
+
+.search-container:hover .search-input,
+.search-container:focus-within .search-input {
+  display: block; /* Show the input on hover or focus */
+}
+
+/* Home Icon */
+.home-container {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  z-index: 2;
+  cursor: pointer;
+}
+
+.home-icon {
+  color: white;
+  font-size: 25px;
+}
+
+@media screen and (max-width: 768px) {
+  .search-container:hover,
+  .search-container:focus-within {
+    width: 200px; /* Expanded width */
+    opacity: 1;   /* Set opacity to a valid value (fully opaque) */
+  }
+}
+
+@media screen and (max-width: 768px){
+  .logo {
+    width: 90px; /* Increase size of the logo */
+    height: auto;
+  }
+}

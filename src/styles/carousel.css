@@ -1,0 +1,82 @@
+.carousel-container {
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .custom-carousel {
+    height: 100%; /* Full height for the carousel */
+  }
+  
+  .carousel-slide {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Set height of the carousel */
+    overflow: hidden; /* Ensure no overflow from images */
+  }
+  
+  .carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image is responsive and fills the carousel */
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Black background with 50% transparency */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .text-content {
+    color: rgb(223, 220, 220);
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: 0; 
+  }
+  
+  .text-content h5 {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 10px;
+  }
+  
+  .text-content h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0 0 15px;
+  }
+  
+  .text-content p {
+    font-size: 16px;
+    margin: 0 0 20px;
+    line-height: 1.5;
+  }
+  
+  .booking-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #1d1c1c;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .booking-button:hover {
+    background-color: #005fa3;
+    background-color: #005fa3; 
+    color: white; 
+    box-shadow: 0px 4px 10px rgba(0, 119, 192, 0.6); 
+    transform: translateY(-3px); 
+  }
+  
