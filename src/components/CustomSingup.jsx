@@ -1,13 +1,112 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../assets/images/logo.png';
 import google from '../assets/images/google.svg';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import '../styles/main.css';
 import Footer from './Footer';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie'; // Importing react-cookie
+import Spinner from "./blog/Spinner";
+
 
 const CustomSignup = () => {
+    const [cookies, setCookie, removeCookie] = useCookies(['email', 'access_token']); // Using react-cookie
     const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
+
+
+    useEffect(()=>{
+        const isAuthenticated = cookies.access_token;
+        if(isAuthenticated){
+            navigate('/')
+        }
+
+    },[cookies.access_token, navigate])
+
+
+    const [formData, setFormData] = useState({
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+        password2: ""
+    });
+
+    // Handle input change
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    // Handle form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const { first_name, last_name, email, password, password2 } = formData;
+
+        // Validate form input
+        if (!first_name || !last_name || !email || !password || !password2) {
+            toast.error("All fields are required");
+            return;
+        }
+
+        if (password !== password2) {
+            toast.error("Passwords do not match");
+            return;
+        }
+
+        setIsLoading(true);
+
+        try {
+            const res = await axios.post("http://localhost:8000/base/registration/", formData);
+            if (res.status === 201) {
+                toast.success("Registration successful!");
+                // Set cookie with email
+                setCookie('email', formData.email, { path: '/', maxAge: 7 * 24 * 60 * 60 }); // Cookie expires in 7 days
+                navigate("/verification");
+                // Clear form after successful registration
+                setFormData({
+                    first_name: "",
+                    last_name: "",
+                    email: "",
+                    password: "",
+                    password2: ""
+                });
+            }
+        } catch (error) {
+            if (error.response && error.response.data) {
+                const errors = error.response.data;
+
+                // Extract and display only the first error message
+                if (typeof errors === "object") {
+                    for (const key in errors) {
+                        if (Array.isArray(errors[key])) {
+                            toast.error(errors[key][0]);
+                            break;
+                        }
+                    }
+                } else {
+                    toast.error(errors || "Registration failed. Please try again.");
+                }
+            } else {
+                toast.error("An error occurred. Please try again.");
+            }
+            // Clear the form after handling the error
+            setFormData({
+                first_name: "",
+                last_name: "",
+                email: "",
+                password: "",
+                password2: ""
+            });
+        } finally {
+            setIsLoading(false); // Ensure loading state is reset
+        }
+    };
 
     return (
         <>
@@ -24,7 +123,6 @@ const CustomSignup = () => {
                 {/* Signup Content */}
                 <div className="pt-5 pb-10 flex justify-center items-center">
                     <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-                        {/* Inner Border */}
                         <div className="p-5 border-2 border-[#0077c0] rounded-lg">
                             {/* Header */}
                             <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">Create an Account</h2>
@@ -48,7 +146,7 @@ const CustomSignup = () => {
                             </div>
 
                             {/* Form */}
-                            <form className="space-y-4">
+                            <form className="space-y-4" onSubmit={handleSubmit}>
                                 <div className="flex gap-4">
                                     <div className="w-1/2">
                                         <label htmlFor="firstName" className="block text-sm text-gray-700">
@@ -57,7 +155,10 @@ const CustomSignup = () => {
                                         <input
                                             type="text"
                                             id="firstName"
+                                            name="first_name"
                                             required
+                                            value={formData.first_name}
+                                            onChange={handleChange}
                                             className="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                                         />
                                     </div>
@@ -68,7 +169,10 @@ const CustomSignup = () => {
                                         <input
                                             type="text"
                                             id="lastName"
+                                            name="last_name"
                                             required
+                                            value={formData.last_name}
+                                            onChange={handleChange}
                                             className="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                                         />
                                     </div>
@@ -80,7 +184,10 @@ const CustomSignup = () => {
                                     <input
                                         type="email"
                                         id="email"
+                                        name="email"
                                         required
+                                        value={formData.email}
+                                        onChange={handleChange}
                                         className="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                                     />
                                 </div>
@@ -91,8 +198,11 @@ const CustomSignup = () => {
                                     <div className="relative">
                                         <input
                                             type={showPassword ? "text" : "password"}
+                                            name="password"
                                             placeholder="Enter your password"
                                             required
+                                            value={formData.password}
+                                            onChange={handleChange}
                                             className="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                                         />
                                         <button
@@ -111,8 +221,11 @@ const CustomSignup = () => {
                                     <div className="relative">
                                         <input
                                             type={showConfirmPassword ? "text" : "password"}
+                                            name="password2"
                                             placeholder="Confirm your password"
                                             required
+                                            value={formData.password2}
+                                            onChange={handleChange}
                                             className="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                                         />
                                         <button
@@ -134,14 +247,15 @@ const CustomSignup = () => {
                                     type="submit"
                                     className="w-full btn text-white py-2 rounded-md"
                                 >
-                                    Create Account
+                                    {isLoading ? (
+                                        <Spinner loading={isLoading} size={20} color="#ffffff" />
+                                    ):('Create Account') }
                                 </button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-
             <Footer />
         </>
     );

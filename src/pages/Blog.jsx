@@ -1,16 +1,19 @@
 import React from 'react'
+import Navbar from '../components/general/Navbar'
 import BlogShowCase from '../components/blog/BlogShowCase'
 import BlogPostList from '../components/blog/BlogPostList'
 import BlogButton from '../components/blog/BlogButton'
-import Footer from '../components/Footer'
+import HomeFooter from '../components/general/HomeFooter'
 
 const Blog = () => {
   return (
     <>
+        < Navbar />
         < BlogShowCase />
         < BlogPostList />
-        <BlogButton />
-        <Footer />
+        < BlogButton /> 
+        < HomeFooter />
+        
 
     </>
   )

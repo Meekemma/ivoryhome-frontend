@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import bookingImage from "../../assets/images/booking.png"; // Replace with your image path
+import Spinner from "../blog/Spinner";
 
 const BookingForm = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ const BookingForm = () => {
     date: "",
     time: "",
   });
+
+  const [isLoading, setIsLoading] = useState(false); // New state for loading
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,15 +36,23 @@ const BookingForm = () => {
       return;
     }
 
-    toast.success("Booking submitted successfully!");
-    setFormData({
-      property_name: "",
-      fullname: "",
-      email: "",
-      mobile: "",
-      date: "",
-      time: "",
-    });
+    setIsLoading(true); // Set loading to true when submitting the form
+
+    // Simulate a network request with a timeout
+    setTimeout(() => {
+      toast.success("Booking submitted successfully!");
+      setIsLoading(false); // Set loading to false after the request is complete
+
+      // Reset form data
+      setFormData({
+        property_name: "",
+        fullname: "",
+        email: "",
+        mobile: "",
+        date: "",
+        time: "",
+      });
+    }, 2000); // Simulated delay of 2 seconds
   };
 
   return (
@@ -52,7 +63,7 @@ const BookingForm = () => {
           src={bookingImage}
           alt="Booking"
           className="w-full h-auto rounded-lg shadow-md"
-          laoding='lazy'
+          laoding="lazy"
         />
         <div className="mt-6 text-center lg:text-left">
           <h2 className="text-2xl font-bold text-gray-800">How It Works</h2>
@@ -70,10 +81,7 @@ const BookingForm = () => {
         <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
           Book a Property
         </h2>
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4"
-        >
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-gray-700 font-medium">
               Property Name:
@@ -146,15 +154,20 @@ const BookingForm = () => {
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-gray-700 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
+
+          {/* Submit Button */}
           <button
             type="submit"
             className="w-full btn bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            Submit Booking
+            {isLoading ? (
+              <Spinner loading={isLoading} size={20} color="#ffffff" />
+            ) : (
+              "Submit Booking"
+            )}
           </button>
         </form>
       </div>
-
     </div>
   );
 };

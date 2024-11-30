@@ -11,10 +11,10 @@ const CookieConsent = () => {
 
   useEffect(() => {
     if (cookies.CookieConsent === "accepted") {
-      console.log("User has accepted cookies. Initializing analytics...");
+      
       // Initialize analytics or other cookie-dependent features
     } else if (cookies.CookieConsent === "rejected") {
-      console.log("User has rejected cookies. Disabling optional services...");
+      
       // Disable analytics or other features
     }
   }, [cookies]);

@@ -1,13 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useNavigate } from 'react-router-dom';
 
 // Replace these placeholders with actual paths
 import kindelmedia from '../../assets/images/kindelmedia.jpg';
+import RoyalGallery from './RoyalGallary';
+import NdiobaGallary from './NdiobaGallary';
 
 const CustomEstate = () => {
+  const navigate = useNavigate();
+
+  // Handlers for button navigation
+  const handleScheduleVisit = () => {
+    navigate('/booking'); // Update this route to match your app's routing
+  };
+
+  const handleRequestMoreInfo = () => {
+    navigate('/contact'); // Update this route to match your app's routing
+  };
+
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
     return () => AOS.refresh(); // Ensures animations refresh if components re-render
@@ -67,7 +81,9 @@ const CustomEstate = () => {
             Download Outright Price
           </button>
         </div>
+       
       </div>
+      <RoyalGallery />
 
 
 
@@ -124,6 +140,28 @@ const CustomEstate = () => {
           </button>
         </div>
       </div>
+      <NdiobaGallary />
+
+      {/* Buttons */}
+     
+    
+      <div className="p-6 flex justify-center items-center gap-6">
+        <button
+          onClick={handleScheduleVisit} // Replace with actual functionality
+          className="bg-[#005fa3] text-white text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-[#003f73] transition"
+        >
+          Schedule a Visit
+        </button>
+        <button
+          onClick={handleRequestMoreInfo} // Replace with actual functionality
+          className="bg-gray-200 text-[#005fa3] text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-gray-300 transition"
+        >
+          Request More Info
+        </button>
+      </div>
+
+
+
     </div>
   );
 };

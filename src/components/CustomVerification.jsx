@@ -1,8 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 import '../styles/main.css';
 import Footer from './Footer';
+import Spinner from "./blog/Spinner";
 
 const CustomVerification = () => {
   const [codes, setCodes] = useState(Array(5).fill('')); // Updated to 5 boxes
@@ -11,7 +13,7 @@ const CustomVerification = () => {
   const navigate = useNavigate();
   const refs = Array(5) // Updated to 5 refs
     .fill()
-    .map(() => useRef(null));
+    .map((_, index) => useRef(null));
 
   const handleChange = (index, value) => {
     if (value.length === 1 && index < 4) {
@@ -29,18 +31,17 @@ const CustomVerification = () => {
   };
 
   const handleResendCode = async () => {
-    const email = localStorage.getItem('email');
+    const email = localStorage.getItem('email'); // Use localStorage for storing email
     if (!email) {
-      alert('Email not found. Please try again.');
+      toast.error('Email not found. Please try again.');
       return;
     }
     try {
-      // Uncomment this when backend is connected
-      // await axios.post('http://127.0.0.1:8000/resend_otp/', { email });
-      alert('Verification code resent to your email');
+      await axios.post('http://127.0.0.1:8000/base/resend_otp/', { email });
+      toast.success('Verification code resent to your email');
     } catch (error) {
       console.error('Error resending verification code:', error);
-      alert('Error resending verification code');
+      toast.error('Error resending verification code. Please try again.');
     }
   };
 
@@ -52,25 +53,37 @@ const CustomVerification = () => {
       return;
     }
     setIsLoading(true);
+    setError(null); // Clear any previous errors
+
     try {
-      // Uncomment this when backend is connected
-      // const response = await axios.post('http://127.0.0.1:8000/verify_code/', { code });
-      const response = { status: 200 }; // Mock response for testing
+      const payload = { code }; // Correctly formatted payload
+      const response = await axios.post('http://127.0.0.1:8000/base/otp/', payload);
       if (response.status === 200) {
-        alert('Code verified successfully');
+        toast.success('Code verified successfully');
         navigate('/login');
       } else {
         setError('Invalid verification code');
       }
     } catch (error) {
-      setError('Error verifying code');
-      console.error('Error verifying code:', error);
-      alert('Error verifying code');
+      if (error.response && error.response.data) {
+        const errors = error.response.data;
+        if (typeof errors === 'object') {
+          for (const key in errors) {
+            if (Array.isArray(errors[key])) {
+              setError(errors[key][0]);
+              break;
+            }
+          }
+        } else {
+          setError(errors || 'Verification failed');
+        }
+      } else {
+        setError('An unexpected error occurred. Please try again.');
+      }
     } finally {
       setIsLoading(false);
     }
   };
-  
 
   return (
     <>
@@ -103,7 +116,9 @@ const CustomVerification = () => {
                   type="submit"
                   disabled={isLoading}
                 >
-                  {isLoading ? 'Submitting...' : 'Continue'}
+                  {isLoading ? (
+                    <Spinner loading={isLoading} size={20} color="#ffffff" />
+                  ): ('Continue')}
                 </button>
               </div>
               <p className="text-center text-gray-600">

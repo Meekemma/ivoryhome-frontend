@@ -1,15 +1,23 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Footer from "./Footer";
 import "../styles/main.css";
 import Spinner from "./blog/Spinner";
 
-const CustomResetPassword = () => {
+const CustomResetPasswordConfirm = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const [formData, setFormData] = useState({
-    email: "",
+    password: "",
+    confirm_password: "",
   });
+
+  // Extract the token from the URL query parameters
+  const queryParams = new URLSearchParams(location.search);
+  const token = queryParams.get("token");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,10 +26,15 @@ const CustomResetPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { email } = formData;
+    const { password, confirm_password } = formData;
 
-    if (!email) {
-      toast.error("Email field is required");
+    if (!password || !confirm_password) {
+      toast.error("Both fields are required");
+      return;
+    }
+
+    if (password !== confirm_password) {
+      toast.error("Passwords do not match");
       return;
     }
 
@@ -29,14 +42,17 @@ const CustomResetPassword = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8000/base/password_reset/request/",
-        formData
+        "http://localhost:8000/base/password_reset/confirm/",
+        { password, token }
       );
+
       if (res.status === 200) {
-        toast.info("Check your inbox to continue");
-        setFormData({ email: "" });
+        toast.success("Password reset successfully! You can now log in.");
+        navigate("/login")
+        setFormData({ password: "", confirm_password: "" });
       }
     } catch (error) {
+      console.error("Password reset error:", error);
       if (error.response && error.response.data) {
         const errors = error.response.data;
         if (typeof errors === "object") {
@@ -66,21 +82,42 @@ const CustomResetPassword = () => {
               Reset Password
             </h2>
             <p className="text-center text-gray-600 mb-6">
-              Enter your email address to receive password reset instructions.
+              Enter your new password below.
             </p>
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="email" className="block text-sm text-gray-700">
-                  Email
+                <label
+                  htmlFor="password"
+                  className="block text-sm text-gray-700"
+                >
+                  New Password
                 </label>
                 <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={formData.password}
                   onChange={handleChange}
                   className="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  placeholder="Enter your email"
+                  placeholder="Enter new password"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="confirm_password"
+                  className="block text-sm text-gray-700"
+                >
+                  Confirm Password
+                </label>
+                <input
+                  type="password"
+                  id="confirm_password"
+                  name="confirm_password"
+                  value={formData.confirm_password}
+                  onChange={handleChange}
+                  className="w-full mt-1 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  placeholder="Confirm new password"
                   required
                 />
               </div>
@@ -92,8 +129,8 @@ const CustomResetPassword = () => {
                 disabled={isLoading}
               >
                 {isLoading ? (
-                 <Spinner loading={isLoading} size={20} color="#ffffff" />
-                ) : ("Send Reset Link")}
+                  <Spinner loading={isLoading} size={20} color="#ffffff" />
+                ): ("Reset Password")}
               </button>
             </form>
           </div>
@@ -104,4 +141,4 @@ const CustomResetPassword = () => {
   );
 };
 
-export default CustomResetPassword;
+export default CustomResetPasswordConfirm;

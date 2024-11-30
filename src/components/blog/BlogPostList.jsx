@@ -1,80 +1,149 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../../styles/post.css';
-import showcase from '../../assets/images/showcase.jpg';
 import BlogPagination from './BlogPagination';
+import axios from 'axios';
+import truncate from 'html-truncate';
+import { FaCalendarAlt, FaCommentAlt } from 'react-icons/fa';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import Spinner from './Spinner';
 
 const BlogPostList = () => {
-  const [currentPage, setCurrentPage] = useState(1); // State to track the current page
-  const postsPerPage = 3; // Number of posts per page
-  const totalPosts = 9; // Total number of posts (this could come from your backend)
-  const totalPages = Math.ceil(totalPosts / postsPerPage); // Calculate total pages
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+    return () => AOS.refresh();
+  }, []);
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    // Add logic to fetch posts for the selected page
-    console.log(`Current page is ${page}`);
+  const [posts, setPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [totalPages, setTotalPages] = useState(1);
+
+  const BASE_URL = 'http://127.0.0.1:8000';
+  const postsPerPage = 2;
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const page = parseInt(params.get('page'), 10) || 1;
+    setCurrentPage(page); // Update currentPage state when location.search changes
+  }, [location.search]);
+
+  const fetchPosts = async (page) => {
+    const offset = (page - 1) * postsPerPage;
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/blog/posts/?limit=${postsPerPage}&offset=${offset}`
+      );
+      setPosts(response.data.results);
+      setTotalPages(Math.ceil(response.data.count / postsPerPage));
+    } catch (err) {
+      setError('Failed to load posts. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Dummy posts (replace with real data)
-  const posts = [
-    { id: 1, title: 'Post Title 1', category: 'Web Development', author: 'Author' },
-    { id: 2, title: 'Post Title 2', category: 'Design', author: 'Author' },
-    { id: 3, title: 'Post Title 3', category: 'SEO', author: 'Author' },
-    { id: 4, title: 'Post Title 4', category: 'Web Development', author: 'Author' },
-    { id: 5, title: 'Post Title 5', category: 'Design', author: 'Author' },
-    { id: 6, title: 'Post Title 6', category: 'SEO', author: 'Author' },
-    { id: 7, title: 'Post Title 7', category: 'Web Development', author: 'Author' },
-    { id: 8, title: 'Post Title 8', category: 'Design', author: 'Author' },
-    { id: 9, title: 'Post Title 9', category: 'SEO', author: 'Author' },
-  ];
+  useEffect(() => {
+    fetchPosts(currentPage);
+  }, [currentPage]);
 
-  // Filter posts for the current page
-  const displayedPosts = posts.slice(
-    (currentPage - 1) * postsPerPage,
-    currentPage * postsPerPage
-  );
+  const handlePageChange = (page) => {
+    if (page !== currentPage) {
+      setCurrentPage(page);
+      navigate(`?page=${page}`); // Update the URL with the current page
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the top smoothly
+    }
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString();
+  };
+
+  if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <>
-      <div className="container px-4 py-8">
-        {/* Flexbox Layout */}
+    <div className="container px-4 py-8">
+      {loading ? (
+        <div className="flex justify-center items-center h-96">
+          <Spinner loading={loading} size={40} color="#3498db" />
+        </div>
+      ) : (
         <div className="flex flex-col md:flex-row gap-6">
-          {/* Main Content Section (Post List) */}
           <div className="flex-[2] border-2 bg-[#b0b0b0] p-8 rounded-lg shadow">
-            <h1 className="text-2xl font-bold mb-4">All Blog Posts</h1>
+            <h1 className="text-2xl font-bold mb-4 text-[#005fa3]">Latest Blog Posts</h1>
 
-            {displayedPosts.map((post) => (
-              <section key={post.id}>
+            {!error && posts.length === 0 && <p>No posts found. Please check back later!</p>}
+
+            {posts.map((post) => (
+              <section key={post.id} data-aos="fade-up">
                 <article className="mb-6 border-b pb-4">
-                  <h2 className="text-xl font-semibold">{post.title}</h2>
-                  <p className="text-sm text-gray-600 mb-2">
-                    By {post.author} | Category: {post.category}
-                  </p>
+                  <h2
+                    className="text-xl font-semibold text-[#005fa3] hover:glow-effect transition-all duration-300"
+                  >
+                    {post.title}
+                  </h2>
 
-                  <img
-                    src={showcase}
-                    alt="post"
-                    className="rounded-lg w-full h-64 object-cover mb-6"
-                  />
+                  <div className="flex flex-wrap justify-between items-center mb-2">
+                    <p className="text-sm text-gray-600 w-full sm:w-auto">
+                      By {post.author} | Category: {post.category.name}
+                    </p>
+                    <div className="flex items-center text-sm text-gray-600 w-full sm:w-auto mt-2 sm:mt-0">
+                      <FaCalendarAlt className="mr-1" />
+                      <span>Created: {formatDate(post.created_at)}</span>
+                      <span className="mx-2">|</span>
+                      <FaCalendarAlt className="mr-1" />
+                      <span>Last Updated: {formatDate(post.updated_at)}</span>
+                    </div>
+                  </div>
 
-                  <p className="text-black-700">
-                    There are many variations of passages of Lorem Ipsum
-                    available, but the majority have suffered alteration in some
-                    form, by injected humour, or randomised words which don't
-                    look even slightly believable. If you are going to use a
-                    passage of Lorem Ipsum, you need to be sure there isn't
-                    anything embarrassing hidden in the middle of text.
-                  </p>
+                  <div className="flex items-center text-sm text-gray-600 mb-2">
+                    <FaCommentAlt className="mr-1" />
+                    <span>{post.comment_count} comments</span>
+                  </div>
+
+                  <div className="relative w-full h-64 sm:h-96 rounded-lg overflow-hidden mb-6">
+                    <img
+                      src={`${BASE_URL}${post.image}`}
+                      alt={post.title}
+                      className="absolute w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div
+                    className="text-black-700"
+                    dangerouslySetInnerHTML={{
+                      __html: truncate(post.content, 300),
+                    }}
+                  ></div>
+                  <a
+                    href={`/post/${post.id}`}
+                    className="text-blue-500 hover:underline"
+                  >
+                    Read more
+                  </a>
                 </article>
               </section>
             ))}
 
-            <BlogPagination count={totalPages} onPageChange={handlePageChange} />
+            <BlogPagination
+              count={totalPages}
+              currentPage={currentPage} // Pass currentPage state
+              onPageChange={handlePageChange}
+            />
           </div>
 
-          {/* Sidebar Section (Categories, Latest Comments) */}
           <aside className="flex-[1]">
-            <div className="rounded-lg bg-gray-600 p-6 mb-6">
+            <div className="rounded-lg bg-gray-600 p-6 mb-6" data-aos="fade-left">
               <h2 className="text-xl font-bold">Categories</h2>
               <ul className="mb-6">
                 <li className="text-gray-700">Web Development</li>
@@ -82,8 +151,7 @@ const BlogPostList = () => {
                 <li className="text-gray-700">SEO</li>
               </ul>
             </div>
-
-            <div className="rounded-lg py-6 bg-gray-600 p-6">
+            <div className="rounded-lg py-6 bg-gray-600 p-6" data-aos="fade-left">
               <h2 className="text-xl font-bold mb-4">Latest Comments</h2>
               <ul>
                 <li className="text-gray-700">"Great post!" - John</li>
@@ -92,8 +160,8 @@ const BlogPostList = () => {
             </div>
           </aside>
         </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 };
 
