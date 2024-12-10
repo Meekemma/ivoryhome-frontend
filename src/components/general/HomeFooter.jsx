@@ -140,7 +140,7 @@ const HomeFooter = () => {
 
         {/* Footer Bottom Section */}
         <div className="mt-8 text-center text-sm border-t border-white/20 pt-4">
-          <p>&copy; 2024 Your Company. All rights reserved.</p>
+          <p>&copy; 2024 Ivory homes Limited. All rights reserved.</p>
         </div>
       </footer>
     </>

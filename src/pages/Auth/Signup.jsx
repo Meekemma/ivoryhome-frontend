@@ -3,6 +3,7 @@ import CustomSignup from '../../components/CustomSingup'
 
 const Signup = () => {
   return (
+    
     <CustomSignup />
     
   )

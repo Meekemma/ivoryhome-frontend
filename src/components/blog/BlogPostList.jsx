@@ -9,6 +9,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Spinner from './Spinner';
+import { Helmet } from 'react-helmet-async';
 
 const BlogPostList = () => {
   useEffect(() => {
@@ -71,7 +72,20 @@ const BlogPostList = () => {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <div className="container px-4 py-8">
+    <section className="container px-4 py-8">
+     <Helmet>
+      <title>Our Blog | Ivory Home Limited</title>
+      <meta
+        name="description"
+        content="Stay updated with the latest trends in real estate, tips for property buying and selling, market insights, and more on the Ivory Home Limited blog."
+      />
+      <meta
+        name="keywords"
+        content="Ivory Home Limited, real estate blog, property buying tips, property selling tips, real estate market trends, real estate news, property investment advice, home buying, home selling, real estate insights, property management tips, commercial property blog"
+      />
+      </Helmet>
+
+
       {loading ? (
         <div className="flex justify-center items-center h-96">
           <Spinner loading={loading} size={40} color="#3498db" />
@@ -161,7 +175,7 @@ const BlogPostList = () => {
           </aside>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

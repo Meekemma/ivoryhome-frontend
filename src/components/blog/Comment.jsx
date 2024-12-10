@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { axiosInstance } from "../../utils/axiosInstance";
+import useAxios  from '../../utils/useAxios';
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 
 const Comment = () => {
+  let api = useAxios();
   const [cookies] = useCookies(["access_token"]);
   const { post_id } = useParams();
   const [post, setPost] = useState(null);
@@ -34,7 +35,7 @@ const Comment = () => {
 
     setLoading(true);
     try {
-      const response = await axiosInstance.post(`/blog/comment/${post_id}/`, { body });
+      const response = await api.post(`/blog/comment/${post_id}/`, { body });
       if (response.status === 200 || response.status === 201) {
         toast.success("Comment posted successfully!");
         setFormData({ body: "" });

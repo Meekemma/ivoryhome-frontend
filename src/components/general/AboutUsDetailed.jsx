@@ -12,6 +12,7 @@ import handshake from '../../assets/images/handshake.svg';
 import Executive from './Executive';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Helmet } from 'react-helmet-async';
 
 const AboutUsDetailed = () => {
   useEffect(() => {
@@ -23,13 +24,15 @@ const AboutUsDetailed = () => {
     <>
       <div className="container mx-auto py-12 px-6 bg-[#FFF5EE]">
         {/* Meta Tags for SEO */}
-        <head>
+        <Helmet>
           <title>About Ivory Home Limited | Transparent Real Estate Solutions</title>
           <meta
             name="description"
             content="Learn about Ivory Home Limited, your trusted real estate partner offering transparent solutions for buying, selling, and renting properties. Discover our mission, vision, and core values."
           />
-        </head>
+          <meta name="keywords" content="real estate, properties, Ivory Home, buy, rent, sell" />
+
+        </Helmet>
 
         {/* Introduction Section */}
         <section className="mb-12">
@@ -160,6 +163,7 @@ const AboutUsDetailed = () => {
             <a
               href="/contact"
               className="bg-gray-200 text-[#005fa3] px-6 py-3 rounded-lg shadow-md hover:bg-gray-300 transition"
+              aria-label="Browse our wide range of properties"
             >
               Contact Us
             </a>

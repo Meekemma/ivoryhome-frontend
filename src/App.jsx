@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./utils/ProtectedRoute";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
 import ChangePasword from "./pages/Auth/ChangePasword";
@@ -14,43 +19,49 @@ import Estate from "./pages/Estate";
 import Contact from "./pages/Contact";
 import CookieConsent from "./components/general/CookieConsent";
 import Booking from "./pages/Booking";
-
-import { useCookies } from "react-cookie";
-import { setupAxiosInterceptors } from "./utils/axiosInstance";
-import { AuthProvider } from "./context/AuthContext";
-import ProtectedRoute from "./utils/ProtectedRoute";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import ScrollToTop from "./components/general/ScrollToTop";
 import CustomResetPasswordConfirm from "./components/customResetPasswordConfirm";
 import SinglePost from "./pages/SinglePost";
+import AllProperties from "./pages/AllProperties";
+import SingleProperty from "./pages/SingleProperty";
+import Order from "./pages/Order";
+import Profile from "./pages/Auth/Profile";
+import Checkout from "./pages/Checkout";
+import ScrollToTop from "./components/general/ScrollToTop";
+import Payment from "./pages/Payment";
+import SuccessPage from "./components/payment/SuccessPage";
 
 function App() {
-  const [cookies, setCookie, removeCookie] = useCookies();
-
-  useEffect(() => {
-    setupAxiosInterceptors(cookies, setCookie, removeCookie);
-  }, [cookies, setCookie, removeCookie]); // Added dependency array and fixed closing parentheses
+  
+  
 
   return (
     <Router>
       <ScrollToTop />
       <AuthProvider>
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/reset_password_confirm" element={<CustomResetPasswordConfirm />} />
           <Route path="/change_password" element={<ProtectedRoute><ChangePasword /></ProtectedRoute>}/>
+          <Route path="/profile/:user_id" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/reset_password" element={<ResetPassword />} />
           <Route path="/verification" element={<Verification />} />
           <Route path="/about" element={<About />} />
           <Route path="/service" element={<Service />} />
           <Route path="/estate" element={<Estate />} />
-          <Route path="/contact" element={<ProtectedRoute><Contact /></ProtectedRoute>} />
+          <Route path="/contact" element={<Contact/>}/>
           <Route path="/booking" element={<Booking />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/post/:post_id" element={<SinglePost />} />
+          <Route path="/Properties" element={<AllProperties />} />
+          <Route path="/Property/:id" element={<SingleProperty />} />
+          <Route path="/request" element={<Order />} />
+          <Route path="/checkout/summary" element={<Checkout />} />
+          <Route path="/payment" element={<Payment/>} />
+          <Route path="/success/payment" element={<SuccessPage/>} />
+
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <ToastContainer />

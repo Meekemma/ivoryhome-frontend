@@ -4,10 +4,11 @@ import "../styles/main.css";
 import Footer from "./Footer";
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
-import { axiosInstance } from "../utils/axiosInstance";
+import  useAxios  from '../utils/useAxios';
 import Spinner from "./blog/Spinner";
 
 const CustomChangePassword = () => {
+  let api = useAxios();
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -41,7 +42,7 @@ const CustomChangePassword = () => {
     setIsLoading(true);
 
     try {
-      const res = await axiosInstance.put("base/change-password/", formData);
+      const res = await api.put("base/change-password/", formData);
       if (res.status === 200) {
         toast.success("Password changed successfully");
         navigate('/login')

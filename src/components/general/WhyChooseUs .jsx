@@ -6,27 +6,32 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { FaUserTie, FaCogs, FaRegHandshake, FaThLarge } from 'react-icons/fa'; // Imported icons
 
 const reasons = [
   {
     title: 'Expert Guidance',
     description:
       'Our experienced team provides you with expert advice every step of the way, ensuring you make the best real estate decisions.',
+    icon: <FaUserTie className="text-[#005fa3] w-6 h-6 mr-2" />, // Icon for Expert Guidance
   },
   {
     title: 'Tailored Solutions',
     description:
       'We offer customized solutions that fit your unique needs, whether buying, selling, or renting properties.',
+    icon: <FaCogs className="text-[#005fa3] w-6 h-6 mr-2" />, // Icon for Tailored Solutions
   },
   {
     title: 'Transparency & Trust',
     description:
       'We believe in full transparency and building trust with our clients. You can rely on us for honest advice and no hidden fees.',
+    icon: <FaRegHandshake className="text-[#005fa3] w-6 h-6 mr-2" />, // Icon for Transparency & Trust
   },
   {
     title: 'Wide Range of Properties',
     description:
       'We offer a wide selection of residential, commercial, and investment properties to suit every need and budget.',
+    icon: <FaThLarge className="text-[#005fa3] w-6 h-6 mr-2" />, // Icon for Wide Range of Properties
   },
 ];
 
@@ -65,7 +70,10 @@ const WhyChooseUs = () => {
             {reasons.map((reason, index) => (
               <SwiperSlide key={index}>
                 <div className="flex flex-col items-center text-center p-6 border-2 border-[#005fa3] rounded-lg shadow-lg bg-white transform transition-transform duration-300">
-                  <h3 className="text-xl font-bold text-[#005fa3]">{reason.title}</h3>
+                  <div className="flex items-center justify-center mb-4 px-0">
+                    {reason.icon}
+                    <h3 className="text-xl font-bold text-[#005fa3]">{reason.title}</h3>
+                  </div>
                   <p className="text-sm text-gray-700 mt-2">{reason.description}</p>
                 </div>
               </SwiperSlide>
@@ -82,7 +90,10 @@ const WhyChooseUs = () => {
               data-aos="fade-up"
               data-aos-delay={index * 100} // Staggered animation for grid items
             >
-              <h3 className="text-xl font-bold text-[#005fa3]">{reason.title}</h3>
+              <div className="flex items-center justify-center mb-4">
+                {reason.icon}
+                <h3 className="text-xl font-bold text-[#005fa3]">{reason.title}</h3>
+              </div>
               <p className="text-sm text-gray-700 mt-2">{reason.description}</p>
             </div>
           ))}

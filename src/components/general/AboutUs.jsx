@@ -18,12 +18,12 @@ const AboutUs = () => {
         {/* Left Content */}
         <div data-aos="fade-up" data-aos-delay="100">
         <h2 className="text-4xl sm:text-5xl font-bold text-[#005fa3] mb-6 leading-tight">
-          About Ivory Home Limited .....
+          About Ivory Homes Limited .....
         </h2>
 
 
           <p className="text-gray-700 text-base sm:text-lg mb-4">
-            Welcome to <span className="font-bold">Ivory Home Limited</span>, your trusted partner in real estate. Whether you’re
+            Welcome to <span className="font-bold">Ivory Homes Limited</span>, your trusted partner in real estate. Whether you’re
             buying, selling, or renting, our mission is to help you navigate the property market
             with confidence and ease.
           </p>

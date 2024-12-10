@@ -51,11 +51,12 @@ export const AuthProvider = ({ children }) => {
         const refreshToken = response.refresh;
 
         // Set cookies for user and tokens
-        setCookie("user", JSON.stringify(user));
-        setCookie("access_token", JSON.stringify(accessToken));
-        setCookie("refresh_token", JSON.stringify(refreshToken));
-        setCookie("user_id", JSON.stringify(response.user_id));
-        setCookie("is_verified", JSON.stringify(response.is_verified));
+        setCookie("user", JSON.stringify(user), { path: "/" });
+        setCookie("access_token", JSON.stringify(accessToken), { path: "/" });
+        setCookie("refresh_token", JSON.stringify(refreshToken), { path: "/" });
+        setCookie("user_id", JSON.stringify(response.user_id), { path: "/" });
+        setCookie("is_verified", JSON.stringify(response.is_verified), { path: "/" });
+        
 
         setUser(user);
 
@@ -137,11 +138,11 @@ export const AuthProvider = ({ children }) => {
   // Log out user
   const logOutUser = () => {
     // Remove cookies
-    removeCookie("user");
-    removeCookie("access_token");
-    removeCookie("refresh_token");
-    removeCookie("user_id");
-    removeCookie("is_verified");
+    removeCookie("user", { path: "/" });
+    removeCookie("access_token", { path: "/" });
+    removeCookie("refresh_token", { path: "/" });
+    removeCookie("user_id", { path: "/" });
+    removeCookie("is_verified", { path: "/" });
 
     setUser(null);
     setFormData({ email: "", password: "" });

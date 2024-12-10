@@ -8,7 +8,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-
+import { Helmet } from 'react-helmet-async';
 
 
 // Sample executives' data
@@ -44,13 +44,19 @@ const Executive = () => {
   return (
     <>
       {/* Meta Tags for SEO */}
-      <head>
+      <Helmet>
         <title>Meet Our Executives | Ivory Home Limited</title>
         <meta
           name="description"
           content="Meet the executive team at Ivory Home Limited. Discover the leaders behind our success in delivering exceptional real estate solutions."
         />
-      </head>
+        <meta
+          name="keywords"
+          content="Ivory Home Limited, real estate executives, leadership team, real estate leaders, CEO, COO, CFO, real estate solutions, property management, real estate consultancy"
+        />
+        <meta name="author" content="Ivory Home Limited" />
+      </Helmet>
+
 
       <div className="container mx-auto py-12 px-6 bg-[#FFF5EE]" data-aos="fade-up" data-aos-delay="100">
         <h2 className="text-4xl sm:text-5xl font-bold text-[#005fa3] mb-8 text-center">
