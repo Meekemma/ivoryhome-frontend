@@ -10,6 +10,8 @@ import WhyChooseUs from '../components/general/WhyChooseUs '
 import Faq from '../components/general/Faq'
 import ContactInfo from '../components/general/ContactInfo'
 import GeneralButton from '../components/general/GeneralButton'
+import PropertyInfo from '../components/general/PropertyInfo'
+import BlogInfo from '../components/general/BlogInfo'
 
 const Home = () => {
   return (
@@ -18,8 +20,10 @@ const Home = () => {
       <MyCarousel />
       <AboutUs />
       <OurServices />
+      <PropertyInfo/>
       <WhyChooseUs />
       <Performance />
+      <BlogInfo/>
       <Faq />
       <Testimonials />
       <ContactInfo />

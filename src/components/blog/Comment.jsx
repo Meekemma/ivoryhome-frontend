@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import useAxios  from '../../utils/useAxios';
+import useAxios from "../../utils/useAxios";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
+import Spinner from "./Spinner";
 
 const Comment = () => {
   let api = useAxios();
@@ -30,6 +31,11 @@ const Comment = () => {
 
     if (!body) {
       toast.error("This field cannot be empty.");
+      return;
+    }
+
+    if (!isAuthenticated) {
+      toast.info("Kindly log in or sign up to leave a comment.");
       return;
     }
 
@@ -73,6 +79,30 @@ const Comment = () => {
 
   const isAuthenticated = !!cookies.access_token;
 
+  // Helper function to generate a unique background color
+  const generateColor = (input) => {
+    const hash = input.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    const colors = ["#FF5733", "#33FF57", "#3357FF", "#F5A623", "#8B572A"];
+    return colors[hash % colors.length];
+  };
+
+  // Avatar Component
+  const Avatar = ({ name }) => {
+    const bgColor = generateColor(name);
+    const initials = name
+      .split(" ")
+      .map((word) => word[0].toUpperCase())
+      .join("");
+    return (
+      <div
+        className="avatar flex items-center justify-center w-10 h-10 rounded-full text-white font-bold"
+        style={{ backgroundColor: bgColor }}
+      >
+        {initials}
+      </div>
+    );
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit} className="comment-form mt-6">
@@ -92,23 +122,10 @@ const Comment = () => {
         <div className="flex justify-between items-center mt-2">
           <button
             type="submit"
-            disabled={!isAuthenticated || loading}
-            className={`p-1 text-white rounded-lg ${
-              !isAuthenticated ? "bg-red-500 hover:bg-red-600" : "bg-blue-500"
-            }`}
+            disabled={loading}
+            className="p-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
           >
-            {loading ? (
-              "Submitting..."
-            ) : (
-              <>
-                Post Comment
-                {!isAuthenticated && (
-                  <span className="ml-2">
-                    🚫 {/* Red warning icon */}
-                  </span>
-                )}
-              </>
-            )}
+            {loading ? <Spinner size={20} /> : "Post Comment"}
           </button>
           {!isAuthenticated && (
             <div className="flex space-x-4">
@@ -130,11 +147,11 @@ const Comment = () => {
       </form>
 
       <div className="comments mt-8">
-        <h5 className="text-xl font-semibold">
+        <h5 className="text-pretty font-semibold">
           {post ? post.comment_count : 0} Comments
         </h5>
         {error && <p className="text-red-500">{error}</p>}
-        {loading && <p>Loading comments...</p>}
+        {loading && <Spinner />}
         {!loading && post && post.comments.length > 0 ? (
           <>
             {post.comments
@@ -142,13 +159,16 @@ const Comment = () => {
               .map((comment) => (
                 <div
                   key={comment.id}
-                  className="comment mt-4 p-4 border border-gray-300 rounded-lg"
+                  className="comment mt-4 p-4 border border-gray-300 rounded-lg flex items-start space-x-4"
                 >
-                  <p>{comment.body}</p>
-                  <p className="text-sm text-gray-500">
-                    Posted by {comment.user} on{" "}
-                    {new Date(comment.created_at).toLocaleDateString()}
-                  </p>
+                  <Avatar name={comment.user} />
+                  <div>
+                    <p>{comment.body}</p>
+                    <p className="text-sm text-gray-500">
+                      Posted by {comment.user} on{" "}
+                      {new Date(comment.created_at).toLocaleDateString()}
+                    </p>
+                  </div>
                 </div>
               ))}
             {post.comments.length > 1 && (

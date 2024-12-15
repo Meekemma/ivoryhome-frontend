@@ -13,12 +13,17 @@ import Executive from './Executive';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
+
 
 const AboutUsDetailed = () => {
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
     return () => AOS.refresh(); // Ensures animations refresh if components re-render
   }, []);
+
+  const navigate = useNavigate();
+
 
   return (
     <>
@@ -155,13 +160,14 @@ const AboutUsDetailed = () => {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-4">
             <a
-              href="/properties"
+              onClick={() => navigate('/properties')} 
               className="bg-[#005fa3] btn text-white px-6 py-3 rounded-lg shadow-md hover:bg-[#003f73] transition"
             >
               Browse Properties
             </a>
+            
             <a
-              href="/contact"
+              onClick={() => navigate('/contact')} 
               className="bg-gray-200 text-[#005fa3] px-6 py-3 rounded-lg shadow-md hover:bg-gray-300 transition"
               aria-label="Browse our wide range of properties"
             >

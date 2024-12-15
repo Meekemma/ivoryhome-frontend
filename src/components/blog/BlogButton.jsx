@@ -31,7 +31,7 @@ const BlogButton = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-4 bg-blue-600 text-white p-3 rounded-full shadow-md hover:bg-blue-700 focus:outline-none"
+          className="fixed bottom-8 right-4 bg-[#1d1c1c] text-white p-3 rounded-full shadow-md hover:bg-blue-700 focus:outline-none"
           aria-label="Back to top"
         >
           <FaArrowUp />

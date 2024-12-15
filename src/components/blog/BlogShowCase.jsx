@@ -1,18 +1,28 @@
-import React from 'react';
-import showcase from '../../assets/images/showcase.jpg';
+import React, { useState } from 'react';
+import blog from '../../assets/images/blog.jpg';
 import logo from '../../assets/images/logo.png';
-import { FaSearch, FaHome } from 'react-icons/fa'; // Using FontAwesome icons
+import { FaSearch, FaChevronLeft  } from 'react-icons/fa'; // Using FontAwesome icons
 import '../../styles/showcase.css';
+import { useSearch } from '../../context/SearchContext';
+import { useNavigate } from 'react-router-dom';
 
 const BlogShowCase = () => {
-  const goToHome = () => {
-    window.location.href = '/'; // Redirect to the home page
+  const [inputValue, setInputValue] = useState('');
+  const { setSearchQuery } = useSearch();
+  const navigate = useNavigate(); 
+
+  const handleSearch = (e) => {
+    if (e.key === 'Enter' || e.key === 'click') {
+      setSearchQuery(inputValue);
+    }
   };
+
+  
 
   return (
     <div className="">
       <div className="showcase">
-        <img src={showcase} alt="Showcase" className="showcase-image" />
+        <img src={blog} alt="Showcase" className="showcase-image" />
         
         {/* Logo */}
         <div className="logo-container">
@@ -22,13 +32,18 @@ const BlogShowCase = () => {
         {/* Search Icon and Input */}
         <div className="search-container">
           <FaSearch className="search-icon" />
-          <input type="text" placeholder="Search..." className="search-input" />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="search-input"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleSearch} // Trigger search on "Enter"
+          />
         </div>
 
-        {/* Home Icon */}
-        <div className="home-container" onClick={goToHome}>
-          <FaHome className="home-icon" />
-        </div>
+        
+        
       </div>
     </div>
   );

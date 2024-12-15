@@ -4,8 +4,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Spinner from "./ProSpinner";
 import PropertyPagination from "./PropertyPagination";
 import { Helmet } from 'react-helmet-async';
+import { useSearch } from '../../context/SearchContext'
 
 const Properties = () => {
+  const { searchQuery } = useSearch();
   const [isLoading, setIsLoading] = useState(false);
   const [properties, setProperties] = useState([]);
   const [error, setError] = useState(null);
@@ -30,7 +32,7 @@ const Properties = () => {
     setError(null);
     try {
       const response = await axios.get(
-        `${BASE_URL}/commerce/properties/?limit=${propertyPerPage}&offset=${offset}`
+        `${BASE_URL}/commerce/properties/?limit=${propertyPerPage}&offset=${offset}&q=${searchQuery}`
       );
       setProperties(response.data.results);
       setTotalPages(Math.ceil(response.data.count / propertyPerPage));
@@ -43,7 +45,7 @@ const Properties = () => {
 
   useEffect(() => {
     fetchProperties(currentPage);
-  }, [currentPage]);
+  }, [currentPage, searchQuery]);
 
   const handleCardClick = (id) => {
     navigate(`/property/${id}`);

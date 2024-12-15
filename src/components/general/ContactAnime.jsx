@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import axios from "axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import realtor from '../../assets/images/realtor.jpg';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import Spinner from "../blog/Spinner";
+
 
 const ContactAnime = () => {
   // Initialize AOS
@@ -16,17 +21,58 @@ const ContactAnime = () => {
     email: '',
     message: '',
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const BASE_URL = "http://localhost:8000";
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here, you would handle form submission (e.g., send the form data to your backend or API)
-    setIsSubmitted(true);
+
+    const { name, email, message } = formData;
+
+    if (!name || !email || !message) {
+      toast.error("All fields are required");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const res = await axios.post(`${BASE_URL}/booking/inquiries/`, formData);
+      if (res.status === 201) {
+        toast.success("Success! We've received your message!");
+        setFormData({ name: "", email: "", message: "" });
+      }
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const errors = error.response.data;
+        if (typeof errors === "object") {
+          for (const key in errors) {
+            if (Array.isArray(errors[key])) {
+              toast.error(errors[key][0]);
+              break;
+            }
+          }
+        } else {
+          toast.error(error.response.data || "Submission failed. Please try again.");
+        }
+      } else {
+        toast.error("An error occurred. Please try again.");
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -34,7 +80,7 @@ const ContactAnime = () => {
       <h2 className="text-4xl sm:text-5xl font-bold text-[#005fa3] mb-8 text-center">
         Contact Us
       </h2>
-      
+
       <div className="flex flex-col lg:flex-row items-center gap-12">
         {/* Image Section */}
         <div className="hidden lg:block w-full lg:w-1/2" data-aos-delay="200">
@@ -46,8 +92,8 @@ const ContactAnime = () => {
             effect="blur"
             wrapperProps={{
               style: { 
-                transition: "opacity 1s ease-in-out", // Smoother transitions
-                backgroundColor: "rgba(0,0,0,0.1)", // Optional background
+                transition: "opacity 1s ease-in-out",
+                backgroundColor: "rgba(0,0,0,0.1)",
               },
             }}
           />
@@ -68,6 +114,7 @@ const ContactAnime = () => {
                 onChange={handleChange}
                 className="w-full p-3 border-2 border-gray-300 rounded-md"
                 required
+                aria-label="Name"
               />
             </div>
 
@@ -83,6 +130,7 @@ const ContactAnime = () => {
                 onChange={handleChange}
                 className="w-full p-3 border-2 border-gray-300 rounded-md"
                 required
+                aria-label="Email"
               />
             </div>
 
@@ -98,16 +146,18 @@ const ContactAnime = () => {
                 className="w-full p-3 border-2 border-gray-300 rounded-md"
                 rows="4"
                 required
+                aria-label="Message"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-[#1d1c1c] text-white py-3 rounded-md btn transition"
+              className={`w-full py-3 rounded-md btn transition ${isLoading ? "bg-gray-400 cursor-not-allowed" : "bg-[#1d1c1c] text-white"}`}
+              disabled={isLoading}
               data-aos="fade-up"
               data-aos-delay="600"
             >
-              {isSubmitted ? 'Thank You!' : 'Send Message'}
+              {isLoading ? <Spinner loading={isLoading} size={20} color="#ffffff" /> : "Send Message"}
             </button>
           </form>
         </div>

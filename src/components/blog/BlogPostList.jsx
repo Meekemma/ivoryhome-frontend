@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 import '../../styles/post.css';
 import BlogPagination from './BlogPagination';
 import axios from 'axios';
@@ -10,8 +14,14 @@ import 'aos/dist/aos.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Spinner from './Spinner';
 import { Helmet } from 'react-helmet-async';
+import { useSearch } from '../../context/SearchContext';
+import event from '../../assets/images/event.jpeg';
+import event_tip from '../../assets/images/even_tip.jpeg';
+import event_clock from '../../assets/images/event_clock.jpeg';
 
 const BlogPostList = () => {
+  const { searchQuery } = useSearch();
+
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
     return () => AOS.refresh();
@@ -22,12 +32,27 @@ const BlogPostList = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
 
   const BASE_URL = 'http://127.0.0.1:8000';
-  const postsPerPage = 2;
+  const postsPerPage = 5;
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768); // Adjust the breakpoint as needed
+    };
+
+    checkMobile(); // Run on component mount
+    window.addEventListener('resize', checkMobile); // Add resize listener
+
+    return () => {
+      window.removeEventListener('resize', checkMobile); // Clean up listener
+    };
+  }, []);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -41,7 +66,7 @@ const BlogPostList = () => {
     setError(null);
     try {
       const response = await axios.get(
-        `${BASE_URL}/blog/posts/?limit=${postsPerPage}&offset=${offset}`
+        `${BASE_URL}/blog/posts/?limit=${postsPerPage}&offset=${offset}&q=${searchQuery}`
       );
       setPosts(response.data.results);
       setTotalPages(Math.ceil(response.data.count / postsPerPage));
@@ -54,7 +79,7 @@ const BlogPostList = () => {
 
   useEffect(() => {
     fetchPosts(currentPage);
-  }, [currentPage]);
+  }, [currentPage, searchQuery]);
 
   const handlePageChange = (page) => {
     if (page !== currentPage) {
@@ -73,18 +98,17 @@ const BlogPostList = () => {
 
   return (
     <section className="container px-4 py-8">
-     <Helmet>
-      <title>Our Blog | Ivory Home Limited</title>
-      <meta
-        name="description"
-        content="Stay updated with the latest trends in real estate, tips for property buying and selling, market insights, and more on the Ivory Home Limited blog."
-      />
-      <meta
-        name="keywords"
-        content="Ivory Home Limited, real estate blog, property buying tips, property selling tips, real estate market trends, real estate news, property investment advice, home buying, home selling, real estate insights, property management tips, commercial property blog"
-      />
+      <Helmet>
+        <title>Our Blog | Ivory Home Limited</title>
+        <meta
+          name="description"
+          content="Stay updated with the latest trends in real estate, tips for property buying and selling, market insights, and more on the Ivory Home Limited blog."
+        />
+        <meta
+          name="keywords"
+          content="Ivory Home Limited, real estate blog, property buying tips, property selling tips, real estate market trends, real estate news, property investment advice, home buying, home selling, real estate insights, property management tips, commercial property blog"
+        />
       </Helmet>
-
 
       {loading ? (
         <div className="flex justify-center items-center h-96">
@@ -92,7 +116,8 @@ const BlogPostList = () => {
         </div>
       ) : (
         <div className="flex flex-col md:flex-row gap-6">
-          <div className="flex-[2] border-2 bg-[#b0b0b0] p-8 rounded-lg shadow">
+          {/* Main Blog Posts Section */}
+          <div className="flex-[2] border-2 bg-gray-100 p-8 rounded-lg shadow">
             <h1 className="text-2xl font-bold mb-4 text-[#005fa3]">Latest Blog Posts</h1>
 
             {!error && posts.length === 0 && <p>No posts found. Please check back later!</p>}
@@ -136,7 +161,7 @@ const BlogPostList = () => {
                   <div
                     className="text-black-700"
                     dangerouslySetInnerHTML={{
-                      __html: truncate(post.content, 300),
+                      __html: truncate(post.content, 400),
                     }}
                   ></div>
                   <a
@@ -156,22 +181,33 @@ const BlogPostList = () => {
             />
           </div>
 
+          {/* Sidebar Section */}
           <aside className="flex-[1]">
-            <div className="rounded-lg bg-gray-600 p-6 mb-6" data-aos="fade-left">
-              <h2 className="text-xl font-bold">Categories</h2>
-              <ul className="mb-6">
-                <li className="text-gray-700">Web Development</li>
-                <li className="text-gray-700">Design</li>
-                <li className="text-gray-700">SEO</li>
-              </ul>
-            </div>
-            <div className="rounded-lg py-6 bg-gray-600 p-6" data-aos="fade-left">
-              <h2 className="text-xl font-bold mb-4">Latest Comments</h2>
-              <ul>
-                <li className="text-gray-700">"Great post!" - John</li>
-                <li className="text-gray-700">"Very informative." - Jane</li>
-              </ul>
-            </div>
+            {isMobile ? (
+              <Swiper
+                modules={[Autoplay, Pagination]}
+                spaceBetween={10}
+                slidesPerView={1}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                pagination={{ clickable: true }}
+              >
+                <SwiperSlide>
+                  <img src={event} alt="Wayforward" className={`w-full rounded-lg ${isMobile ? 'h-50' : 'h-auto'}`} />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={event_tip} alt="Wayforward" className={`w-full rounded-lg ${isMobile ? 'h-50' : 'h-auto'}`} />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img src={event_clock} alt="Wayforward" className={`w-full rounded-lg ${isMobile ? 'h-50' : 'h-auto'}`} />
+                </SwiperSlide>
+              </Swiper>
+            ) : (
+              <>
+                <img src={event} alt="Wayforward" className="w-full rounded-lg mb-6" />
+                <img src={event_tip} alt="Wayforward" className="w-full rounded-lg mb-6" />
+                <img src={event_clock} alt="Wayforward" className="w-full rounded-lg mb-6" />
+              </>
+            )}
           </aside>
         </div>
       )}

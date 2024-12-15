@@ -3,18 +3,25 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import kindelmedia from '../../assets/images/kindelmedia.jpg';
+import indioba_four from '../../assets/images/indioba_four.jpg';
+import indioba_three from '../../assets/images/indioba_three.jpg';
+import indioba_two from '../../assets/images/indioba_two.jpg';
+import indioba_one from '../../assets/images/indioba_one.jpg';
+import indioba from '../../assets/images/indioba.jpg';
+
+
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const royals = [
-  { image: kindelmedia },
-  { image: kindelmedia },
-  { image: kindelmedia },
-  { image: kindelmedia },
-  { image: kindelmedia },
+  { image: indioba_two },
+  { image: indioba_one },
+  { image: indioba },
+  { image: indioba_three },
+  { image: indioba_four },
 ];
 
 const NdiobaGallary = () => {

@@ -5,8 +5,12 @@ import { toast } from 'react-toastify';
 import '../styles/main.css';
 import Footer from './Footer';
 import Spinner from "./blog/Spinner";
+import { useCookies } from "react-cookie";
+
+
 
 const CustomVerification = () => {
+  const [cookies] = useCookies(["email"]);
   const [codes, setCodes] = useState(Array(5).fill('')); // Updated to 5 boxes
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,13 +35,13 @@ const CustomVerification = () => {
   };
 
   const handleResendCode = async () => {
-    const email = localStorage.getItem('email'); // Use localStorage for storing email
+    const email = cookies.email
     if (!email) {
       toast.error('Email not found. Please try again.');
       return;
     }
     try {
-      await axios.post('http://127.0.0.1:8000/base/resend_otp/', { email });
+      await axios.post('http://127.0.0.1:8000/base/resend-otp/', { email });
       toast.success('Verification code resent to your email');
     } catch (error) {
       console.error('Error resending verification code:', error);
@@ -57,7 +61,11 @@ const CustomVerification = () => {
 
     try {
       const payload = { code }; // Correctly formatted payload
-      const response = await axios.post('http://127.0.0.1:8000/base/otp/', payload);
+      const response = await axios.post('http://127.0.0.1:8000/base/otp/', payload,
+        {
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
       if (response.status === 200) {
         toast.success('Code verified successfully');
         navigate('/login');

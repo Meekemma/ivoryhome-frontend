@@ -6,7 +6,8 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useNavigate } from 'react-router-dom';
 
 // Replace these placeholders with actual paths
-import kindelmedia from '../../assets/images/kindelmedia.jpg';
+import royal_home from '../../assets/images/royal_home.jpg';
+import indiobi from '../../assets/images/indiobi.jpg';
 import RoyalGallery from './RoyalGallary';
 import NdiobaGallary from './NdiobaGallary';
 
@@ -34,17 +35,18 @@ const CustomEstate = () => {
       <div className="bg-white rounded-lg shadow-lg overflow-hidden grid gap-4 lg:grid-cols-2 lg:grid-rows-[auto_1fr]" data-aos="fade-up" data-aos-delay="100">
         {/* Estate Image */}
         <LazyLoadImage
-          src={kindelmedia}
+          src={royal_home}
           alt="Beautiful Estate"
-          className="w-full h-64 object-cover lg:h-auto lg:col-span-1 lg:row-span-2"
+          className="w-full h-64 lg:h-96 object-cover lg:col-span-1 lg:row-span-2 rounded-lg"
           effect="blur"
           wrapperProps={{
             style: { 
-              transition: "opacity 1s ease-in-out", // Smoother transitions
-              backgroundColor: "rgba(0,0,0,0.1)", // Optional background
+              transition: "opacity 1s ease-in-out",
+              
             },
           }}
         />
+
 
         {/* Estate Details */}
         <div className="p-6" data-aos="fade-up" data-aos-delay="100">
@@ -55,11 +57,23 @@ const CustomEstate = () => {
 
           {/* Description */}
           <p className="text-gray-700 text-lg mb-6">
-            Welcome to <span className="font-bold">Royal Dynasty Estate</span>, your gateway to luxury living. Located in a
-            serene and secure environment, this estate offers top-notch amenities and unparalleled comfort. Whether
-            you're looking to build your dream home or make a profitable investment, Emerald Estate is the perfect
-            choice.
+            Welcome to <span className="font-bold">Royal Dynasty Estate</span>, your gateway to luxury living. Located in a 
+            serene and secure environment, this estate offers top-notch amenities and unparalleled comfort. Whether 
+            you're looking to build your dream home or make a profitable investment, Royal Dynasty Estate is the perfect 
+            choice. 
+
+            Featuring well-planned infrastructure, including paved roads, 24/7 security, and uninterrupted power supply, 
+            this estate is designed to cater to your every need. Imagine waking up to breathtaking views, surrounded by 
+            lush greenery and a calm ambiance that enhances your lifestyle. 
+
+            Royal Dynasty Estate is not just a place to live, it's a community where neighbors become family, and memories 
+            are made. Enjoy recreational facilities, modern conveniences, and a location that's just minutes away from 
+            schools, shopping malls, and major transportation hubs. 
+
+            Make the smart move today and secure your place in Royal Dynasty Estate,where elegance meets convenience and 
+            dreams become reality.
           </p>
+
         </div>
 
         {/* Buttons */}
@@ -90,17 +104,17 @@ const CustomEstate = () => {
       <div className="bg-white  my-5 rounded-lg shadow-lg overflow-hidden grid gap-4 lg:grid-cols-2 lg:grid-rows-[auto_1fr]" data-aos="fade-up" data-aos-delay="100">
         {/* Estate Image */}
         <LazyLoadImage
-          src={kindelmedia}
+          src={indiobi}
           alt="Beautiful Estate"
-          className="w-full h-64 object-cover lg:h-auto lg:col-span-1 lg:row-span-2"
+          className="w-full h-64 lg:h-96 object-cover lg:col-span-1 lg:row-span-2 rounded-lg"
           effect="blur"
           wrapperProps={{
             style: { 
-              transition: "opacity 1s ease-in-out", // Smoother transitions
-              backgroundColor: "rgba(0,0,0,0.1)", // Optional background
+              transition: "opacity 1s ease-in-out",
             },
           }}
         />
+
 
         {/* Estate Details */}
         <div className="p-6" data-aos="fade-up" data-aos-delay="100">
@@ -111,11 +125,21 @@ const CustomEstate = () => {
 
           {/* Description */}
           <p className="text-gray-700 text-lg mb-6">
-            Welcome to <span className="font-bold">Royal Dynasty Estate</span>, your gateway to luxury living. Located in a
-            serene and secure environment, this estate offers top-notch amenities and unparalleled comfort. Whether
-            you're looking to build your dream home or make a profitable investment, Emerald Estate is the perfect
-            choice.
+            Welcome to <span className="font-bold">Ndioba Estate</span>, where modern living meets timeless elegance. Nestled 
+            in a peaceful and well-secured environment, this estate is a sanctuary of comfort and sophistication. 
+
+            Designed with families, professionals, and investors in mind, Ndioba Estate offers exceptional opportunities for 
+            creating lifelong memories or expanding your real estate portfolio. From meticulously landscaped gardens to 
+            thoughtfully crafted living spaces, every detail reflects quality and care.
+
+            With state-of-the-art facilities, including recreational areas, reliable utilities, and dedicated security, 
+            Ndioba Estate redefines convenience and luxury. Strategically located near major landmarks, it provides easy 
+            access to schools, healthcare, and shopping destinations, making it an ideal choice for those seeking a balanced lifestyle. 
+
+            At Ndioba Estate, your aspirations for a modern, tranquil, and rewarding lifestyle come to life. Make your dream 
+            a reality and secure your future in this thriving community.
           </p>
+
           
 
         </div>

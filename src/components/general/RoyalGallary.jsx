@@ -3,18 +3,22 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import kindelmedia from '../../assets/images/kindelmedia.jpg';
+import royal from '../../assets/images/royal.jpg';
+import royal_one from '../../assets/images/royal_one.jpg';
+import royal_two from '../../assets/images/royal_two.jpg';
+import royal_three from '../../assets/images/royal_three.jpg';
+import royal_four from '../../assets/images/royal_four.jpg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const royals = [
-  { image: kindelmedia },
-  { image: kindelmedia },
-  { image: kindelmedia },
-  { image: kindelmedia },
-  { image: kindelmedia },
+  { image: royal },
+  { image: royal_one },
+  { image: royal_two },
+  { image: royal_three },
+  { image: royal_four },
 ];
 
 const RoyalGallery = () => {

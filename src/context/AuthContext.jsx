@@ -56,13 +56,13 @@ export const AuthProvider = ({ children }) => {
         setCookie("refresh_token", JSON.stringify(refreshToken), { path: "/" });
         setCookie("user_id", JSON.stringify(response.user_id), { path: "/" });
         setCookie("is_verified", JSON.stringify(response.is_verified), { path: "/" });
+        setCookie("profile_complete", JSON.stringify(response.profile_complete), { path: "/" });
         
 
         setUser(user);
-
+          navigate(redirectPath);
         toast.success("Login successful");
-        navigate(redirectPath); 
-        return true; 
+        return true;
       }
     } catch (error) {
       if (error.response && error.response.data) {
@@ -143,6 +143,7 @@ export const AuthProvider = ({ children }) => {
     removeCookie("refresh_token", { path: "/" });
     removeCookie("user_id", { path: "/" });
     removeCookie("is_verified", { path: "/" });
+    removeCookie("profile_complete", { path: "/" });
 
     setUser(null);
     setFormData({ email: "", password: "" });

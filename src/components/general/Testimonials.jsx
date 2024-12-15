@@ -3,8 +3,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'; // Import the base Swiper styles
 import 'swiper/css/navigation'; // Import navigation styles
 import { Navigation } from 'swiper/modules'; // Adjusted import
-import kinde from '../../assets/images/kinde.jpg';
-import kindelmedia from '../../assets/images/kindelmedia.jpg';
+import testimonia from '../../assets/images/testimonia.jpg';
+import testimonia_one from '../../assets/images/testimonia.jpg';
+import testimonia_six from '../../assets/images/testimonia_six.jpg';
+import testimonia_two from '../../assets/images/testimonia_two.jpg';
+import testimonia_four from '../../assets/images/testimonia_four.jpg';
+import testimonia_three from '../../assets/images/testimonia_three.jpg';
+import testimonia_five from '../../assets/images/testimonia_five.jpg';
+import testimonia_seven from '../../assets/images/testimonia_seven.jpg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -21,43 +27,43 @@ const Testimonials = () => {
   const testimonies = [
     {
       text: "This product has completely transformed the way I handle my daily tasks. It's intuitive, reliable, and truly innovative!",
-      name: 'Meekemma',
-      avatar: kinde,
+      name: 'Mr.Emmanuel Chima',
+      avatar: testimonia,
     },
     {
       text: "I can't recommend this enough! It's a game-changer for anyone looking to streamline their workflow effortlessly.",
       name: 'Grace Ofena',
-      avatar: kindelmedia,
+      avatar: testimonia_six,
     },
     {
       text: "Outstanding experience! The quality and attention to detail are unmatched. I’ll definitely be a returning customer.",
-      name: 'Paul Emma',
-      avatar: kindelmedia,
+      name: 'Mr.Paul Emma',
+      avatar: testimonia_three,
     },
     {
       text: "The level of professionalism and care is remarkable. I've never felt more valued as a client. Kudos to the team!",
-      name: 'Kelechi Uju',
-      avatar: kinde,
+      name: 'Mrs.Uju Kelechi',
+      avatar: testimonia_four,
     },
     {
       text: "Exceptional service! The team went above and beyond to ensure everything was perfect. Highly impressed!",
-      name: 'John Doe',
-      avatar: kinde,
+      name: 'Mr.Bright Okenedo',
+      avatar: testimonia_one,
     },
     {
       text: "This is hands down the best purchase I’ve made this year. Superb quality and excellent customer service.",
-      name: 'Stanley Paul',
-      avatar: kinde,
+      name: 'Mr.Stanley Paul',
+      avatar: testimonia_two,
     },
     {
       text: "I love everything about this! From the design to the functionality, it exceeds all my expectations.",
-      name: 'Peter Uche',
-      avatar: kindelmedia,
+      name: 'Miss Oluchi Okeke',
+      avatar: testimonia_five,
     },
     {
       text: "Great value for money. The performance and usability are second to none. I’m extremely satisfied!",
-      name: 'Michael T-Pain',
-      avatar: kindelmedia,
+      name: 'Mrs.Theresa Ezeh',
+      avatar: testimonia_seven,
     },
   ];
 

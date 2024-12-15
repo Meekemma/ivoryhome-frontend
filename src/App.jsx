@@ -40,7 +40,9 @@ function App() {
       <AuthProvider>
         
         <Routes>
-          <Route path="/" element={<Home />} />
+          
+
+          {/* Authentication URL*/}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/reset_password_confirm" element={<CustomResetPasswordConfirm />} />
@@ -48,18 +50,25 @@ function App() {
           <Route path="/profile/:user_id" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/reset_password" element={<ResetPassword />} />
           <Route path="/verification" element={<Verification />} />
+
+          {/* General URL*/}
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/service" element={<Service />} />
           <Route path="/estate" element={<Estate />} />
           <Route path="/contact" element={<Contact/>}/>
           <Route path="/booking" element={<Booking />} />
+
+          {/* Blog URL*/}
           <Route path="/blog" element={<Blog />} />
           <Route path="/post/:post_id" element={<SinglePost />} />
+
+          {/* Properties and Payment URL*/}
           <Route path="/Properties" element={<AllProperties />} />
           <Route path="/Property/:id" element={<SingleProperty />} />
-          <Route path="/request" element={<Order />} />
-          <Route path="/checkout/summary" element={<Checkout />} />
-          <Route path="/payment" element={<Payment/>} />
+          <Route path="/request" element={ <ProtectedRoute><Order /></ProtectedRoute>} />
+          <Route path="/checkout/summary" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+          <Route path="/payment" element={<ProtectedRoute><Payment/></ProtectedRoute>} />
           <Route path="/success/payment" element={<SuccessPage/>} />
 
           <Route path="*" element={<PageNotFound />} />

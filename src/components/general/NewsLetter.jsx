@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "../../assets/images/logo.png"; // Adjust the path as needed
 import axios from "axios";
 import { toast } from "react-toastify";
+import Spinner from "../blog/Spinner";
 
 const NewsLetter = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -37,21 +38,11 @@ const NewsLetter = () => {
       }
     } catch (error) {
       if (error.response && error.response.data) {
-        const errors = error.response.data;
-        if (typeof errors === "object") {
-          for (const key in errors) {
-            if (Array.isArray(errors[key])) {
-              toast.error(errors[key][0]);
-              break;
-            }
-          }
-        } else {
-          toast.error(error.response.data || "Subscription failed. Please try again");
-        }
+        const message = error.response.data.message || error.response.data.error;
+        toast.error(message || "Subscription failed. Please try again.");
       } else {
-        toast.error("An error occurred. Please try again.");
+        toast.error("An unexpected error occurred. Please try again.");
       }
-      setFormData({ email: "" });
     } finally {
       setIsLoading(false);
     }
@@ -91,9 +82,10 @@ const NewsLetter = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email address"
-              className="px-4 py-2 w-full sm:w-auto text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-500"
+              className="px-4 py-2 w-full sm:w-96 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-500"
               required
             />
+
             <button
               type="submit"
               className={`bg-gray-900 hover:bg-gray-700 text-white px-6 py-2 rounded-md shadow-md transition-transform transform hover:scale-105 w-full sm:w-auto ${
@@ -101,7 +93,7 @@ const NewsLetter = () => {
               }`}
               disabled={isLoading}
             >
-              {isLoading ? "Subscribing..." : "Subscribe"}
+              {isLoading ? <Spinner size={20} /> : "Subscribe"}
             </button>
           </form>
         </div>

@@ -16,6 +16,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useCookies } from "react-cookie";
 import AuthContext from '../../context/AuthContext';
+import { useSearch } from '../../context/SearchContext';
 import logo from '../../assets/images/logo.png';
 
 const Search = styled("div")(({ theme }) => ({
@@ -58,13 +59,30 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const PropertyNavbar = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [userName, setUserName] = useState("");
-  const [userId, setUserId] = useState(null); // For storing the user_id
-  const [cookies] = useCookies(["user"]);
-  const [cartItems, setCartItems] = useState(0);
-  const { logOutUser } = useContext(AuthContext);  // Access logOutUser function from AuthContext
-  const navigate = useNavigate();
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [userName, setUserName] = useState("");
+    const [userId, setUserId] = useState(null); // For storing the user_id
+    const [cookies] = useCookies(["user"]);
+    const [cartItems, setCartItems] = useState(0);
+    const { logOutUser } = useContext(AuthContext);  // Access logOutUser function from AuthContext
+    const navigate = useNavigate();
+
+    const [inputValue, setInputValue] = useState('');
+    const { setSearchQuery } = useSearch();
+
+    if (!setSearchQuery) {
+        console.error("setSearchQuery is undefined. Check SearchContext.");
+    }
+
+    
+
+  
+  
+    const handleSearch = (e) => {
+      if (e.key === 'Enter' || e.key ==='click') {
+        setSearchQuery(inputValue);
+      }
+    };
 
   const handleClick = () => {
     navigate('/request');
@@ -130,74 +148,69 @@ const PropertyNavbar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}>
-        <Toolbar>
-          {/* Replace Menu Icon with Company Logo */}
-          <Box sx={{
-            height: '60px',
-            padding: '2px',
-            background: 'white',
-            borderRadius: '10px',
-            mt: 2,
-            ml: 2,
-            mb: 1,
-            display: { xs: 'flex', md: 'flex' },
-            justifyContent: 'center', // Center the logo horizontally
-          }}>
-            <img src={logo} alt="Company Logo" style={{ maxHeight: '100%', objectFit: 'contain' }} />
-          </Box>
+      <Toolbar sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+  {/* Logo */}
+  <Box
+    sx={{
+      height: '60px',
+      padding: '2px',
+      background: 'white',
+      borderRadius: '10px',
+      mt: 2,
+      ml: 2,
+      mb: 1,
+      display: { xs: 'flex', md: 'flex' },
+      justifyContent: 'center',
+    }}
+  >
+    <img src={logo} alt="Company Logo" style={{ maxHeight: '100%', objectFit: 'contain' }} />
+  </Box>
 
-          {/* Search Bar */}
-          <Search sx={{
-            marginLeft: { xs: '10px', sm: '20px' }, // More space between logo and search bar on smaller screens
-            width: { xs: '80%', sm: '90%', md: 'auto' }, // Increase the width on larger screens
-          }}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search Properties…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+  {/* Centered Search Bar */}
+  <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', mx: 2 }}>
+    <Search
+      sx={{
+        width: { xs: '80%', sm: '70%', md: '50%' }, // Responsive widths for different screens
+      }}
+    >
+      <SearchIconWrapper>
+        <SearchIcon />
+      </SearchIconWrapper>
+      <StyledInputBase
+        type="text"
+        placeholder="Search Properties…"
+        inputProps={{ "aria-label": "search" }}
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={handleSearch}
+      />
+    </Search>
+  </Box>
 
-          {/* Cart, User Info, Account Icon */}
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
-            <IconButton size="large" aria-label="cart items" color="inherit" onClick={handleClick}>
-              <Badge badgeContent={cartItems} color="error">
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
-            <Typography variant="body1" sx={{ ml: 2, mr: 1 }}>
-              {userName}
-            </Typography>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </Box>
+  {/* User Info and Cart */}
+  <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
+    <IconButton size="large" aria-label="cart items" color="inherit" onClick={handleClick}>
+      <Badge badgeContent={cartItems} color="error">
+        <ShoppingCartIcon />
+      </Badge>
+    </IconButton>
+    <Typography variant="body1" sx={{ ml: 2, mr: 1 }}>
+      {userName}
+    </Typography>
+    <IconButton
+      size="large"
+      edge="end"
+      aria-label="account of current user"
+      aria-controls={menuId}
+      aria-haspopup="true"
+      onClick={handleProfileMenuOpen}
+      color="inherit"
+    >
+      <AccountCircle />
+    </IconButton>
+  </Box>
+</Toolbar>
 
-          {/* Mobile Menu Icon */}
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls="primary-search-account-menu-mobile"
-              aria-haspopup="true"
-              onClick={(e) => setAnchorEl(e.currentTarget)}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
       </AppBar>
       {renderMenu}
     </Box>

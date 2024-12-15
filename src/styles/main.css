@@ -78,3 +78,23 @@ body {
 
 
 
+/* Text Shadow */
+.custom-text-shadow {
+  text-shadow: 3px 3px 8px rgba(0, 95, 163, 0.2); /* Adjust shadow as needed */
+}
+
+/* Fade-in and slide animation */
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px); /* Starts from above */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Ends in its original position */
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 3.5s ease-out;
+}
