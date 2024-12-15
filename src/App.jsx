@@ -19,7 +19,7 @@ import Estate from "./pages/Estate";
 import Contact from "./pages/Contact";
 import CookieConsent from "./components/general/CookieConsent";
 import Booking from "./pages/Booking";
-import CustomResetPasswordConfirm from "./components/customResetPasswordConfirm";
+import CustomResetPasswordConfirm from "./components/CustomResetPasswordConfirm";
 import SinglePost from "./pages/SinglePost";
 import AllProperties from "./pages/AllProperties";
 import SingleProperty from "./pages/SingleProperty";
@@ -45,7 +45,7 @@ function App() {
           {/* Authentication URL*/}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/reset_password_confirm" element={<CustomResetPasswordConfirm />} />
+          <Route path="/reset_password_confirm" element={<CustomResetPasswordConfirm/>} />
           <Route path="/change_password" element={<ProtectedRoute><ChangePasword /></ProtectedRoute>}/>
           <Route path="/profile/:user_id" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/reset_password" element={<ResetPassword />} />
