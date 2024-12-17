@@ -43,9 +43,10 @@ const MyCarousel = () => {
         infiniteLoop
         autoPlay
         showThumbs={false}
-        showIndicators={true}
+        showIndicators={false}
         showStatus={false}
-        interval={3000}
+        interval={5000}
+        transitionTime={500}
         className="custom-carousel"
         swipeable={!isMobile} // Prevent swipe on mobile if necessary
       >

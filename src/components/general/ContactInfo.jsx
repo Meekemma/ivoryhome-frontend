@@ -84,7 +84,7 @@ const ContactInfo = () => {
         <div className="space-y-6">
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Name Field */}
-            <div data-aos="fade-up" data-aos-delay="200">
+            <div data-aos="fade-up">
               <label htmlFor="name" className="block text-sm text-gray-700">
                 Name
               </label>
@@ -100,7 +100,7 @@ const ContactInfo = () => {
             </div>
 
             {/* Email Field */}
-            <div data-aos="fade-up" data-aos-delay="300">
+            <div data-aos="fade-up">
               <label htmlFor="email" className="block text-sm text-gray-700">
                 Email
               </label>
@@ -116,7 +116,7 @@ const ContactInfo = () => {
             </div>
 
             {/* Message Field */}
-            <div data-aos="fade-up" data-aos-delay="400">
+            <div data-aos="fade-up">
               <label htmlFor="message" className="block text-sm text-gray-700">
                 Message
               </label>
@@ -137,7 +137,7 @@ const ContactInfo = () => {
               className={`w-full bg-[#1d1c1c] text-white py-3 rounded-md btn transition ${
                 isLoading ? "opacity-50 cursor-not-allowed" : ""
               }`}
-              data-aos="fade-up"
+              
               disabled={isLoading}
             >
               {isLoading ? ( 

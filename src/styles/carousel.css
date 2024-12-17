@@ -1,16 +1,16 @@
 .carousel-container {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
   }
   
   .custom-carousel {
-    height: 100%; /* Full height for the carousel */
+    height: 90%; /* Full height for the carousel */
   }
   
   .carousel-slide {
     position: relative;
     width: 100%;
-    height: 100vh; /* Set height of the carousel */
+    height: 90vh; /* Set height of the carousel */
     overflow: hidden; /* Ensure no overflow from images */
   }
   

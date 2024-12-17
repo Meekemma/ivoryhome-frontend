@@ -83,7 +83,7 @@ const ContactAnime = () => {
 
       <div className="flex flex-col lg:flex-row items-center gap-12">
         {/* Image Section */}
-        <div className="hidden lg:block w-full lg:w-1/2" data-aos-delay="200">
+        <div className="hidden lg:block w-full lg:w-1/2">
           <LazyLoadImage 
             src={realtor} 
             alt="Realtor" 
@@ -93,7 +93,6 @@ const ContactAnime = () => {
             wrapperProps={{
               style: { 
                 transition: "opacity 1s ease-in-out",
-                backgroundColor: "rgba(0,0,0,0.1)",
               },
             }}
           />
@@ -102,7 +101,7 @@ const ContactAnime = () => {
         {/* Contact Form Section */}
         <div className="w-full lg:w-1/2">
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div data-aos="fade-up" data-aos-delay="300">
+            <div data-aos="fade-up">
               <label htmlFor="name" className="block text-sm text-gray-700">
                 Name
               </label>
@@ -118,7 +117,7 @@ const ContactAnime = () => {
               />
             </div>
 
-            <div data-aos="fade-up" data-aos-delay="400">
+            <div data-aos="fade-up">
               <label htmlFor="email" className="block text-sm text-gray-700">
                 Email
               </label>
@@ -134,7 +133,7 @@ const ContactAnime = () => {
               />
             </div>
 
-            <div data-aos="fade-up" data-aos-delay="500">
+            <div data-aos="fade-up">
               <label htmlFor="message" className="block text-sm text-gray-700">
                 Message
               </label>
@@ -155,7 +154,6 @@ const ContactAnime = () => {
               className={`w-full py-3 rounded-md btn transition ${isLoading ? "bg-gray-400 cursor-not-allowed" : "bg-[#1d1c1c] text-white"}`}
               disabled={isLoading}
               data-aos="fade-up"
-              data-aos-delay="600"
             >
               {isLoading ? <Spinner loading={isLoading} size={20} color="#ffffff" /> : "Send Message"}
             </button>

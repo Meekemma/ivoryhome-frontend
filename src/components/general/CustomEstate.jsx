@@ -32,13 +32,12 @@ const CustomEstate = () => {
   return (
     <div className="container mx-auto py-12 px-6 bg-[#F9FAFB]">
       {/* Estate Section */}
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden grid gap-4 lg:grid-cols-2 lg:grid-rows-[auto_1fr]" data-aos="fade-up" data-aos-delay="100">
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden grid gap-4 lg:grid-cols-2 lg:grid-rows-[auto_1fr]" data-aos="fade-up">
         {/* Estate Image */}
         <LazyLoadImage
           src={royal_home}
           alt="Beautiful Estate"
           className="w-full h-64 lg:h-96 object-cover lg:col-span-1 lg:row-span-2 rounded-lg"
-          effect="blur"
           wrapperProps={{
             style: { 
               transition: "opacity 1s ease-in-out",
@@ -49,7 +48,7 @@ const CustomEstate = () => {
 
 
         {/* Estate Details */}
-        <div className="p-6" data-aos="fade-up" data-aos-delay="100">
+        <div className="p-6" data-aos="fade-up">
           {/* Title */}
           <h1 className="text-3xl font-bold text-[#005fa3] mb-4">
             Royal Dynasty Estate
@@ -101,13 +100,12 @@ const CustomEstate = () => {
 
 
 
-      <div className="bg-white  my-5 rounded-lg shadow-lg overflow-hidden grid gap-4 lg:grid-cols-2 lg:grid-rows-[auto_1fr]" data-aos="fade-up" data-aos-delay="100">
+      <div className="bg-white  my-5 rounded-lg shadow-lg overflow-hidden grid gap-4 lg:grid-cols-2 lg:grid-rows-[auto_1fr]" data-aos="fade-up">
         {/* Estate Image */}
         <LazyLoadImage
           src={indiobi}
           alt="Beautiful Estate"
           className="w-full h-64 lg:h-96 object-cover lg:col-span-1 lg:row-span-2 rounded-lg"
-          effect="blur"
           wrapperProps={{
             style: { 
               transition: "opacity 1s ease-in-out",
@@ -117,7 +115,7 @@ const CustomEstate = () => {
 
 
         {/* Estate Details */}
-        <div className="p-6" data-aos="fade-up" data-aos-delay="100">
+        <div className="p-6" data-aos="fade-up">
           {/* Title */}
           <h1 className="text-3xl font-bold text-[#005fa3] mb-4">
             Ndioba Estate
@@ -169,7 +167,7 @@ const CustomEstate = () => {
       {/* Buttons */}
      
     
-      <div className="p-6 flex justify-center items-center gap-6">
+      <div className="p-6 flex flex-wrap justify-center items-center gap-6">
         <button
           onClick={handleScheduleVisit} // Replace with actual functionality
           className="bg-[#005fa3] text-white text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-[#003f73] transition"

@@ -49,7 +49,7 @@ const AboutUs = () => {
             wrapperProps={{
               style: { 
                 transition: "opacity 1s ease-in-out", // Smoother transitions
-                backgroundColor: "rgba(0,0,0,0.1)", // Optional background
+                
               },
             }}
           />

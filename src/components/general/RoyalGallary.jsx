@@ -32,9 +32,9 @@ const RoyalGallery = () => {
       <Swiper
         modules={[Autoplay, Pagination]}
         spaceBetween={10}
+        showIndicators={false}
         slidesPerView={1}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
-        pagination={{ clickable: true }}
         breakpoints={{
           640: { slidesPerView: 1 },
           768: { slidesPerView: 2 },
@@ -48,9 +48,7 @@ const RoyalGallery = () => {
               src={item.image}
               alt={`Real estate image ${index + 1}`}
               className="w-full h-80 rounded-lg object-cover"
-              effect="blur"
               data-aos="fade-up"
-              data-aos-delay="100"
             />
           </SwiperSlide>
         ))}

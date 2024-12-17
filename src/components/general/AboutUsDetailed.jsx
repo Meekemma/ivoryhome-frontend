@@ -41,7 +41,7 @@ const AboutUsDetailed = () => {
 
         {/* Introduction Section */}
         <section className="mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center" data-aos="fade-up" data-aos-delay="100">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center" data-aos="fade-up">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-[#005fa3] mb-6 leading-tight">
                 About Ivory Home Limited
@@ -73,7 +73,7 @@ const AboutUsDetailed = () => {
         </section>
 
         {/* Vision and Mission Section */}
-        <section className="mb-12" data-aos="fade-up" data-aos-delay="100">
+        <section className="mb-12" data-aos="fade-up">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="flex flex-col items-center">
               <img src={telescope} alt="Vision icon" className="w-16 h-16 mb-4" />
@@ -95,7 +95,7 @@ const AboutUsDetailed = () => {
         </section>
 
         {/* Core Values Section */}
-        <section className="mb-12 bg-white p-6 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
+        <section className="mb-12 bg-white p-6 rounded-lg shadow-lg" data-aos="fade-up">
           <h3 className="text-3xl font-bold text-[#005fa3] mb-6 text-center">Our Core Values</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
             <div className="flex flex-col items-center">
@@ -117,7 +117,7 @@ const AboutUsDetailed = () => {
         </section>
 
         {/* Our Story Section */}
-        <section className="mb-12" data-aos="fade-up" data-aos-delay="100">
+        <section className="mb-12" data-aos="fade-up">
           <h3 className="text-3xl font-bold text-[#005fa3] mb-4">Our Story</h3>
           <p className="text-gray-700 text-lg">
             Ivory Home Limited was founded with a passion for real estate and a vision to simplify
@@ -127,22 +127,22 @@ const AboutUsDetailed = () => {
         </section>
 
         {/* Achievements Section */}
-        <section className="mb-12" data-aos="fade-up" data-aos-delay="100">
+        <section className="mb-12" data-aos="fade-up">
           <h3 className="text-3xl font-bold text-[#005fa3] mb-4">Our Achievements</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+            <div className="flex flex-col items-center" data-aos="fade-up">
               <img src={trophy} alt="Trophy icon" className="w-16 h-16 mb-4" />
               <p className="text-gray-700 text-center">
                 Over 1,000 properties successfully listed and sold.
               </p>
             </div>
-            <div className="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100" >
+            <div className="flex flex-col items-center" data-aos="fade-up" >
               <img src={timeline} alt="Timeline icon" className="w-16 h-16 mb-4" />
               <p className="text-gray-700 text-center">
                 Years of excellence in the real estate industry.
               </p>
             </div>
-            <div className="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+            <div className="flex flex-col items-center" data-aos="fade-up">
               <img src={handshake} alt="Handshake icon" className="w-16 h-16 mb-4" />
               <p className="text-gray-700 text-center">
                 A growing community of satisfied clients and partners.
@@ -152,7 +152,7 @@ const AboutUsDetailed = () => {
         </section>
 
         {/* Call-to-Action Section */}
-        <section className="text-center" data-aos="fade-up" data-aos-delay="100">
+        <section className="text-center" data-aos="fade-up">
           <h3 className="text-3xl font-bold text-[#005fa3] mb-4">Ready to Start Your Real Estate Journey?</h3>
           <p className="text-gray-700 text-lg mb-6">
             Browse our wide range of properties or get in touch with our team for personalized
