@@ -37,9 +37,9 @@ const HomeFooter = () => {
   ];
 
   const contactDetails = {
-    phone: '+123 456 7890',
-    email: 'info@store.com',
-    address: '123 Main Street, City, Country',
+    phone: '+234 817 999 9961',
+    email: 'info@IvoryHomes.com',
+    address: 'HFP Eastline shopping complex,Abraham Adesaya,Ajah,Lagos,Nigeria.',
   };
 
   const navigate = useNavigate();

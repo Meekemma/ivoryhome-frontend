@@ -29,6 +29,8 @@ import Checkout from "./pages/Checkout";
 import ScrollToTop from "./components/general/ScrollToTop";
 import Payment from "./pages/Payment";
 import SuccessPage from "./components/payment/SuccessPage";
+import PropertyPopup from "./components/general/PropertyPopup";
+import NewsletterPopup from "./components/general/NewsletterPopup";
 
 function App() {
   
@@ -74,6 +76,8 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <ToastContainer />
+        <PropertyPopup/>
+        <NewsletterPopup/>
         <CookieConsent />
       </AuthProvider>
     </Router>

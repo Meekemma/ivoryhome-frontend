@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import blog from '../../assets/images/blog.jpg';
-import logo from '../../assets/images/logo.png';
+import AnimationBlog from '../../assets/images/Animation - 1734538556727.json';
+import Lottie from 'lottie-react';
 import { FaSearch, FaChevronLeft  } from 'react-icons/fa'; // Using FontAwesome icons
 import '../../styles/showcase.css';
 import { useSearch } from '../../context/SearchContext';
@@ -26,7 +27,8 @@ const BlogShowCase = () => {
         
         {/* Logo */}
         <div className="logo-container">
-          <img src={logo} alt="Logo" className="logo" />
+        <Lottie animationData={AnimationBlog} loop={true} style={{ height: 150, width: 100 }} />
+          {/* <img src={logo} alt="Logo" className="logo" /> */}
         </div>
 
         {/* Search Icon and Input */}

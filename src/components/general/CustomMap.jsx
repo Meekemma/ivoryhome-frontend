@@ -29,9 +29,13 @@ const AnimatedMarker = ({ position }) => {
   return (
     <Marker ref={markerRef} position={position} icon={redIcon}>
       <Popup>
-        <b>Ivory Homes Limited</b>
+        <b className='text-[#005fa3]'>Ivory Homes Limited</b>
         <br />
-        HFP Eastline shopping complex, Abraham Adesaya, Ajah,Lagos,Nigeria.      
+        HFP Eastline shopping complex,
+        <br />
+         Abraham Adesaya, 
+         <br/>
+         Ajah,Lagos,Nigeria.      
       </Popup>
     </Marker>
   );
