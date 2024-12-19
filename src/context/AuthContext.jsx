@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }) => {
 
         setUser(user);
           navigate(redirectPath);
-        toast.success("Login successful");
+        
         return true;
       }
     } catch (error) {

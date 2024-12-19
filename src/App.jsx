@@ -31,6 +31,9 @@ import Payment from "./pages/Payment";
 import SuccessPage from "./components/payment/SuccessPage";
 import PropertyPopup from "./components/general/PropertyPopup";
 import NewsletterPopup from "./components/general/NewsletterPopup";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
+import CookiePolicyPage from "./pages/CookiePolicyPage";
 
 function App() {
   
@@ -60,6 +63,10 @@ function App() {
           <Route path="/estate" element={<Estate />} />
           <Route path="/contact" element={<Contact/>}/>
           <Route path="/booking" element={<Booking />} />
+          <Route path="/Terms_&_conditions" element={<TermsAndConditionsPage/>} />
+          <Route path="/Cookie_policy" element={<CookiePolicyPage/>} />
+          <Route path="/Privacy_&_Policy" element={<PrivacyPolicyPage/>} />
+          
 
           {/* Blog URL*/}
           <Route path="/blog" element={<Blog />} />

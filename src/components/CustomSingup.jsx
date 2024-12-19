@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import logo from '../assets/images/logo.png';
 import google from '../assets/images/google.svg';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -9,9 +9,10 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie'; // Importing react-cookie
 import Spinner from "./blog/Spinner";
-
+import AuthContext from "../context/AuthContext";
 
 const CustomSignup = () => {
+    const { loginWithGoogle } = useContext(AuthContext);
     const [cookies, setCookie, removeCookie] = useCookies(['email', 'access_token']); // Using react-cookie
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -132,7 +133,7 @@ const CustomSignup = () => {
 
                             {/* Social Signup */}
                             <div className="mb-6">
-                                <button className="flex items-center justify-center w-full border border-gray-300 rounded-md py-2 text-gray-700 hover:bg-gray-50">
+                                <button className="flex items-center justify-center w-full border border-gray-300 rounded-md py-2 text-gray-700 hover:bg-gray-50" onClick={loginWithGoogle}>
                                     <img src={google} alt="Google" className="h-6 w-6 mr-2 object-contain" />
                                     Sign up with Google
                                 </button>

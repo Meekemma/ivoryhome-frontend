@@ -16,6 +16,7 @@ const useGoogleResponse = () => {
         const firstName = queryParams.get('first_name');
         const lastName = queryParams.get('last_name');
         const isVerified = queryParams.get('is_verified');
+        const profileComplete = queryParams.get('profile_complete');
         const userId = queryParams.get('id');
 
         // Execute logic only if access and refresh tokens are in the URL
@@ -23,6 +24,7 @@ const useGoogleResponse = () => {
             // Save tokens and user data in cookies
             if (userId) setCookie('user_id', userId, { path: '/', secure: true, sameSite: 'Strict' });
             if (isVerified !== null) setCookie('is_verified', JSON.stringify(isVerified), { path: '/', secure: true, sameSite: 'Strict' });
+            if (profileComplete !== null) setCookie('profile_complete', JSON.stringify(profileComplete), { path: '/', secure: true, sameSite: 'Strict' });
             if (email && firstName && lastName) {
                 setCookie('user', JSON.stringify({ email, firstName, lastName }), { path: '/', secure: true, sameSite: 'Strict' });
             }
@@ -31,7 +33,6 @@ const useGoogleResponse = () => {
             setCookie('refresh_token', refreshToken, { path: '/', secure: true, sameSite: 'Strict' });
 
             // Notify user and redirect
-            toast.success('Login successful');
             navigate('/');
         } 
         // else if (location.search) {

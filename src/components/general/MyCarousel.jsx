@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import carousel from '../../assets/images/carousel.jpg';
 import home from '../../assets/images/home.jpg';
 import '../../styles/carousel.css';
+import Spinner from "../blog/Spinner";
 
 const MyCarousel = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const isMobile = window.innerWidth <= 768;
   const navigate = useNavigate();
 
@@ -37,40 +39,66 @@ const MyCarousel = () => {
     navigate('/booking');
   };
 
+  // Preload images
+  useEffect(() => {
+    const preloadImages = () => {
+      const imagePromises = duplicatedSlides.map((slide) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.src = slide.src;
+          img.onload = resolve;
+        });
+      });
+
+      Promise.all(imagePromises).then(() => {
+        setIsLoading(false);
+      });
+    };
+
+    preloadImages();
+  }, [duplicatedSlides]);
+
   return (
     <div className="carousel-container">
-      <Carousel
-        infiniteLoop
-        autoPlay
-        showThumbs={false}
-        showIndicators={false}
-        showStatus={false}
-        interval={5000}
-        transitionTime={500}
-        className="custom-carousel"
-        swipeable={!isMobile} // Prevent swipe on mobile if necessary
-      >
-        {duplicatedSlides.map((slide, index) => (
-          <div key={index} className="carousel-slide">
-            <img
-              src={slide.src}
-              alt={`Slide ${index + 1}`}
-              className="carousel-image"
-              loading="lazy"
-            />
-            <div className="overlay">
-              <div className="text-content">
-                <h5>{slide.title}</h5>
-                <h2>{slide.title}</h2>
-                <p>{slide.description}</p>
-                <button className="booking-button" onClick={handleOnClick}>
-                  {slide.buttonText}
-                </button>
+      {!isLoading && (
+        <Carousel
+          infiniteLoop
+          autoPlay
+          showThumbs={false}
+          showIndicators={false}
+          showStatus={false}
+          interval={5000}
+          transitionTime={500}
+          className="custom-carousel"
+          swipeable={!isMobile} // Prevent swipe on mobile if necessary
+        >
+          {duplicatedSlides.map((slide, index) => (
+            <div key={index} className="carousel-slide">
+              <img
+                src={slide.src}
+                alt={`Slide ${index + 1}`}
+                className="carousel-image"
+                loading="lazy"
+              />
+              <div className="overlay">
+                <div className="text-content">
+                  <h5>{slide.title}</h5>
+                  <h2>{slide.title}</h2>
+                  <p>{slide.description}</p>
+                  <button className="booking-button" onClick={handleOnClick}>
+                    {slide.buttonText}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </Carousel>
+          ))}
+        </Carousel>
+      )}
+      {isLoading && (
+        <div className="loading-placeholder">
+          <Spinner size={20} color="#fff" />
+        </div>
+      )}
     </div>
   );
 };

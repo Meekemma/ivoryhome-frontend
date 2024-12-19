@@ -4,20 +4,32 @@
   }
   
   .custom-carousel {
-    height: 90%; /* Full height for the carousel */
+    height: 90%; 
   }
   
   .carousel-slide {
     position: relative;
     width: 100%;
-    height: 90vh; /* Set height of the carousel */
-    overflow: hidden; /* Ensure no overflow from images */
+    height: 90vh; 
+    overflow: hidden; 
   }
+
+  /* Add this to your carousel.css */
+.loading-placeholder {
+  width: 100%;
+  height: 90vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000; 
+  color: white; 
+  font-size: 24px; 
+}
   
   .carousel-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures image is responsive and fills the carousel */
+    object-fit: cover; 
   }
   
   .overlay {
@@ -26,7 +38,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); /* Black background with 50% transparency */
+    background-color: rgba(0, 0, 0, 0.2); 
     display: flex;
     flex-direction: column;
     justify-content: center;

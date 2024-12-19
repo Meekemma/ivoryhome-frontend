@@ -24,7 +24,7 @@ const HomeFooter = () => {
   const quickLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Services', path: '/services' },
+    { name: 'Services', path: '/service' },
     { name: 'Properties', path: '/properties' },
     { name: 'Estate', path: '/estate' },
     { name: 'Blog', path: '/blog' },
@@ -32,8 +32,9 @@ const HomeFooter = () => {
   ];
 
   const legalLinks = [
-    { name: 'Terms & Conditions', path: '/terms-and-conditions' },
-    { name: 'Privacy Policy', path: '/privacy-policy' },
+    { name: 'Terms & Conditions', path: '/Terms_&_conditions' },
+    { name: 'Privacy Policy', path: '/Privacy_&_Policy' },
+    { name: 'Cookie Policy', path: '/Cookie_Policy' },
   ];
 
   const contactDetails = {

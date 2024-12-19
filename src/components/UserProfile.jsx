@@ -6,6 +6,7 @@ import Select from "react-select";
 import countries from "world-countries";
 import Spinner from "./blog/Spinner";
 import { FaUserCircle } from "react-icons/fa";
+import '../styles/main.css';
 
 const UserProfile = () => {
   let api = useAxios();
@@ -209,7 +210,7 @@ const UserProfile = () => {
         {/* Update Button */}
         <button
           type="submit"
-          className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50"
+          className="w-full py-2 btn bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50"
           disabled={isLoading}
         >
           {isLoading ? (

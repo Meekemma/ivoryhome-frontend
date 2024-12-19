@@ -26,18 +26,31 @@ body {
     box-sizing: border-box;
 }
 
+/* Add this to your showcase.css */
+/* Add this to your showcase.css */
+.loading-blog {
+  width: 100%;
+  height: 40vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000; 
+  color: white; 
+  font-size: 24px; 
+}
+
 .showcase {
     position: relative;
     width: auto;
-    height: 40vh; /* 40% of the viewport height */
-     /* Ensures the image and overlay don’t exceed the container */
+    height: 40vh; 
+    
   }
   
   /* Showcase Image */
   .showcase-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image scales proportionally to fill the container */
+    object-fit: cover; 
     display: block;
   }
   
@@ -49,22 +62,22 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Black color with 50% transparency */
-    z-index: 1; /* Ensure it stays above the image */
+    background: rgba(0, 0, 0, 0.2); 
+    z-index: 1; 
   }
   
   /* Logo Container */
   .logo-container {
     position: absolute;
     top: 40%;
-    left: 30px; /* Align to the left side with some margin */
-    transform: translateY(-50%); /* Vertically center the logo */
-    z-index: 2; /* Ensure it appears above the overlay */
+    left: 30px; 
+    transform: translateY(-50%);
+    z-index: 2; 
   }
   
   /* Logo Image */
   .logo {
-    width: 130px; /* Increase size of the logo */
+    width: 130px; 
     height: auto;
   }
   
@@ -83,14 +96,14 @@ body {
   border-radius: 20px;
   padding: 5px 10px;
   transition: width 0.3s ease, opacity 0.3s ease;
-  width: 40px; /* Collapsed width */
-  overflow: hidden; /* Hide the input when collapsed */
+  width: 40px; 
+  overflow: hidden; 
   opacity: 0.8;
 }
 
 .search-container:hover,
 .search-container:focus-within {
-  width: 400px; /* Expanded width */
+  width: 400px;
   opacity: 3;
 }
 
@@ -135,14 +148,14 @@ body {
 @media screen and (max-width: 768px) {
   .search-container:hover,
   .search-container:focus-within {
-    width: 200px; /* Expanded width */
-    opacity: 1;   /* Set opacity to a valid value (fully opaque) */
+    width: 200px; 
+    opacity: 1;   
   }
 }
 
 @media screen and (max-width: 768px){
   .logo {
-    width: 90px; /* Increase size of the logo */
+    width: 90px; 
     height: auto;
   }
 }

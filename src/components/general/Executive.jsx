@@ -3,7 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import kindelmedia from '../../assets/images/kindelmedia.jpg';
+import mic from '../../assets/images/mic.jpg';
+import nobert from '../../assets/images/nobert.jpg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -14,22 +15,22 @@ import { Helmet } from 'react-helmet-async';
 // Sample executives' data
 const executives = [
   {
-    name: 'John Doe',
+    name: 'Mr. John Onwumere',
     position: 'Chief Executive Officer',
     description: 'John brings over 20 years of experience in the real estate industry, leading our team with passion and strategic vision.',
-    image: kindelmedia,
+    image: nobert,
   },
   {
-    name: 'Jane Smith',
-    position: 'Chief Operating Officer',
-    description: 'Jane oversees daily operations, ensuring efficiency and excellence in every aspect of our services.',
-    image: kindelmedia,
+    name: 'Mr. Micheal Ihikwoaba',
+    position: 'Chief Marketing Officer',
+    description: 'Micheal drives our marketing strategies, fostering relationships and expanding our brand reach in the real estate market.',
+    image: mic,
   },
   {
-    name: 'Robert Johnson',
-    position: 'Chief Financial Officer',
-    description: 'With a keen eye for detail, Robert manages our finances, ensuring stability and growth for the company.',
-    image: kindelmedia,
+    name: 'Mr. Nobert Emeka Osakwe',
+    position: 'Project Manager',
+    description: 'With a keen eye for detail, Nobert oversees projects to ensure timely delivery and high-quality outcomes.',
+    image: nobert,
   },
 ];
 
@@ -67,7 +68,7 @@ const Executive = () => {
           spaceBetween={30}
           slidesPerView={1}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
+          
           breakpoints={{
             640: { slidesPerView: 1 },
             768: { slidesPerView: 2 },
@@ -77,7 +78,7 @@ const Executive = () => {
         >
           {executives.map((executive, index) => (
             <SwiperSlide key={index}>
-              <div className="flex flex-col items-center text-center p-6 border-2 border-[#005fa3] rounded-lg shadow-lg bg-white" data-aos="fade-up" data-aos-delay="100">
+              <div className="flex flex-col items-center text-center p-6 border-2 bg-[#005fa3] border-zinc-50 rounded-lg shadow-lg " data-aos="fade-up" data-aos-delay="100">
                 <LazyLoadImage
                   src={executive.image}
                   alt={executive.name}
@@ -86,9 +87,9 @@ const Executive = () => {
 
                   
                 />
-                <h3 className="text-xl font-bold text-[#005fa3]">{executive.name}</h3>
-                <p className="text-sm text-gray-500 font-semibold">{executive.position}</p>
-                <p className="text-sm text-gray-700 mt-2">{executive.description}</p>
+                <h3 className="text-xl font-bold text-[#fff]">{executive.name}</h3>
+                <p className="text-sm text-red-200 font-semibold">{executive.position}</p>
+                <p className="text-sm text-gray-100 mt-2">{executive.description}</p>
               </div>
             </SwiperSlide>
           ))}

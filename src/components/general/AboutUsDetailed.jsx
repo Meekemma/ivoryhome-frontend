@@ -15,15 +15,13 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 
-
 const AboutUsDetailed = () => {
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
-    return () => AOS.refresh(); // Ensures animations refresh if components re-render
+    return () => AOS.refresh();
   }, []);
 
   const navigate = useNavigate();
-
 
   return (
     <>
@@ -36,7 +34,6 @@ const AboutUsDetailed = () => {
             content="Learn about Ivory Home Limited, your trusted real estate partner offering transparent solutions for buying, selling, and renting properties. Discover our mission, vision, and core values."
           />
           <meta name="keywords" content="real estate, properties, Ivory Home, buy, rent, sell" />
-
         </Helmet>
 
         {/* Introduction Section */}
@@ -50,9 +47,18 @@ const AboutUsDetailed = () => {
                 Welcome to <span className="font-bold">Ivory Home Limited</span>, your trusted partner in real estate. Whether
                 you’re buying, selling, or renting, we strive to simplify the property market with confidence and ease.
               </p>
-              <p className="text-gray-700 text-base sm:text-lg">
+              <p className="text-gray-700 text-base sm:text-lg mb-4">
                 Experience real estate solutions that are transparent, professional, and efficient. Let us guide you to
                 finding your dream home or securing your next investment.
+              </p>
+              <p className="text-gray-700 text-base sm:text-lg mb-4">
+                At Ivory Home Limited, we take pride in our personalized approach to real estate. With a dedicated team of
+                experts, we ensure every client's needs are understood and fulfilled. Our deep understanding of the market,
+                combined with our innovative strategies, has helped us bridge the gap between clients and their ideal properties.
+              </p>
+              <p className="text-gray-700 text-base sm:text-lg">
+                Join countless satisfied customers who have found their perfect homes through us. Your journey with
+                Ivory Home Limited promises unparalleled service and a seamless real estate experience.
               </p>
             </div>
             <div className="flex justify-center">
@@ -62,9 +68,9 @@ const AboutUsDetailed = () => {
                 effect="blur"
                 className="rounded-lg shadow-lg max-w-full h-auto"
                 wrapperProps={{
-                  style: { 
-                    transition: "opacity 1s ease-in-out",
-                    backgroundColor: "rgba(0,0,0,0.1)",
+                  style: {
+                    transition: 'opacity 1s ease-in-out',
+                    backgroundColor: 'rgba(0,0,0,0.1)',
                   },
                 }}
               />
@@ -118,13 +124,32 @@ const AboutUsDetailed = () => {
 
         {/* Our Story Section */}
         <section className="mb-12" data-aos="fade-up">
-          <h3 className="text-3xl font-bold text-[#005fa3] mb-4">Our Story</h3>
-          <p className="text-gray-700 text-lg">
-            Ivory Home Limited was founded with a passion for real estate and a vision to simplify
-            the property-buying and selling process. Over the years, we’ve grown to become a trusted
-            name in the industry, known for our commitment to excellence and customer satisfaction.
-          </p>
+            <h3 className="text-3xl font-bold text-[#005fa3] mb-4">Our Story</h3>
+            <p className="text-gray-700 text-lg mb-4">
+              Ivory Home Limited was founded with a passion for real estate and a vision to simplify
+              the property-buying and selling process. Over the years, we’ve grown to become a trusted
+              name in the industry, known for our commitment to excellence and customer satisfaction.
+            </p>
+            <p className="text-gray-700 text-lg mb-4">
+              Our journey began with a simple goal: to create a seamless experience for individuals and
+              families navigating the complexities of the real estate market. Starting from humble beginnings, 
+              we have expanded our reach, offering a wide range of services that cater to both local and 
+              international clients.
+            </p>
+            <p className="text-gray-700 text-lg mb-4">
+              With a team of experienced professionals, cutting-edge technology, and an unwavering 
+              dedication to customer service, we have successfully bridged the gap between our clients 
+              and their dream properties. From first-time homebuyers to seasoned investors, our clients 
+              trust us to deliver results that exceed expectations.
+            </p>
+            <p className="text-gray-700 text-lg">
+              Today, Ivory Home Limited is not just a real estate company but a community where trust, 
+              innovation, and relationships are at the heart of everything we do. We are proud of our 
+              legacy and excited about the future as we continue to transform the real estate experience 
+              for our clients.
+            </p>
         </section>
+
 
         {/* Achievements Section */}
         <section className="mb-12" data-aos="fade-up">
@@ -136,7 +161,7 @@ const AboutUsDetailed = () => {
                 Over 1,000 properties successfully listed and sold.
               </p>
             </div>
-            <div className="flex flex-col items-center" data-aos="fade-up" >
+            <div className="flex flex-col items-center" data-aos="fade-up">
               <img src={timeline} alt="Timeline icon" className="w-16 h-16 mb-4" />
               <p className="text-gray-700 text-center">
                 Years of excellence in the real estate industry.
@@ -158,25 +183,25 @@ const AboutUsDetailed = () => {
             Browse our wide range of properties or get in touch with our team for personalized
             assistance.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 mt-4">
-            <a
-              onClick={() => navigate('/properties')} 
-              className="bg-[#005fa3] btn text-white px-6 py-3 rounded-lg shadow-md hover:bg-[#003f73] transition"
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <button
+              onClick={() => navigate('/properties')}
+              className="bg-[#005fa3] text-white py-2 px-6 rounded-md hover:bg-[#003d66] transition duration-300"
             >
-              Browse Properties
-            </a>
-            
-            <a
-              onClick={() => navigate('/contact')} 
-              className="bg-gray-200 text-[#005fa3] px-6 py-3 rounded-lg shadow-md hover:bg-gray-300 transition"
-              aria-label="Browse our wide range of properties"
+              View Properties
+            </button>
+            <button
+              onClick={() => navigate('/contact')}
+              className="bg-white text-[#005fa3] py-2 px-6 rounded-md border border-[#005fa3] hover:bg-[#005fa3] hover:text-white transition duration-300"
             >
               Contact Us
-            </a>
+            </button>
           </div>
         </section>
+
+        {/* Executive Component */}
+        <Executive />
       </div>
-      <Executive />
     </>
   );
 };
