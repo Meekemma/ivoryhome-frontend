@@ -61,8 +61,12 @@ const PropertyPopup = () => {
                 <h2 className='text-pretty'>Discover Your Dream Home!</h2>
                 <p className='text-pretty'>Explore our latest listings and find the perfect property for you.</p>
 
-                {/* Lottie Animation */}
-                <Lottie animationData={AnimationPop} loop={true} style={{ height: 250, width: 450 }} />
+                
+               {/* Lottie Animation */}
+                <div className="lottie">
+                    <Lottie animationData={AnimationPop} loop={true} style={{ height: 250, width: 450 }} />
+                </div>
+
 
                 {/* Navigation Button */}
                 <button

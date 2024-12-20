@@ -26,7 +26,7 @@ const SinglePostPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [copySuccess, setCopySuccess] = useState("");
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });

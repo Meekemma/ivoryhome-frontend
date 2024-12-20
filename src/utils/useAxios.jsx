@@ -5,7 +5,8 @@ import {jwtDecode} from "jwt-decode";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 
-const baseURL = "http://127.0.0.1:8000/";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 
 const useAxios = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["access_token", "refresh_token"]);
@@ -13,7 +14,7 @@ const useAxios = () => {
 
   // Create an axios instance with base settings
   const axiosInstance = axios.create({
-    baseURL,
+    BASE_URL,
     headers: {
       "Content-Type": "application/json",
       ...(cookies.access_token && {
@@ -57,7 +58,7 @@ const useAxios = () => {
       if (refresh_token) {
         console.log("Refresh token found, attempting to refresh access token...");
         try {
-          const response = await axios.post(`${baseURL}base/token/refresh/`, {
+          const response = await axios.post(`${BASE_URL}base/token/refresh/`, {
             refresh: refresh_token,
           });
 

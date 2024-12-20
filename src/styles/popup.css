@@ -125,3 +125,19 @@
         padding: 8px 16px; /* Further adjust padding */
     }
 }
+
+
+/* Center Lottie Animation */
+.popup .lottie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0; /* Optional margin for spacing */
+}
+
+/* Mobile-Specific Adjustments */
+@media screen and (max-width: 768px) {
+    .popup .lottie {
+        margin: 0 auto; /* Center horizontally */
+    }
+}

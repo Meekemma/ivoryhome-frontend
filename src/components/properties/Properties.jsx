@@ -14,7 +14,7 @@ const Properties = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const propertyPerPage = 10;
 
   const location = useLocation();
@@ -92,7 +92,7 @@ const Properties = () => {
               {/* Property Image */}
               {property.images.length > 0 ? (
                 <img
-                  src={`http://127.0.0.1:8000${property.images[0].image}`}
+                  src={`${BASE_URL}${property.images[0].image}`}
                   alt={property.title}
                   className="w-full h-82 object-cover rounded-t-lg"
                   loading="lazy"

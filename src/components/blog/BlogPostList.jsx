@@ -34,7 +34,11 @@ const BlogPostList = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
 
-  const BASE_URL = 'http://127.0.0.1:8000';
+  // const BASE_URL = 'http://127.0.0.1:8000';
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+
+
   const postsPerPage = 5;
 
   const location = useLocation();

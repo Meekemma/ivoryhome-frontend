@@ -6,6 +6,8 @@ import "../styles/main.css";
 import Spinner from "./blog/Spinner";
 
 const CustomResetPassword = () => {
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -29,7 +31,7 @@ const CustomResetPassword = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8000/base/password_reset/request/",
+        `${BASE_URL}/base/password_reset/request/`,
         formData
       );
       if (res.status === 200) {

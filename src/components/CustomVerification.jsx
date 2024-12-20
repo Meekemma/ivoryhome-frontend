@@ -10,6 +10,8 @@ import { useCookies } from "react-cookie";
 
 
 const CustomVerification = () => {
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   const [cookies] = useCookies(["email"]);
   const [codes, setCodes] = useState(Array(5).fill('')); // Updated to 5 boxes
   const [error, setError] = useState(null);
@@ -41,7 +43,7 @@ const CustomVerification = () => {
       return;
     }
     try {
-      await axios.post('http://127.0.0.1:8000/base/resend-otp/', { email });
+      await axios.post(`${BASE_URL}/base/resend-otp/`, { email });
       toast.success('Verification code resent to your email');
     } catch (error) {
       console.error('Error resending verification code:', error);

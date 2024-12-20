@@ -23,7 +23,8 @@ const Property = () => {
   const [property, setProperty] = useState(null);
   const [buttonLoading, setButtonLoading] = useState(false); // For rent button spinner
 
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   const previousPage = location.state?.from || "/properties";
 
   useEffect(() => {

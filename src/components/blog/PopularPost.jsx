@@ -8,7 +8,8 @@ const PopularPost = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showAllPosts, setShowAllPosts] = useState(false); // State for showing all posts
-  const BASE_URL = "http://127.0.0.1:8000";
+  
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     fetchPopularPost();

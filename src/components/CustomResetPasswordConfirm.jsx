@@ -7,6 +7,8 @@ import "../styles/main.css";
 import Spinner from "./blog/Spinner";
 
 const CustomResetPasswordConfirm = () => {
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -42,7 +44,7 @@ const CustomResetPasswordConfirm = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8000/base/password_reset/confirm/",
+        `${BASE_URL}/base/password_reset/confirm/`,
         { password, token }
       );
 

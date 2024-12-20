@@ -67,14 +67,12 @@ const NewsletterPopup = () => {
 
                 {/* Popup Content */}
                 <h2>Stay Connected!</h2>
-                <p>Subscribe to get updates and the latest news directly.</p>
+                <p>Subscribe to get updates and the latest news directly.</p> 
 
                 {/* Lottie Animation */}
-                <Lottie
-                    animationData={NewsletterAnimation}
-                    loop={true}
-                    style={{ height: 250, width: 450 }}
-                />
+                <div className="lottie">
+                    <Lottie animationData={NewsletterAnimation} loop={true} style={{ height: 250, width: 450 }} />
+                </div>
             </div>
         </div>
     );
