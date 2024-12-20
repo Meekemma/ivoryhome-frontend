@@ -17,7 +17,9 @@ const BlogInfo = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
+
 
   const fetchPosts = async () => {
     setIsLoading(true);
@@ -89,7 +91,7 @@ const BlogInfo = () => {
               {/* Blog Image */}
               {post.image ? (
                 <img
-                  src={`http://127.0.0.1:8000${post.image}`}
+                  src={`${CLOUD_URL}${post.image}`}
                   alt={post.title}
                   className="w-full h-72 object-cover"  // Increased the height of the image
                   loading="lazy"

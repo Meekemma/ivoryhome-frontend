@@ -24,7 +24,8 @@ const Property = () => {
   const [buttonLoading, setButtonLoading] = useState(false); // For rent button spinner
 
   const BASE_URL = import.meta.env.VITE_BASE_URL;
-
+  const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
+  
   const previousPage = location.state?.from || "/properties";
 
   useEffect(() => {
@@ -122,7 +123,7 @@ const Property = () => {
           {/* Main Image */}
           <div className="flex-1">
             <img
-              src={`http://127.0.0.1:8000${property.images[0].image}`}
+              src={`${CLOUD_URL}${property.images[0].image}`}
               alt="Main Property"
               className="w-full h-[450px] object-cover rounded-lg"
               loading="lazy" // Lazy loading
@@ -135,7 +136,7 @@ const Property = () => {
             {property.images.slice(1, 5).map((img, index) => (
               <img
                 key={img.id}
-                src={`http://127.0.0.1:8000${img.image}`}
+                src={`${CLOUD_URL}${img.image}`}
                 alt={`Property Image ${index + 2}`}
                 className="w-full h-[200px] object-cover rounded-lg"
                 loading="lazy" // Lazy loading
@@ -157,7 +158,7 @@ const Property = () => {
             {property.images.map((img, index) => (
               <SwiperSlide key={img.id}>
                 <img
-                  src={`http://127.0.0.1:8000${img.image}`}
+                  src={`${CLOUD_URL}${img.image}`}
                   alt={`Property Image ${index + 1}`}
                   className="w-full h-[450px] object-cover rounded-lg"
                   loading="lazy" // Lazy loading

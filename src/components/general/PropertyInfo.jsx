@@ -14,7 +14,9 @@ const PropertyInfo = () => {
   const location = useLocation();
   const navigate = useNavigate(); // Initialize navigate
 
-  const BASE_URL = "http://127.0.0.1:8000";
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
+
 
   const fetchProperties = async () => {
     setIsLoading(true);
@@ -78,7 +80,7 @@ const PropertyInfo = () => {
               {/* Property Image */}
               {property.images.length > 0 ? (
                 <img
-                  src={`http://127.0.0.1:8000${property.images[0].image}`}
+                  src={`${CLOUD_URL}${property.images[0].image}`}
                   alt={property.title}
                   className="w-full h-2/3 object-cover"
                   loading="lazy"

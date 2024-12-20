@@ -17,6 +17,7 @@ const PropertyCheckout = () => {
   const [orders, setOrders] = useState([]);
 
   const user_id = cookies.user_id
+  const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
 
 
   const fetchProfile = async () => {
@@ -169,7 +170,7 @@ const PropertyCheckout = () => {
                         {/* Image Section */}
                         <div className="flex-shrink-0 mr-4">
                           <img
-                            src={`http://127.0.0.1:8000${item.property_images?.image}`}
+                            src={`${CLOUD_URL}${item.property_images?.image}`}
                             alt={item.property_title}
                             className="w-20 h-20 object-cover rounded-md"
                             loading="lazy"

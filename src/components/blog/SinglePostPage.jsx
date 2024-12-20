@@ -27,6 +27,8 @@ const SinglePostPage = () => {
   const [error, setError] = useState(null);
   const [copySuccess, setCopySuccess] = useState("");
   const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
+
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
@@ -90,7 +92,7 @@ const SinglePostPage = () => {
           {/* Post Image */}
           <div className="mb-6">
             <img
-              src={`${BASE_URL}${post.image}`}
+              src={`${CLOUD_URL}${post.image}`}
               alt={post.title}
               className="w-full h-auto max-h-[500px] object-cover rounded-lg shadow-lg"
               loading="lazy"

@@ -10,6 +10,7 @@ const OrderList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [updatingItemId, setUpdatingItemId] = useState(null);
   const navigate = useNavigate();
+  const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
 
   const handleClick = () => {
     navigate("/checkout/summary");
@@ -81,7 +82,7 @@ const OrderList = () => {
                   className="flex flex-col md:flex-row items-start md:items-center border-b pb-4 mb-4 last:border-b-0 last:pb-0"
                 >
                   <img
-                      src={`http://127.0.0.1:8000${item.property_images?.image}`}
+                      src={`${CLOUD_URL}${item.property_images?.image}`}
                       alt={item.property_title}
                       className="w-full md:w-20 h-20 object-cover rounded-md mb-4 md:mb-0"
                       loading='lazy'

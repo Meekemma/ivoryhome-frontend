@@ -36,6 +36,7 @@ const BlogPostList = () => {
 
   // const BASE_URL = 'http://127.0.0.1:8000';
   const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
 
 
 
@@ -155,7 +156,7 @@ const BlogPostList = () => {
 
                   <div className="relative w-full h-64 sm:h-96 rounded-lg overflow-hidden mb-6">
                     <img
-                      src={`${BASE_URL}${post.image}`}
+                      src={`${CLOUD_URL}${post.image}`}
                       alt={post.title}
                       className="absolute w-full h-full object-cover"
                       loading="lazy"

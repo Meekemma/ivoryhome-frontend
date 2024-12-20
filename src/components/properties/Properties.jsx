@@ -15,6 +15,7 @@ const Properties = () => {
   const [totalPages, setTotalPages] = useState(1);
 
   const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
   const propertyPerPage = 10;
 
   const location = useLocation();
@@ -92,7 +93,7 @@ const Properties = () => {
               {/* Property Image */}
               {property.images.length > 0 ? (
                 <img
-                  src={`${BASE_URL}${property.images[0].image}`}
+                  src={`${CLOUD_URL}${property.images[0].image}`}
                   alt={property.title}
                   className="w-full h-82 object-cover rounded-t-lg"
                   loading="lazy"
