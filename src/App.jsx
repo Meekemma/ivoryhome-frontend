@@ -78,7 +78,7 @@ function App() {
           <Route path="/request" element={ <ProtectedRoute><Order /></ProtectedRoute>} />
           <Route path="/checkout/summary" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
           <Route path="/payment" element={<ProtectedRoute><Payment/></ProtectedRoute>} />
-          <Route path="/success/payment" element={<SuccessPage/>} />
+          <Route path="/success" element={<SuccessPage/>} />
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>

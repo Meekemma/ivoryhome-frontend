@@ -16,7 +16,7 @@ const PaymentPage = () => {
     setLoading(true);
     try {
       const response = await api.post(
-        `${BASE_URL}/payment/paystack/initiate-payment/${order_id}/`
+        `https://ivoryhomeslimited-ec0f00d15ea0.herokuapp.com/payment/paystack/initiate-payment/${order_id}/`
       );
 
       if (response.data.status === "CREATED") {
