@@ -1,29 +1,42 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import '../styles/main.css';
-import Footer from './Footer';
+import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "../styles/main.css";
+import Footer from "./Footer";
 import Spinner from "./blog/Spinner";
 import { useCookies } from "react-cookie";
 
-
-
 const CustomVerification = () => {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
-
   const [cookies] = useCookies(["email"]);
-  const [codes, setCodes] = useState(Array(5).fill('')); // Updated to 5 boxes
+  const [codes, setCodes] = useState(Array(5).fill(""));
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [countdown, setCountdown] = useState(180); // 3 minutes in seconds
+  const [canResend, setCanResend] = useState(false);
   const navigate = useNavigate();
-  const refs = Array(5) // Updated to 5 refs
+  const refs = Array(5)
     .fill()
-    .map((_, index) => useRef(null));
+    .map(() => useRef(null));
+
+  // Countdown logic
+  useEffect(() => {
+    let timer;
+    if (countdown > 0) {
+      timer = setInterval(() => {
+        setCountdown((prev) => prev - 1);
+      }, 1000);
+    } else {
+      setCanResend(true);
+      clearInterval(timer);
+    }
+    return () => clearInterval(timer);
+  }, [countdown]);
 
   const handleChange = (index, value) => {
     if (value.length === 1 && index < 4) {
-      refs[index + 1].current.focus(); // Move focus forward
+      refs[index + 1].current.focus();
     }
     const newCodes = [...codes];
     newCodes[index] = value;
@@ -31,53 +44,52 @@ const CustomVerification = () => {
   };
 
   const handleKeyDown = (index, event) => {
-    if (event.key === 'Backspace' && index > 0 && !codes[index]) {
-      refs[index - 1].current.focus(); // Move focus backward
+    if (event.key === "Backspace" && index > 0 && !codes[index]) {
+      refs[index - 1].current.focus();
     }
   };
 
   const handleResendCode = async () => {
-    const email = cookies.email
+    if (!canResend) return;
+    const email = cookies.email;
     if (!email) {
-      toast.error('Email not found. Please try again.');
+      toast.error("Email not found. Please try again.");
       return;
     }
     try {
       await axios.post(`${BASE_URL}/base/resend-otp/`, { email });
-      toast.success('Verification code resent to your email');
+      toast.success("Verification code resent to your email");
+      setCountdown(180); // Reset countdown
+      setCanResend(false);
     } catch (error) {
-      console.error('Error resending verification code:', error);
-      toast.error('Error resending verification code. Please try again.');
+      console.error("Error resending verification code:", error);
+      toast.error("Error resending verification code. Please try again.");
     }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const code = codes.join('');
+    const code = codes.join("");
     if (code.length !== 5) {
-      setError('Please enter a complete 5-digit code'); // Updated to 5 digits
+      setError("Please enter a complete 5-digit code");
       return;
     }
     setIsLoading(true);
-    setError(null); // Clear any previous errors
+    setError(null);
 
     try {
-      const payload = { code }; // Correctly formatted payload
-      const response = await axios.post('http://127.0.0.1:8000/base/otp/', payload,
-        {
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
+      const payload = { code };
+      const response = await axios.post(`${BASE_URL}/base/otp/`, payload);
       if (response.status === 200) {
-        toast.success('Code verified successfully');
-        navigate('/login');
+        toast.success("Code verified successfully");
+        navigate("/login");
       } else {
-        setError('Invalid verification code');
+        setError("Invalid verification code");
       }
     } catch (error) {
       if (error.response && error.response.data) {
         const errors = error.response.data;
-        if (typeof errors === 'object') {
+        if (typeof errors === "object") {
           for (const key in errors) {
             if (Array.isArray(errors[key])) {
               setError(errors[key][0]);
@@ -85,14 +97,20 @@ const CustomVerification = () => {
             }
           }
         } else {
-          setError(errors || 'Verification failed');
+          setError(errors || "Verification failed");
         }
       } else {
-        setError('An unexpected error occurred. Please try again.');
+        setError("An unexpected error occurred. Please try again.");
       }
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const formatCountdown = () => {
+    const minutes = Math.floor(countdown / 60);
+    const seconds = countdown % 60;
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
   return (
@@ -128,17 +146,20 @@ const CustomVerification = () => {
                 >
                   {isLoading ? (
                     <Spinner loading={isLoading} size={20} color="#ffffff" />
-                  ): ('Continue')}
+                  ) : (
+                    "Continue"
+                  )}
                 </button>
               </div>
               <p className="text-center text-gray-600">
-                Didn't receive a verification code?{' '}
+                Didn't receive a verification code?{" "}
                 <button
                   type="button"
                   className="text-purple-600 hover:underline"
                   onClick={handleResendCode}
+                  disabled={!canResend}
                 >
-                  Resend
+                  Resend {canResend ? "" : `(${formatCountdown()})`}
                 </button>
               </p>
             </form>
