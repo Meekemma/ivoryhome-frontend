@@ -77,7 +77,7 @@ const Properties = () => {
         </Helmet>
         {/* Spinner */}
         {isLoading && (
-          <div className="absolute top-0 left-0 w-full h-full">
+          <div className="flex justify-center items-center min-h-screen">
             <Spinner loading={true} size={40} />
           </div>
         )}

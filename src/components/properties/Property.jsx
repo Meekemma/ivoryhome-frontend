@@ -79,7 +79,12 @@ const Property = () => {
       : toast.info("Sharing not supported in your browser.");
   };
 
-  if (isLoading) return <Spinner loading={true} size={50} />;
+  if (isLoading)
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Spinner loading={true} size={40} />
+      </div>
+    );
   if (!property) return null;
 
   return (

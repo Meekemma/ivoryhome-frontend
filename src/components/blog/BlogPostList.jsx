@@ -120,13 +120,13 @@ const BlogPostList = () => {
       </Helmet>
 
       {loading ? (
-        <div className="flex justify-center items-center h-96">
+        <div className="flex justify-center items-center min-h-screen">
           <Spinner loading={loading} size={40} color="#3498db" />
         </div>
       ) : (
         <div className="flex flex-col md:flex-row gap-6">
           {/* Main Blog Posts Section */}
-          <div className="flex-[2] border-2 bg-gray-100 p-8 rounded-lg shadow">
+          <div className="flex-[2] border-2 bg-gray-100 py-8 px-2 rounded-lg shadow">
             <h1 className="text-2xl font-bold mb-4 text-[#005fa3]">Latest Blog Posts</h1>
 
             {!error && posts.length === 0 && <p>No posts found. Please check back later!</p>}

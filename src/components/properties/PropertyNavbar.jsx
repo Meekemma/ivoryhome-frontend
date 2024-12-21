@@ -170,7 +170,7 @@ const PropertyNavbar = () => {
   <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', mx: 2 }}>
     <Search
       sx={{
-        width: { xs: '80%', sm: '70%', md: '50%' }, // Responsive widths for different screens
+        width: { xs: '80%', sm: '70%', md: '50%' }, 
       }}
     >
       <SearchIconWrapper>
@@ -194,20 +194,9 @@ const PropertyNavbar = () => {
         <ShoppingCartIcon />
       </Badge>
     </IconButton>
-    <Typography variant="body1" sx={{ ml: 2, mr: 1 }}>
+    {/* <Typography variant="body1" sx={{ ml: 2, mr: 1 }}>
       {userName}
-    </Typography>
-    <IconButton
-      size="large"
-      edge="end"
-      aria-label="account of current user"
-      aria-controls={menuId}
-      aria-haspopup="true"
-      onClick={handleProfileMenuOpen}
-      color="inherit"
-    >
-      <AccountCircle />
-    </IconButton>
+    </Typography> */}
   </Box>
 </Toolbar>
 
