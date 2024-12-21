@@ -135,7 +135,7 @@ const CustomLogin = () => {
                 {/* Actions */}
                 <div className="flex justify-between items-center text-sm">
                   <p>Don’t have an account?</p>
-                  <a href="/signup" className="text-purple-600 hover:underline">
+                  <a onClick={()=>navigate("/signup")} className="text-purple-600 hover:underline">
                     Sign up
                   </a>
                 </div>

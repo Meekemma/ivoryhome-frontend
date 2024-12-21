@@ -45,6 +45,10 @@ const BlogPostList = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const handleSignUp = ()=>{
+    navigate()
+  }
+
   // Detect mobile screen size
   useEffect(() => {
     const checkMobile = () => {
@@ -170,7 +174,8 @@ const BlogPostList = () => {
                     }}
                   ></div>
                   <a
-                    href={`/post/${post.id}`}
+
+                    onClick={() => navigate(`/post/${post.id}`)} 
                     className="text-blue-500 hover:underline"
                   >
                     Read more
