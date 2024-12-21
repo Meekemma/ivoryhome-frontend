@@ -240,7 +240,7 @@ const CustomSignup = () => {
                                 </div>
                                 <div className="text-center text-sm">
                                     <p className="inline">Already have an account?</p>
-                                    <a onClick={()=>navigate("/login")} className="text-purple-600 hover:underline ml-1">
+                                    <a onClick={()=>navigate("/login")} style={{ cursor: 'pointer' }} className="text-purple-600 hover:underline ml-1">
                                         Login
                                     </a>
                                 </div>

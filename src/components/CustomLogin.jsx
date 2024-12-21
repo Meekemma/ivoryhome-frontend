@@ -135,14 +135,14 @@ const CustomLogin = () => {
                 {/* Actions */}
                 <div className="flex justify-between items-center text-sm">
                   <p>Don’t have an account?</p>
-                  <a onClick={()=>navigate("/signup")} className="text-purple-600 hover:underline">
+                  <a onClick={()=>navigate("/signup")} style={{ cursor: 'pointer' }} className="text-purple-600 hover:underline">
                     Sign up
                   </a>
                 </div>
 
                 <div className="text-left text-sm">
                   <a
-                    href="/reset_password"
+                    onClick={()=>navigate("/reset_password")} style={{ cursor: 'pointer' }} 
                     className="text-purple-600 hover:underline"
                   >
                     Forgot Password?
