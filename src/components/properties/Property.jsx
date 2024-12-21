@@ -16,6 +16,7 @@ import { Helmet } from 'react-helmet-async';
 
 
 const Property = () => {
+  
   let api = useAxios();
   const { id } = useParams();
   const location = useLocation();
@@ -59,7 +60,7 @@ const Property = () => {
     };
 
     try {
-      await api.post("commerce/orders/", orderData);
+      await api.post(`${BASE_URL}/commerce/orders/`, orderData);
       toast.success("Property successfully added to cart!");
     } catch (error) {
       toast.error("Failed to add the property to the cart. Please try again.");

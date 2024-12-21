@@ -17,13 +17,14 @@ const PropertyCheckout = () => {
   const [orders, setOrders] = useState([]);
 
   const user_id = cookies.user_id
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
 
 
   const fetchProfile = async () => {
     setIsLoading(true);
     try {
-      const res = await api.get(`base/profile/${user_id}/`);
+      const res = await api.get(`${BASE_URL}/base/profile/${user_id}/`);
       setUserInfo(res.data);
     } catch (err) {
       toast.error("Failed to load profile. Please try again later.");
@@ -43,7 +44,7 @@ const PropertyCheckout = () => {
       if (!user_id) return; // Prevent execution if `user_id` is undefined
       setIsLoading(true);
       try {
-        const response = await api.get("commerce/orders/list/");
+        const response = await api.get(`${BASE_URL}/commerce/orders/list/`);
         setOrders(response.data);
         response.data.forEach((order) => {
           setCookie('order_id', order.id, { path: '/', maxAge: 3600 });

@@ -10,6 +10,7 @@ const OrderList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [updatingItemId, setUpdatingItemId] = useState(null);
   const navigate = useNavigate();
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
 
   const handleClick = () => {
@@ -20,7 +21,7 @@ const OrderList = () => {
     const fetchOrders = async () => {
       setIsLoading(true);
       try {
-        const response = await api.get("commerce/orders/list/");
+        const response = await api.get(`${BASE_URL}/commerce/orders/list/`);
         setOrders(response.data);
       } catch (err) {
         toast.error("Failed to load the shortlisted properties. Please try again later.");
@@ -37,7 +38,7 @@ const OrderList = () => {
 
     setUpdatingItemId(id);
     try {
-      await api.put(`commerce/orderitem_update/${id}/`, { quantity });
+      await api.put(`${BASE_URL}/commerce/orderitem_update/${id}/`, { quantity });
       setOrders((prevOrders) =>
         prevOrders.map((order) => ({
           ...order,
