@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { FiCreditCard } from "react-icons/fi";
 
 const PaymentPage = () => {
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const api = useAxios();
   const [loading, setLoading] = useState(false);
   const [cookies] = useCookies(["order_id", "total_price"]);
@@ -16,7 +15,7 @@ const PaymentPage = () => {
     setLoading(true);
     try {
       const response = await api.post(
-        `https://ivoryhomeslimited-ec0f00d15ea0.herokuapp.com/payment/paystack/initiate-payment/${order_id}/`
+        `/payment/paystack/initiate-payment/${order_id}/`
       );
 
       if (response.data.status === "CREATED") {
