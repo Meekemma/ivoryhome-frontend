@@ -61,11 +61,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const PropertyNavbar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [userName, setUserName] = useState("");
-    const [userId, setUserId] = useState(null); // For storing the user_id
-    const [cookies] = useCookies(["user"]);
+    const [userId, setUserId] = useState(null); 
+    const [cookies] = useCookies(["user", "access_token"]);
     const [cartItems, setCartItems] = useState(0);
-    const { logOutUser } = useContext(AuthContext);  // Access logOutUser function from AuthContext
+    const { logOutUser } = useContext(AuthContext);  
     const navigate = useNavigate();
+    const isAuthenticated = !!cookies.access_token;
 
     const [inputValue, setInputValue] = useState('');
     const { setSearchQuery } = useSearch();
@@ -117,8 +118,8 @@ const PropertyNavbar = () => {
   };
 
   const handleLogout = () => {
-    logOutUser();  // Calling logOutUser to log the user out
-    navigate('/login');  // Redirect user to login page after logout
+    logOutUser();  
+    navigate('/login');  
   };
 
   const isMenuOpen = Boolean(anchorEl);
@@ -128,7 +129,7 @@ const PropertyNavbar = () => {
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{
-        vertical: "top",
+        vertical: "bottom",
         horizontal: "right",
       }}
       id={menuId}
@@ -139,11 +140,21 @@ const PropertyNavbar = () => {
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+      sx={{
+        mt: 1,  
+      }}
     >
-      <MenuItem onClick={() => navigate(`/profile/${userId}`)}>Profile</MenuItem>
-      <MenuItem onClick={handleLogout}>Logout</MenuItem> {/* Updated Logout */}
+      {isAuthenticated ? (
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      ) : (
+        [
+          <MenuItem onClick={() => navigate('/signup')} key="signup">Sign Up</MenuItem>,
+          <MenuItem onClick={() => navigate('/login')} key="login">Log In</MenuItem>
+        ]
+      )}
     </Menu>
   );
+  
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -194,9 +205,17 @@ const PropertyNavbar = () => {
         <ShoppingCartIcon />
       </Badge>
     </IconButton>
-    {/* <Typography variant="body1" sx={{ ml: 2, mr: 1 }}>
-      {userName}
-    </Typography> */}
+    <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
   </Box>
 </Toolbar>
 

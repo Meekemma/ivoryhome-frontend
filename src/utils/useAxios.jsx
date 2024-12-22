@@ -21,6 +21,7 @@ const useAxios = () => {
         Authorization: `Bearer ${cookies.access_token.replace(/"/g, "")}`,
       }),
     },
+    
   });
   
 

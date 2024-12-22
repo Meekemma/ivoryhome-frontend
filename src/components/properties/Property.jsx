@@ -13,16 +13,23 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { toast } from "react-toastify";
 import { Helmet } from 'react-helmet-async';
+import { useCookies } from "react-cookie";
 
 
 const Property = () => {
+
+  const [cookies] = useCookies(["access_token"]);
+
+  const isAuthenticated = cookies.access_token;
+
+  
   
   let api = useAxios();
   const { id } = useParams();
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
   const [property, setProperty] = useState(null);
-  const [buttonLoading, setButtonLoading] = useState(false); // For rent button spinner
+  const [buttonLoading, setButtonLoading] = useState(false); 
 
   const BASE_URL = import.meta.env.VITE_BASE_URL;
   const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
@@ -48,8 +55,13 @@ const Property = () => {
   }, [id]);
 
   const handleAddToCart = async () => {
+    if (!isAuthenticated) {
+      toast.info("Please login or signup to be able to add properties to cart.");
+      return;
+    }
+  
     setButtonLoading(true);
-
+  
     const orderData = {
       order_items: [
         {
@@ -58,7 +70,7 @@ const Property = () => {
         },
       ],
     };
-
+  
     try {
       await api.post(`${BASE_URL}/commerce/orders/`, orderData);
       toast.success("Property successfully added to cart!");
@@ -68,6 +80,7 @@ const Property = () => {
       setButtonLoading(false);
     }
   };
+  
 
   const handleShare = () => {
     navigator.share
@@ -186,9 +199,14 @@ const Property = () => {
               <p className="text-gray-600 text-sm">Total Price</p>
               <h2 className="text-3xl font-bold text-[#005fa3]">#{property.price}</h2>
 
-              {/* Add to Cart Button */}
-              <button
-              className="mt-4 w-full py-2 px-4 bg-[#005fa3] text-white rounded-lg hover:bg-[#004080] focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center justify-center gap-2"
+             
+             {/* Add to Cart Button */}
+             <button
+              className={`mt-4 w-full py-2 px-4 ${
+                isAuthenticated
+                  ? "bg-[#005fa3] hover:bg-[#004080] focus:ring-blue-500"
+                  : "bg-[#005fa3] cursor-not-allowed"
+              } text-white rounded-lg focus:outline-none flex items-center justify-center gap-2`}
               onClick={handleAddToCart}
               disabled={buttonLoading}
             >
@@ -201,6 +219,8 @@ const Property = () => {
                 </>
               )}
             </button>
+
+
             </div>
 
             {/* Property Details */}

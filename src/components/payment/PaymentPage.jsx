@@ -16,13 +16,14 @@ const PaymentPage = () => {
     setLoading(true);
     try {
       const response = await api.post(
-        `${BASE_URL}/payment/paystack/initiate-payment/${order_id}/`
+        `${BASE_URL}/payment/paystack/initiate-payment/${order_id}/`,
+        {}
       );
-
-      if (response.data.status === "CREATED") {
-        window.location.href = response.data.approval_url;
+  
+      if (response.data?.authorization_url) {
+        window.location.href = response.data.authorization_url;
       } else {
-        toast.error("Error creating payment");
+        toast.error("Authorization URL is missing in the response.");
       }
     } catch (err) {
       toast.error("Payment failed. Please try again.");
@@ -30,6 +31,9 @@ const PaymentPage = () => {
       setLoading(false);
     }
   };
+  
+  
+  
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-6">

@@ -168,6 +168,7 @@ const CustomVerification = () => {
       </div>
       <Footer />
     </>
+    
   );
 };
 
