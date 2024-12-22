@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, useMatch   } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import '../../styles/popup.css';
 import AnimationPop from '../../assets/images/Animation - 1734531753860.json';
@@ -8,8 +8,9 @@ import AnimationPop from '../../assets/images/Animation - 1734531753860.json';
 const PropertyPopup = () => {
     const [showPopup, setShowPopup] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
 
-    const expirationTime = 15 * 60 * 1000; // 15 minutes in milliseconds
+    const expirationTime = 15 * 60 * 1000; 
 
     useEffect(() => {
         const popupKey = 'propertyPopup';
@@ -21,7 +22,7 @@ const PropertyPopup = () => {
             const { expiry } = JSON.parse(popupData);
             const currentTime = Date.now();
 
-            // If the current time is before the expiry, do not show the popup
+           
             if (currentTime < expiry) {
                 return;
             }
@@ -32,8 +33,8 @@ const PropertyPopup = () => {
             setShowPopup(true);
         }, 20000);
 
-        return () => clearTimeout(timer); // Cleanup on component unmount
-    }, [expirationTime]); // Use dependency array to include expirationTime
+        return () => clearTimeout(timer); 
+    }, [expirationTime]);
 
     const handlePopupClose = () => {
         const popupKey = 'propertyPopup';
@@ -47,6 +48,21 @@ const PropertyPopup = () => {
         setShowPopup(false);
     };
 
+
+     // List of paths where the popup should not appear
+    const excludedPaths = [
+        '/properties', '/property/:id', '/request', '/checkout/summary', '/payment', '/success', 
+        '/profile/:user_id', '/order/:id', '/cookie-policy', '/privacy-policy', '/terms-and-conditions',
+        '/reset_password_confirm', '/verification', '/reset_password', '/change_password', '/signup', '/login'
+    ];
+
+    // Check if the current path matches any of the excluded paths
+    const isExcluded = excludedPaths.some((path) => useMatch(path));
+
+    // If the current path is in the excludedPaths array, don't show the popup
+    if (isExcluded) {
+        return null;
+    }
     if (!showPopup) return null;
 
     return (

@@ -41,7 +41,7 @@ const SuccessPage = () => {
   const verifyPayment = async (reference) => {
     try {
       const response = await axios.get(
-        `${BASE_URL}/paystack/verify-payment/${reference}/`
+        `${BASE_URL}/payment/paystack/verify-payment/${reference}/`
       );
 
       if (response.data.status === "success") {
