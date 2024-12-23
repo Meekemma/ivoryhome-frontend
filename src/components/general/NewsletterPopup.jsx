@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import { useLocation } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import '../../styles/popup.css';
 import NewsletterAnimation from '../../assets/images/Animation - 1734539815136.json';
 
 const NewsletterPopup = () => {
     const [showPopup, setShowPopup] = useState(false);
-    const location = useLocation();
 
     useEffect(() => {
         const popupKey = 'newsletterPopup';
@@ -56,14 +54,6 @@ const NewsletterPopup = () => {
         localStorage.setItem(popupKey, JSON.stringify(popupData));
         setShowPopup(false);
     };
-
-     // List of paths where the popup should not appear
-     const excludedPaths = ['/payment','/success','/cookie-policy','/privacy-policy','/terms-and-conditions','/reset_password_confirm','/verification','/reset_password','/change_password','/signup','/login'];
-
-     // If the current path is in the excludedPaths array, don't show the popup
-     if (excludedPaths.includes(location.pathname)) {
-         return null;
-     }
 
     if (!showPopup) return null;
 

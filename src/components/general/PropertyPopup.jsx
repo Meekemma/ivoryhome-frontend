@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import { useNavigate, useLocation, useMatch   } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import '../../styles/popup.css';
 import AnimationPop from '../../assets/images/Animation - 1734531753860.json';
@@ -48,21 +48,6 @@ const PropertyPopup = () => {
         setShowPopup(false);
     };
 
-
-     // List of paths where the popup should not appear
-    const excludedPaths = [
-        '/properties', '/property/:id', '/request', '/checkout/summary', '/payment', '/success', 
-        '/profile/:user_id', '/order/:id', '/cookie-policy', '/privacy-policy', '/terms-and-conditions',
-        '/reset_password_confirm', '/verification', '/reset_password', '/change_password', '/signup', '/login'
-    ];
-
-    // Check if the current path matches any of the excluded paths
-    const isExcluded = excludedPaths.some((path) => useMatch(path));
-
-    // If the current path is in the excludedPaths array, don't show the popup
-    if (isExcluded) {
-        return null;
-    }
     if (!showPopup) return null;
 
     return (
