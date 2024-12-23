@@ -54,7 +54,7 @@ const CustomResetPasswordConfirm = () => {
         setFormData({ password: "", confirm_password: "" });
       }
     } catch (error) {
-      console.error("Password reset error:", error);
+      
       if (error.response && error.response.data) {
         const errors = error.response.data;
         if (typeof errors === "object") {

@@ -9,7 +9,7 @@ const NewsletterPopup = () => {
 
     useEffect(() => {
         const popupKey = 'newsletterPopup';
-        const expirationTime = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+        const expirationTime = 24 * 60 * 60 * 1000; 
 
         // Check localStorage for the popup state
         const popupData = localStorage.getItem(popupKey);
@@ -27,24 +27,24 @@ const NewsletterPopup = () => {
         // Show popup based on scroll position
         const handleScroll = () => {
             const scrollPosition = window.scrollY;
-            const scrollThreshold = document.body.scrollHeight * 0.8; // 50% of the page height
+            const scrollThreshold = document.body.scrollHeight * 0.8; 
 
             if (scrollPosition > scrollThreshold) {
                 setShowPopup(true);
-                window.removeEventListener('scroll', handleScroll); // Remove listener after showing popup
+                window.removeEventListener('scroll', handleScroll); 
             }
         };
 
         window.addEventListener('scroll', handleScroll);
 
         return () => {
-            window.removeEventListener('scroll', handleScroll); // Cleanup on unmount
+            window.removeEventListener('scroll', handleScroll); 
         };
     }, []);
 
     const handlePopupClose = () => {
         const popupKey = 'newsletterPopup';
-        const expirationTime = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+        const expirationTime = 24 * 60 * 60 * 1000; 
 
         // Save the current time + expiration time to localStorage
         const popupData = {

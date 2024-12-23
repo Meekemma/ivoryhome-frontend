@@ -21,6 +21,7 @@ import event_clock from '../../assets/images/event_clock.jpeg';
 
 const BlogPostList = () => {
   const { searchQuery } = useSearch();
+  
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
@@ -34,7 +35,7 @@ const BlogPostList = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
 
-  // const BASE_URL = 'http://127.0.0.1:8000';
+  
   const BASE_URL = import.meta.env.VITE_BASE_URL;
   const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
 
@@ -177,6 +178,7 @@ const BlogPostList = () => {
 
                     onClick={() => navigate(`/post/${post.id}`)} 
                     className="text-blue-500 hover:underline"
+                    style={{ cursor: 'pointer' }}
                   >
                     Read more
                   </a>

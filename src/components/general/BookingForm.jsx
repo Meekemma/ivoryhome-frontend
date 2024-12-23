@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import bookingImage from "../../assets/images/booking.png"; // Replace with your image path
+import bookingImage from "../../assets/images/booking.png"; 
 import Spinner from "../blog/Spinner";
+import axios from "axios";
 
 const BookingForm = () => {
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const [formData, setFormData] = useState({
     property_name: "",
     fullname: "",
@@ -13,14 +15,14 @@ const BookingForm = () => {
     time: "",
   });
 
-  const [isLoading, setIsLoading] = useState(false); // New state for loading
+  const [isLoading, setIsLoading] = useState(false); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { property_name, fullname, email, mobile, date, time } = formData;
     const now = new Date();
@@ -36,12 +38,36 @@ const BookingForm = () => {
       return;
     }
 
-    setIsLoading(true); // Set loading to true when submitting the form
-
-    // Simulate a network request with a timeout
+    setIsLoading(true); 
+    try {
+      const res = await axios.post(`${BASE_URL}/booking/inspection/`, formData);
+      if (res === 200 || res === 201) {
+          toast.success("Booking submitted successfully!");
+      }
+  } catch (error) {
+      if (error.response && error.response.data) {
+          const errors = error.response.data;
+          if (typeof errors === "object") {
+              for (const key in errors) {
+                  if (Array.isArray(errors[key])) {
+                      toast.error(errors[key][0]);
+                      break;
+                  }
+              }
+          } else {
+              toast.error(errors || "Failed. Please try again.");
+          }
+      } else {
+          toast.error("An error occurred. Please try again.");
+      }
+  } finally {
+      setIsLoading(false);
+  }
+  
+    
     setTimeout(() => {
       toast.success("Booking submitted successfully!");
-      setIsLoading(false); // Set loading to false after the request is complete
+      setIsLoading(false); 
 
       // Reset form data
       setFormData({
@@ -52,7 +78,7 @@ const BookingForm = () => {
         date: "",
         time: "",
       });
-    }, 2000); // Simulated delay of 2 seconds
+    }, 2000); 
   };
 
   return (

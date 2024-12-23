@@ -7,13 +7,13 @@ import Footer from './Footer';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from 'react-cookie'; // Importing react-cookie
+import { useCookies } from 'react-cookie'; 
 import Spinner from "./blog/Spinner";
 import AuthContext from "../context/AuthContext";
 
 const CustomSignup = () => {
     const { loginWithGoogle } = useContext(AuthContext);
-    const [cookies, setCookie, removeCookie] = useCookies(['email', 'access_token']); // Using react-cookie
+    const [cookies, setCookie, removeCookie] = useCookies(['email', 'access_token']); 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -67,7 +67,7 @@ const CustomSignup = () => {
             if (res.status === 201) {
                 toast.success("Registration successful!");
                 // Set cookie with email
-                setCookie('email', formData.email, { path: '/', maxAge: 7 * 24 * 60 * 60 }); // Cookie expires in 7 days
+                setCookie('email', formData.email, { path: '/', maxAge: 7 * 24 * 60 * 60 });
                 navigate("/verification");
                 // Clear form after successful registration
                 setFormData({
@@ -105,7 +105,7 @@ const CustomSignup = () => {
                 password2: ""
             });
         } finally {
-            setIsLoading(false); // Ensure loading state is reset
+            setIsLoading(false); 
         }
     };
 

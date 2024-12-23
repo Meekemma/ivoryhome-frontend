@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import Spinner from "../blog/Spinner";
 
 const NewsLetter = () => {
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -29,12 +30,12 @@ const NewsLetter = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8000/blog/subscribe/",
+        `${BASE_URL}/blog/subscribe/`,
         formData
       );
       if (res.status === 201) {
         toast.success("Subscription was Successful");
-        setFormData({ email: "" }); // Reset email field
+        setFormData({ email: "" }); 
       }
     } catch (error) {
       if (error.response && error.response.data) {

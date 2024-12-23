@@ -8,6 +8,8 @@ import Spinner from "./Spinner";
 
 const Comment = () => {
   let api = useAxios();
+ 
+  
   const [cookies] = useCookies(["access_token"]);
   const { post_id } = useParams();
   const [post, setPost] = useState(null);
@@ -29,20 +31,22 @@ const Comment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { body } = formData;
+    if (!isAuthenticated) {
+      toast.info("Kindly log in or sign up to leave a comment.");
+      return;
+    }
+
 
     if (!body) {
       toast.error("This field cannot be empty.");
       return;
     }
 
-    if (!isAuthenticated) {
-      toast.info("Kindly log in or sign up to leave a comment.");
-      return;
-    }
+    
 
     setLoading(true);
     try {
-      const response = await api.post(`/blog/comment/${post_id}/`, { body });
+      const response = await api.post(`${BASE_URL}/blog/comment/${post_id}/`, { body });
       if (response.status === 200 || response.status === 201) {
         toast.success("Comment posted successfully!");
         setFormData({ body: "" });
@@ -116,7 +120,7 @@ const Comment = () => {
           placeholder={
             isAuthenticated
               ? "Write your comment..."
-              : "Sign up or log in to leave a comment."
+              : "Signup or login to leave a comment."
           }
           disabled={!isAuthenticated}
         />
@@ -124,7 +128,7 @@ const Comment = () => {
           <button
             type="submit"
             disabled={loading}
-            className="p-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            className="p-1 bg-[#005fa3]  btn cursor-not-allowed text-white rounded-lg hover:bg-blue-600"
           >
             {loading ? <Spinner size={20} /> : "Post Comment"}
           </button>

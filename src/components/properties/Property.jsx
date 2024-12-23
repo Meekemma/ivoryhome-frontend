@@ -101,7 +101,7 @@ const Property = () => {
   if (!property) return null;
 
   return (
-    <section className="p-4 max-w-7xl mx-auto text-white"> {/* Charcoal background */}
+    <section className="p-4 max-w-7xl mx-auto text-white"> 
         <Helmet>
           <title>Property | Ivory Home Limited</title>
           <meta
@@ -145,8 +145,8 @@ const Property = () => {
               src={`${CLOUD_URL}${property.images[0].image}`}
               alt="Main Property"
               className="w-full h-[450px] object-cover rounded-lg"
-              loading="lazy" // Lazy loading
-              style={{ aspectRatio: "16/9" }} // Aspect ratio
+              loading="lazy"
+              style={{ aspectRatio: "16/9" }} 
             />
           </div>
 
@@ -158,8 +158,8 @@ const Property = () => {
                 src={`${CLOUD_URL}${img.image}`}
                 alt={`Property Image ${index + 2}`}
                 className="w-full h-[200px] object-cover rounded-lg"
-                loading="lazy" // Lazy loading
-                style={{ aspectRatio: "1/1" }} // Square aspect ratio
+                loading="lazy" 
+                style={{ aspectRatio: "1/1" }} 
               />
             ))}
           </div>
@@ -180,8 +180,8 @@ const Property = () => {
                   src={`${CLOUD_URL}${img.image}`}
                   alt={`Property Image ${index + 1}`}
                   className="w-full h-[450px] object-cover rounded-lg"
-                  loading="lazy" // Lazy loading
-                  style={{ aspectRatio: "16/9" }} // Aspect ratio
+                  loading="lazy" 
+                  style={{ aspectRatio: "16/9" }} 
                 />
               </SwiperSlide>
             ))}
@@ -226,12 +226,12 @@ const Property = () => {
             {/* Property Details */}
             <div className="flex-1 p-6 shadow-lg bg-white rounded-lg">
             <p className="flex items-center">
-              <FiMapPin className="mr-2" /> {/* Icon beside Location */}
+              <FiMapPin className="mr-2" /> 
               <strong className="text-red-500">Location:</strong> {property.location}
             </p>
             <div className="h-[2px] bg-gray-300 mb-4"></div>
             <p className="flex items-center">
-              <FiHome className="mr-2 " /> {/* Icon beside Listing Type */}
+              <FiHome className="mr-2 " /> 
               <strong className="text-red-500">Listing Type:</strong> {property.listing_type}
             </p>
                <div className="h-[2px] bg-gray-300 my-8"></div>
