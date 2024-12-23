@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import '../../styles/popup.css';
 import AnimationPop from '../../assets/images/Animation - 1734531753860.json';
@@ -8,7 +8,7 @@ import AnimationPop from '../../assets/images/Animation - 1734531753860.json';
 const PropertyPopup = () => {
     const [showPopup, setShowPopup] = useState(false);
     const navigate = useNavigate();
-    const location = useLocation();
+   
 
     const expirationTime = 15 * 60 * 1000; 
 
@@ -73,8 +73,8 @@ const PropertyPopup = () => {
                 <button
                     className="navigate-btn"
                     onClick={() => {
-                        handlePopupClose(); // Close the popup
-                        navigate('/properties'); // Navigate to the properties page
+                        handlePopupClose(); 
+                        navigate('/properties'); 
                     }}
                 >
                     View Properties

@@ -16,16 +16,16 @@ const CustomEstate = () => {
 
   // Handlers for button navigation
   const handleScheduleVisit = () => {
-    navigate('/booking'); // Update this route to match your app's routing
+    navigate('/booking'); 
   };
 
   const handleRequestMoreInfo = () => {
-    navigate('/contact'); // Update this route to match your app's routing
+    navigate('/contact'); 
   };
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
-    return () => AOS.refresh(); // Ensures animations refresh if components re-render
+    return () => AOS.refresh(); 
   }, []);
 
 
@@ -76,24 +76,27 @@ const CustomEstate = () => {
         </div>
 
         {/* Buttons */}
-        <div className="p-6 flex flex-wrap ">
-          <button
-            href="/downloads/subscription-form.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#005fa3] btn text-white text-sm px-4 py-2 rounded-md shadow-md hover:bg-[#003f73] transition"
-          >
-            Download Subscription Form
-          </button>
-          <button
-            href="/downloads/outright-price.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gray-200 text-[#005fa3] text-sm px-4 py-2 rounded-md shadow-md hover:bg-gray-300 transition"
-          >
-            Download Outright Price
-          </button>
+        <div className="p-6 flex flex-wrap">
+        <a
+          href="https://drive.google.com/uc?export=download&id=1BpP1S2z8wGK82dbeU8-2VH266FcVAWG_"
+          className="bg-[#005fa3] text-white text-sm px-4 py-2 rounded-md shadow-md hover:bg-[#003f73] transition"
+        >
+          Download Subscription Form
+        </a>
+
+
+
+        <a
+          href="https://drive.google.com/uc?export=download&id=1MBEDfLVPuukWOVu2ZOHsXpYZrBJgpk5R"
+          className="bg-gray-200 text-[#005fa3] text-sm px-4 py-2 rounded-md shadow-md hover:bg-gray-300 transition"
+        >
+          Download Outright Price
+        </a>
+
+
+
         </div>
+
        
       </div>
       <RoyalGallery />
@@ -143,23 +146,19 @@ const CustomEstate = () => {
         </div>
 
         {/* Buttons */}
-        <div className="p-6 flex flex-wrap ">
-          <button
-            href="/downloads/subscription-form.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#005fa3] btn text-white text-sm px-4 py-2 rounded-md shadow-md hover:bg-[#003f73] transition"
-          >
-            Download Subscription Form
-          </button>
-          <button
-            href="/downloads/outright-price.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gray-200 text-[#005fa3] text-sm px-4 py-2 rounded-md shadow-md hover:bg-gray-300 transition"
-          >
-            Download Outright Price
-          </button>
+        <div className="p-6 flex flex-wrap">
+        <a
+          href="https://drive.google.com/uc?export=download&id=1BpP1S2z8wGK82dbeU8-2VH266FcVAWG_"
+          className="bg-[#005fa3] text-white text-sm px-4 py-2 rounded-md shadow-md hover:bg-[#003f73] transition"
+        >
+          Download Subscription Form
+        </a>
+        <a
+          href="https://drive.google.com/uc?export=download&id=1MBEDfLVPuukWOVu2ZOHsXpYZrBJgpk5R"
+          className="bg-gray-200 text-[#005fa3] text-sm px-4 py-2 rounded-md shadow-md hover:bg-gray-300 transition"
+        >
+          Download Outright Price
+        </a>
         </div>
       </div>
       <NdiobaGallary />
@@ -169,13 +168,13 @@ const CustomEstate = () => {
     
       <div className="p-6 flex flex-wrap justify-center items-center gap-6">
         <button
-          onClick={handleScheduleVisit} // Replace with actual functionality
+          onClick={handleScheduleVisit} 
           className="bg-[#005fa3] text-white text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-[#003f73] transition"
         >
           Schedule a Visit
         </button>
         <button
-          onClick={handleRequestMoreInfo} // Replace with actual functionality
+          onClick={handleRequestMoreInfo} 
           className="bg-gray-200 text-[#005fa3] text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-gray-300 transition"
         >
           Request More Info

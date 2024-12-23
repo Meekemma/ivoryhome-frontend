@@ -29,8 +29,7 @@ import Checkout from "./pages/Checkout";
 import ScrollToTop from "./components/general/ScrollToTop";
 import Payment from "./pages/Payment";
 import SuccessPage from "./components/payment/SuccessPage";
-import PropertyPopup from "./components/general/PropertyPopup";
-import NewsletterPopup from "./components/general/NewsletterPopup";
+import ConditionalPopups from "./pages/ConditionalPopups";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 import CookiePolicyPage from "./pages/CookiePolicyPage";
@@ -43,6 +42,8 @@ function App() {
     <Router>
       <ScrollToTop />
       <AuthProvider>
+         {/* Conditional popups */}
+         <ConditionalPopups />
         
         <Routes>
           
@@ -82,9 +83,9 @@ function App() {
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
+
         <ToastContainer />
-        <PropertyPopup/>
-        <NewsletterPopup/>
+        
         <CookieConsent />
       </AuthProvider>
     </Router>

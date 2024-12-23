@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Spinner from "./Spinner"; // Assuming Spinner is in the same directory
+import Spinner from "./Spinner"; 
+import { useNavigate } from 'react-router-dom';
 
 const PopularPost = () => {
   const [popularPosts, setPopularPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [showAllPosts, setShowAllPosts] = useState(false); // State for showing all posts
+  const [showAllPosts, setShowAllPosts] = useState(false); 
+  const navigate = useNavigate();
   
   const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -16,18 +18,19 @@ const PopularPost = () => {
   }, []);
 
   const fetchPopularPost = async () => {
-    setLoading(true); // Start loading
-    setError(null); // Reset error state
+    setLoading(true); 
+    setError(null); 
     try {
       const res = await axios.get(`${BASE_URL}/blog/popular-posts/`);
       setPopularPosts(res.data);
     } catch (err) {
       setError("Failed to load the posts. Please try again later.");
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
+  
   const togglePostView = () => {
     setShowAllPosts(!showAllPosts);
   };
