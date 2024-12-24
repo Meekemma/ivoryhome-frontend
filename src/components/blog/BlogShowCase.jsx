@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import blog from '../../assets/images/blog.jpg';
 import AnimationBlog from '../../assets/images/Animation - 1734538556727.json';
 import Lottie from 'lottie-react';
-import { FaSearch } from 'react-icons/fa'; // Using FontAwesome icons
+import { FaSearch } from 'react-icons/fa'; 
 import '../../styles/showcase.css';
 import { useSearch } from '../../context/SearchContext';
 import { useNavigate } from 'react-router-dom';
-import Spinner from './Spinner'; // Import the Spinner component
+import Spinner from './Spinner'; 
 
 const BlogShowCase = () => {
   const [inputValue, setInputValue] = useState('');
   const { setSearchQuery } = useSearch();
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [isLoading, setIsLoading] = useState(true); 
 
   const handleSearch = (e) => {
     if (e.key === 'Enter' || e.key === 'click') {
@@ -21,7 +21,7 @@ const BlogShowCase = () => {
   };
 
   const handleImageLoad = () => {
-    setIsLoading(false); // Set loading to false when the image is loaded
+    setIsLoading(false); 
   };
 
   return (
@@ -36,8 +36,8 @@ const BlogShowCase = () => {
           src={blog}
           alt="Showcase"
           className="showcase-image"
-          onLoad={handleImageLoad} // Trigger loading state change on image load
-          style={{ display: isLoading ? 'none' : 'block' }} // Hide image until loaded
+          onLoad={handleImageLoad} 
+          style={{ display: isLoading ? 'none' : 'block' }} 
         />
         
         {/* Logo */}

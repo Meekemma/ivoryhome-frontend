@@ -11,6 +11,9 @@ import '../styles/main.css';
 const UserProfile = () => {
   let api = useAxios();
   const { user_id } = useParams();
+
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     first_name: "",
@@ -43,7 +46,7 @@ const UserProfile = () => {
   const fetchProfile = async () => {
     setIsLoading(true);
     try {
-      const res = await api.get(`base/profile/${user_id}/`);
+      const res = await api.get(`${BASE_URL}/base/profile/${user_id}/`);
       setFormData({
         first_name: res.data.first_name || "",
         last_name: res.data.last_name || "",
@@ -82,7 +85,7 @@ const UserProfile = () => {
     setIsLoading(true);
 
     try {
-      const res = await api.put(`base/profile/${user_id}/`, formData);
+      const res = await api.put(`${BASE_URL}/base/profile/${user_id}/`, formData);
       if (res.status === 200) {
         setFormData(res.data);
         toast.success("Profile updated successfully!");
@@ -143,7 +146,7 @@ const UserProfile = () => {
 
         {/* Email Field */}
         <div className="mb-4">
-          <label className="block text-gray-700">Email (Read-Only)</label>
+          <label className="block text-gray-700">Email</label>
           <input
             type="email"
             name="email"
@@ -158,6 +161,7 @@ const UserProfile = () => {
           <label className="block text-gray-700">Gender</label>
           <select
             name="gender"
+            required
             value={formData.gender}
             onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-md"
@@ -180,6 +184,7 @@ const UserProfile = () => {
             isClearable
             className="react-select-container"
             classNamePrefix="react-select"
+            required
           />
         </div>
 
@@ -191,6 +196,7 @@ const UserProfile = () => {
             name="state"
             value={formData.state}
             onChange={handleChange}
+            required
             className="w-full px-4 py-2 border border-gray-300 rounded-md"
           />
         </div>
@@ -203,6 +209,7 @@ const UserProfile = () => {
             name="phone_number"
             value={formData.phone_number}
             onChange={handleChange}
+            required
             className="w-full px-4 py-2 border border-gray-300 rounded-md"
           />
         </div>

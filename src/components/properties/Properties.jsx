@@ -92,12 +92,14 @@ const Properties = () => {
             >
               {/* Property Image */}
               {property.images.length > 0 ? (
+                <div className="w-full h-64 overflow-hidden">
                 <img
                   src={`${CLOUD_URL}${property.images[0].image}`}
                   alt={property.title}
-                  className="w-full h-82 object-cover rounded-t-lg"
+                  className="w-full h-full object-cover"
                   loading="lazy"
                 />
+              </div>
               ) : (
                 <div className="w-full h-72 bg-gray-300 flex items-center justify-center rounded-t-lg">
                   <span>No Image</span>
@@ -105,17 +107,27 @@ const Properties = () => {
               )}
     
               {/* Property Details */}
-              <div className="p-4">
+              <div className="px-3 py-2">
                 <div className="flex justify-between items-center">
-                  <h3 className="text-base font-semibold">{property.title}</h3>
+                  <h5 className="text-base font-semibold">{property.title}</h5>
                   {/* Single Star Rating */}
                   <div className="flex items-center">
                     <span className="text-sm font-bold">5.0</span>
                     <span className="ml-1 text-yellow-500">&#9733;</span>
                   </div>
                 </div>
-                <p className="text-gray-600">Price: #{property.price}</p>
-                <p className="text-gray-500">Location: {property.location}</p>
+                <div className="py-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600 font-semibold">Price</span>
+                  <span className="text-gray-600">#{property.price}</span>
+                </div>
+                <div className="flex justify-between items-center mt-2">
+                  <span className="text-gray-500 font-semibold">Location</span>
+                  <span className="text-gray-500">{property.location}</span>
+                </div>
+              </div>
+
+
               </div>
             </div>
           ))}

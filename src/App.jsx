@@ -42,8 +42,6 @@ function App() {
     <Router>
       <ScrollToTop />
       <AuthProvider>
-         {/* Conditional popups */}
-         <ConditionalPopups />
         
         <Routes>
           
@@ -85,6 +83,7 @@ function App() {
         </Routes>
 
         <ToastContainer />
+        <ConditionalPopups />
         
         <CookieConsent />
       </AuthProvider>

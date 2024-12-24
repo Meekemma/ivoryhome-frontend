@@ -79,12 +79,14 @@ const PropertyInfo = () => {
             >
               {/* Property Image */}
               {property.images.length > 0 ? (
+                <div className="w-full h-64 overflow-hidden">
                 <img
                   src={`${CLOUD_URL}${property.images[0].image}`}
                   alt={property.title}
-                  className="w-full h-2/3 object-cover"
+                  className="w-full h-full object-cover"
                   loading="lazy"
                 />
+                </div>
               ) : (
                 <div className="w-full h-2/3 bg-gray-300 flex items-center justify-center">
                   <span>No Image</span>
@@ -101,8 +103,16 @@ const PropertyInfo = () => {
                     <span className="ml-1 text-yellow-500">&#9733;</span>
                   </div>
                 </div>
-                <p className="text-gray-600 mb-1">Price: #{property.price}</p>
-                <p className="text-gray-500">Location: {property.location}</p>
+                <div className="py-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600 font-semibold">Price</span>
+                  <span className="text-gray-600">#{property.price}</span>
+                </div>
+                <div className="flex justify-between items-center mt-2">
+                  <span className="text-gray-500 font-semibold">Location</span>
+                  <span className="text-gray-500">{property.location}</span>
+                </div>
+              </div>
               </div>
             </div>
           </SwiperSlide>
