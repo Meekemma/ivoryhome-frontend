@@ -73,7 +73,7 @@ const Property = () => {
   
     try {
       await api.post(`${BASE_URL}/commerce/orders/`, orderData);
-      toast.success("Property successfully added to cart!");
+      toast.success("Property successfully shortlisted. Check your cart to proceed.");
     } catch (error) {
       toast.error("Failed to add the property to the cart. Please try again.");
     } finally {
