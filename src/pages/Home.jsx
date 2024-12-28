@@ -3,7 +3,6 @@ import Navbar from '../components/general/Navbar'
 import HomeFooter from '../components/general/HomeFooter'
 import MyCarousel from '../components/general/MyCarousel'
 import Testimonials from '../components/general/Testimonials'
-import Performance from '../components/general/Performance'
 import AboutUs from '../components/general/AboutUs'
 import OurServices from '../components/general/OurServices'
 import WhyChooseUs from '../components/general/WhyChooseUs '
@@ -22,7 +21,6 @@ const Home = () => {
       <OurServices />
       <PropertyInfo/>
       <WhyChooseUs />
-      <Performance />
       <BlogInfo/>
       <Faq />
       <Testimonials />

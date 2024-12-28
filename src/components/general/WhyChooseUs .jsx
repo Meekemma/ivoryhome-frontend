@@ -6,33 +6,27 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { FaUserTie, FaCogs, FaRegHandshake, FaThLarge } from 'react-icons/fa'; // Imported icons
+import { FaUserTie, FaCogs, FaRegHandshake, FaThLarge } from 'react-icons/fa';
 
 const reasons = [
   {
     title: 'Expert Guidance',
     description:
-      'Our experienced team provides you with expert advice every step of the way, ensuring you make the best real estate decisions.',
-    icon: <FaUserTie className="text-[#005fa3] w-6 h-6 mr-2" />, // Icon for Expert Guidance
-  },
+      'Our experienced team provides you with expert advice every step of the way, ensuring you make the best real estate decisions. With an 85% Repeat Client Rate, our clients trust us to guide them through every transaction.',
+    icon: <FaUserTie className="text-[#005fa3] w-6 h-6 mr-2" />,
+  },  
   {
     title: 'Tailored Solutions',
     description:
-      'We offer customized solutions that fit your unique needs, whether buying, selling, or renting properties.',
-    icon: <FaCogs className="text-[#005fa3] w-6 h-6 mr-2" />, // Icon for Tailored Solutions
-  },
+      'We offer customized solutions that fit your unique needs, whether buying, selling, or renting properties. With over 1500 successful transactions, we ensure that every solution is designed for your success.',
+    icon: <FaCogs className="text-[#005fa3] w-6 h-6 mr-2" />,
+  },  
   {
     title: 'Transparency & Trust',
     description:
-      'We believe in full transparency and building trust with our clients. You can rely on us for honest advice and no hidden fees.',
-    icon: <FaRegHandshake className="text-[#005fa3] w-6 h-6 mr-2" />, // Icon for Transparency & Trust
-  },
-  {
-    title: 'Wide Range of Properties',
-    description:
-      'We offer a wide selection of residential, commercial, and investment properties to suit every need and budget.',
-    icon: <FaThLarge className="text-[#005fa3] w-6 h-6 mr-2" />, // Icon for Wide Range of Properties
-  },
+      'We believe in full transparency and building trust with our clients. With a 95% Customer Satisfaction Rate, you can rely on us for honest advice, no hidden fees, and a commitment to your satisfaction.',
+    icon: <FaRegHandshake className="text-[#005fa3] w-6 h-6 mr-2" />,
+  }
 ];
 
 const WhyChooseUs = () => {
@@ -44,7 +38,7 @@ const WhyChooseUs = () => {
 
   return (
     <>
-      {/* SEO Meta Tags */}
+      
       <title>Why Choose Ivory Home Limited | Expert Real Estate Solutions</title>
       <meta
         name="description"
@@ -82,13 +76,13 @@ const WhyChooseUs = () => {
         </div>
 
         {/* Grid on larger screens */}
-        <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {reasons.map((reason, index) => (
             <div
               key={index}
               className="flex flex-col items-center text-center p-6 border-2 border-[#005fa3] rounded-lg shadow-lg bg-white transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
               data-aos="fade-up"
-              data-aos-delay={index * 100} // Staggered animation for grid items
+              data-aos-delay={index * 100}
             >
               <div className="flex items-center justify-center mb-4">
                 {reason.icon}

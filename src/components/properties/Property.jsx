@@ -189,7 +189,7 @@ const Property = () => {
         </div>
 
         {/* Property Info Section */}
-        <div className="border rounded-lg p-6 mt-4 bg-white text-black" data-aos="fade-up">
+        <div className="border rounded-lg py-6 px-3 mt-4 bg-white text-black" data-aos="fade-up">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mt-6">
             {/* Price Card */}
             <div
@@ -224,7 +224,7 @@ const Property = () => {
             </div>
 
             {/* Property Details */}
-            <div className="flex-1 p-6 shadow-lg bg-white rounded-lg">
+            <div className="flex-1">
             <p className="flex items-center">
               <FiMapPin className="mr-2" /> 
               <strong className="text-red-500">Location:</strong> {property.location}

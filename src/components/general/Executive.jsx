@@ -15,7 +15,7 @@ import { Helmet } from 'react-helmet-async';
 // Sample executives' data
 const executives = [
   {
-    name: 'Mr. John Onwumere',
+    name: 'Engineer John Ikenna',
     position: 'Chief Executive Officer',
     description: 'John brings over 20 years of experience in the real estate industry, leading our team with passion and strategic vision.',
     image: nobert,

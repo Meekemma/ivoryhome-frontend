@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "../../assets/images/logo.png"; // Adjust the path as needed
 import axios from "axios";
 import { toast } from "react-toastify";
 import Spinner from "../blog/Spinner";
@@ -52,14 +51,7 @@ const NewsLetter = () => {
   return (
     <div className="container mx-auto my-10">
       <div className="flex flex-col sm:flex-row justify-center sm:justify-start items-center space-y-6 sm:space-y-0 sm:space-x-12">
-        {/* Company Logo */}
-        <div className="hidden sm:block">
-          <img
-            src={logo}
-            alt="Company Logo"
-            className="w-40 h-auto rounded-lg bg-white p-2"
-          />
-        </div>
+        {/* Removed Company Logo */}
 
         {/* Newsletter Content */}
         <div className="text-center sm:text-left">
@@ -70,7 +62,7 @@ const NewsLetter = () => {
           </p>
 
           <form
-            className="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 w-full"
+            className="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-center space-y-3 sm:space-y-0 sm:space-x-1 w-full"
             onSubmit={handleSubmit}
           >
             <label htmlFor="email" className="sr-only">
@@ -89,7 +81,7 @@ const NewsLetter = () => {
 
             <button
               type="submit"
-              className={`bg-gray-900 hover:bg-gray-700 text-white px-6 py-2 rounded-md shadow-md transition-transform transform hover:scale-105 w-full sm:w-auto ${
+              className={`bg-blue-900 hover:bg-gray-700 text-white px-6 py-2 rounded-md shadow-md transition-transform transform hover:scale-105 w-full sm:w-auto ${
                 isLoading ? "opacity-50 cursor-not-allowed" : ""
               }`}
               disabled={isLoading}
