@@ -59,31 +59,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const PropertyNavbar = () => {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [userName, setUserName] = useState("");
-    const [userId, setUserId] = useState(null); 
-    const [cookies] = useCookies(["user", "access_token"]);
-    const [cartItems, setCartItems] = useState(0);
-    const { logOutUser } = useContext(AuthContext);  
-    const navigate = useNavigate();
-    const isAuthenticated = !!cookies.access_token;
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [userName, setUserName] = useState("");
+  const [userId, setUserId] = useState(null); 
+  const [cookies] = useCookies(["user", "access_token"]);
+  const [cartItems, setCartItems] = useState(0);
+  const { logOutUser } = useContext(AuthContext);  
+  const navigate = useNavigate();
+  const isAuthenticated = !!cookies.access_token;
 
-    const [inputValue, setInputValue] = useState('');
-    const { setSearchQuery } = useSearch();
+  const [inputValue, setInputValue] = useState('');
+  const { setSearchQuery } = useSearch();
 
-    if (!setSearchQuery) {
-        console.error("setSearchQuery is undefined. Check SearchContext.");
+  const handleSearch = (e) => {
+    if (e.key === 'Enter' || e.key ==='click') {
+      setSearchQuery(inputValue);
     }
-
-    
-
-  
-  
-    const handleSearch = (e) => {
-      if (e.key === 'Enter' || e.key ==='click') {
-        setSearchQuery(inputValue);
-      }
-    };
+  };
 
   const handleClick = () => {
     navigate('/request');
@@ -154,58 +146,58 @@ const PropertyNavbar = () => {
       )}
     </Menu>
   );
-  
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}>
-      <Toolbar sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-  {/* Logo */}
-  <Box
-    sx={{
-      height: '60px',
-      padding: '2px',
-      background: 'white',
-      borderRadius: '10px',
-      mt: 2,
-      ml: 2,
-      mb: 1,
-      display: { xs: 'flex', md: 'flex' },
-      justifyContent: 'center',
-    }}
-  >
-    <img src={logo} alt="Company Logo" style={{ maxHeight: '100%', objectFit: 'contain' }} />
-  </Box>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          
+          {/* Logo */}
+          <Box
+            sx={{
+              height: '50px',
+              padding: '2px',
+              background: 'white', // This gives the white background to the logo container
+              borderRadius: '10px',
+              mt: 2,
+              ml: 2,
+              mb: 1,
+              display: { xs: 'flex', md: 'flex' },
+              justifyContent: 'center',
+            }}
+          >
+            <img
+              src={logo}
+              alt="Company Logo"
+              style={{
+                maxHeight: '100%',
+                objectFit: 'contain',
+                borderRadius: '5px', // Optional: you can add a little border radius to the logo itself for a softer look
+              }}
+            />
+          </Box>
 
-  {/* Centered Search Bar */}
-  <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', mx: 2 }}>
-    <Search
-      sx={{
-        width: { xs: '80%', sm: '70%', md: '50%' }, 
-      }}
-    >
-      <SearchIconWrapper>
-        <SearchIcon />
-      </SearchIconWrapper>
-      <StyledInputBase
-        type="text"
-        placeholder="Search Properties…"
-        inputProps={{ "aria-label": "search" }}
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={handleSearch}
-      />
-    </Search>
-  </Box>
 
-  {/* User Info and Cart */}
-  <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
-    {/* <IconButton size="large" aria-label="cart items" color="inherit" onClick={handleClick}>
-      <Badge badgeContent={cartItems} color="error">
-        <ShoppingCartIcon />
-      </Badge>
-    </IconButton> */}
-    <IconButton
+          {/* Search Bar */}
+          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', mx: 2 }}>
+            <Search sx={{ width: { xs: '70%', sm: '50%', md: '40%' } }}>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                type="text"
+                placeholder="Search..."
+                inputProps={{ "aria-label": "search" }}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={handleSearch}
+              />
+            </Search>
+          </Box>
+
+          {/* User Info and Cart */}
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
@@ -216,9 +208,8 @@ const PropertyNavbar = () => {
             >
               <AccountCircle />
             </IconButton>
-  </Box>
-</Toolbar>
-
+          </Box>
+        </Toolbar>
       </AppBar>
       {renderMenu}
     </Box>

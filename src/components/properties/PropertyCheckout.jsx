@@ -157,7 +157,7 @@ const PropertyCheckout = () => {
             {/* Property Shortlisted Card */}
             <div className="bg-white shadow-md p-6 rounded-lg">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-pretty font-semibold flex items-center">
+                <h2 className="text-pretty font-semibold flex items-start">
                   <FaCheckCircle className="text-green-500 mr-2" />
                   Property Shortlisted
                 </h2>
@@ -184,7 +184,7 @@ const PropertyCheckout = () => {
                         </p>
                         {/* <h4 className="mt-4 font-semibold">Order Items:</h4> */}
                         {order.order_items.map((item) => (
-                          <div key={item.id} className="pl-4 mt-2 border-l-2 border-gray-300 flex items-center">
+                          <div key={item.id} className="pl-4 mt-2 border-l-2 border-gray-300 flex items-start">
                           {/* Image Section */}
                           <div className="flex-shrink-0 mr-4">
                             <img

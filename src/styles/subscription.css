@@ -1,0 +1,17 @@
+.subscription-modal .fixed {
+    overflow-y: auto;
+  }
+  
+  .subscription-modal .bg-white {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .subscription-modal .bg-white {
+      padding: 4rem 1rem;
+    }
+  }
+  

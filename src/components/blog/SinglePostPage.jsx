@@ -71,10 +71,10 @@ const SinglePostPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-2 py-8">
       <div className="flex flex-col md:flex-row gap-6">
         {/* Main Content Section */}
-        <div className="flex-[2] bg-white p-8 rounded-lg shadow-lg">
+        <div className="flex-[2] bg-white py-8 px-2 rounded-lg shadow-lg">
           {/* Post Header */}
           <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
 

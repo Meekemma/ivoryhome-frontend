@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Spinner from "../blog/Spinner";
 import { FaTimes } from "react-icons/fa";
+import '../../styles/subscription.css';
 
 const SubscriptionForm = ({ showPopup, closePopup }) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -110,8 +111,8 @@ const SubscriptionForm = ({ showPopup, closePopup }) => {
   };
 
   return (
-      <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50 p-4">
-        <div className="bg-white rounded-lg shadow-lg w-full max-w-3xl p-6 relative">
+        <div className="subscription-modal fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50 p-4">
+        <div className="subscription-modal-content bg-white rounded-lg shadow-lg w-full max-w-3xl p-6 relative">
           <button
             className="absolute top-4 right-4 text-gray-500 hover:text-red-500"
             onClick={closePopup}

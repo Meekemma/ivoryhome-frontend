@@ -5,8 +5,8 @@ const CookiePolicy = () => {
         <div className="container mx-auto px-4 py-8 bg-white text-gray-800 p-6 md:p-12 lg:p-16">
 
             <div className='flex justify-between'>
-                <h1 className="text-3xl font-bold text-blue-700">Cookie Policy</h1>
-                <h4 className='text-red-500'>Version 1</h4>
+                <h1 className="text-2xl font-bold text-blue-700">Cookie Policy</h1>
+                <h5 className='text-red-500'>Version 1</h5>
             </div>
             
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useParams, useLocation, Link, useNavigate } from "react-router-dom";
 import { FiShare2, FiArrowLeft, FiInfo, FiMapPin, FiHome  } from "react-icons/fi"; 
 import { FaMoneyBillWave, FaHouseUser } from "react-icons/fa";
 import Spinner from "./ProSpinner";
@@ -19,8 +19,10 @@ import { useCookies } from "react-cookie";
 const Property = () => {
 
   const [cookies] = useCookies(["access_token"]);
-
   const isAuthenticated = cookies.access_token;
+  
+  const navigate = useNavigate();
+  
 
   
   
@@ -73,7 +75,8 @@ const Property = () => {
   
     try {
       await api.post(`${BASE_URL}/commerce/orders/`, orderData);
-      toast.success("Property successfully shortlisted. Check your cart to proceed.");
+      toast.success("Property successfully shortlisted.");
+      navigate('/request');
     } catch (error) {
       toast.error("Failed to add the property to the cart. Please try again.");
     } finally {
@@ -119,8 +122,8 @@ const Property = () => {
           to={previousPage}
           className="flex items-center bg-gray-700 text-white p-2 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <FiArrowLeft className="mr-2 text-lg" />
-          Back to Properties
+          <FiArrowLeft className="mr-2 text-2xl" />
+          
         </Link>
 
         {/* Share Button */}
@@ -134,7 +137,7 @@ const Property = () => {
       </div>
 
       {/* Property Details */}
-      <div className="border rounded-lg shadow-md p-6 bg-white text-black" data-aos="fade-up">
+      <div className="border rounded-lg shadow-md py-6 px-2 bg-white text-black" data-aos="fade-up">
         <h1 className="text-pretty font-bold mb-4">{property.title}</h1>
 
         {/* Property Images */}
@@ -190,7 +193,7 @@ const Property = () => {
 
         {/* Property Info Section */}
         <div className="border rounded-lg py-6 px-3 mt-4 bg-white text-black" data-aos="fade-up">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mt-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-start gap-6 mt-6">
             {/* Price Card */}
             <div
               className="border-2 rounded-lg p-6 shadow-lg bg-white text-black"
