@@ -4,10 +4,11 @@ import { Helmet } from 'react-helmet-async';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import RoyalGallery from './RoyalGallary';
-import royalDynasty from '../../assets/videos/royal.mp4';
+import itokin from '../../assets/videos/itokin.mp4';
 import royalInfo from '../../assets/images/royalInfo.jpeg';
 import { FaPlay } from 'react-icons/fa';
 import SubscriptionForm from './SubscriptionForm';
+import "../../styles/main.css";
 
 
 const RoyalDynastyEstate = () => {
@@ -100,7 +101,7 @@ const RoyalDynastyEstate = () => {
                                 className={videoContainerStyles}
                                 controls
                                 autoPlay
-                                src={royalDynasty}
+                                src={itokin}
                                 alt="Royal Dynasty Estate Video"
                             >
                                 Your browser does not support the video tag.
@@ -115,7 +116,7 @@ const RoyalDynastyEstate = () => {
                                 />
                                 {/* Play Icon */}
                                 <div
-                                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-4xl cursor-pointer"
+                                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-4xl cursor-pointer beeping-button"
                                     onClick={handlePlayClick}
                                 >
                                     <FaPlay />

@@ -51,10 +51,10 @@ const EstateInfo = () => {
             {/* Introduction Section */}
             <section className="mb-12">
                 <div className="text-center">
-                    <h1 className="text-3xl md:text-5xl font-bold text-[#005fa3]">
+                    <h1 className="text-3xl md:text-5xl text-left font-bold text-[#005fa3]">
                         Welcome to Royal Dynasty Estate
                     </h1>
-                    <p className="text-gray-700 mt-4">
+                    <p className="text-gray-700 text-base text-left mt-4">
                         Unlock a lifestyle of sophistication and luxury at Royal Dynasty Estate. Immerse yourself in modern living, surrounded by breathtaking homes and tranquil spaces. Your royal haven is just a step away.
                     </p>
                 </div>

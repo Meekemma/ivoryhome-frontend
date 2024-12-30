@@ -38,7 +38,7 @@ const HomeFooter = () => {
   ];
 
   const contactDetails = {
-    phone: '+234 817 999 9961',
+    phone: ['+234 817 999 9961', '+234 817 999 9953'],
     email: 'info@IvoryHomes.com',
     address: [
       'HFP Eastline shopping complex',
@@ -86,9 +86,15 @@ const HomeFooter = () => {
             <h3 className="text-lg font-bold mb-4 text-red-400">Contact Us</h3>
             <p className="text-base">
               Phone:{' '}
-              <a href={`tel:${contactDetails.phone}`} className="underline">
-                {contactDetails.phone}
-              </a>
+              {contactDetails.phone.map((line, index) => (
+                <a
+                  key={index}
+                  href={`tel:${line.replace(/\s/g, '')}`}
+                  className="block "
+                >
+                  {line}
+                </a>
+              ))}{' '}
             </p>
             <p className="text-base">
               Email:{' '}
