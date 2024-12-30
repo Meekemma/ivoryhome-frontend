@@ -124,17 +124,21 @@ body {
 
 
 .fixed {
+ 
   overflow-y: auto;
 }
 
 .bg-white {
-  max-height: 100vh; 
-  overflow-y: auto; 
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  max-height: calc(100vh - 4rem); /* Ensures the modal fits within the viewport */
+  overflow-y: auto; /* Scrollable if content exceeds modal height */
 }
+
 
 @media (max-width: 768px) {
   .bg-white {
-    padding: 1rem; 
+    padding: 4rem 1rem; 
   }
 }
 
