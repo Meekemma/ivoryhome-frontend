@@ -200,11 +200,11 @@ const PropertyNavbar = () => {
 
   {/* User Info and Cart */}
   <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
-    <IconButton size="large" aria-label="cart items" color="inherit" onClick={handleClick}>
+    {/* <IconButton size="large" aria-label="cart items" color="inherit" onClick={handleClick}>
       <Badge badgeContent={cartItems} color="error">
         <ShoppingCartIcon />
       </Badge>
-    </IconButton>
+    </IconButton> */}
     <IconButton
               size="large"
               edge="end"

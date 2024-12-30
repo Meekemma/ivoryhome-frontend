@@ -11,6 +11,7 @@ import ContactInfo from '../components/general/ContactInfo'
 import GeneralButton from '../components/general/GeneralButton'
 import PropertyInfo from '../components/general/PropertyInfo'
 import BlogInfo from '../components/general/BlogInfo'
+import EstateInfo from '../components/estate/EstateInfo'
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <Navbar />
       <MyCarousel />
       <AboutUs />
+      <EstateInfo/>
       <OurServices />
       <PropertyInfo/>
       <WhyChooseUs />

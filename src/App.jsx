@@ -15,7 +15,6 @@ import PageNotFound from "./pages/PageNotFound";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Service from "./pages/Service";
-import Estate from "./pages/Estate";
 import Contact from "./pages/Contact";
 import CookieConsent from "./components/general/CookieConsent";
 import Booking from "./pages/Booking";
@@ -33,6 +32,9 @@ import ConditionalPopups from "./pages/ConditionalPopups";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 import CookiePolicyPage from "./pages/CookiePolicyPage";
+import Royal from "./pages/Royal";
+import IndiobiPage from "./pages/IndiobiPage";
+import OwerriPage from "./pages/OwerriPage";
 
 function App() {
   
@@ -59,7 +61,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/service" element={<Service />} />
-          <Route path="/estate" element={<Estate />} />
+          <Route path="estate/royal-dynasty-estate" element={<Royal />} />
+          <Route path="estate/Indiobi-estate" element={<IndiobiPage />} />  
+          <Route path="estate/Owerri-estate" element={<OwerriPage />} />
           <Route path="/contact" element={<Contact/>}/>
           <Route path="/booking" element={<Booking />} />
           <Route path="/Terms_&_conditions" element={<TermsAndConditionsPage/>} />

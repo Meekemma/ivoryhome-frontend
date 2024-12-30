@@ -57,7 +57,7 @@ const BlogInfo = () => {
   }
 
   return (
-    <div className="mt-8 container mx-auto py-12 px-6 bg-[#2c2c2c]"> {/* Set the background to charcoal black */}
+    <div className="mt-8 container mx-auto py-12 px-6 bg-black">
       <h2 className="text-4xl sm:text-3xl font-bold text-center mb-6 text-[#005fa3] custom-text-shadow animate-slide-in">
         Latest Blog Posts
       </h2>

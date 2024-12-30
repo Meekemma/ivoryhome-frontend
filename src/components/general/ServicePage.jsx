@@ -10,37 +10,37 @@ const services = [
     title: "Residential Rent/Sale",
     description:
       "We help you find your dream home. Whether renting or buying, we offer a curated selection of residential properties that suit your needs and budget.",
-    icon: <FaHome className="w-16 h-16 text-[#005fa3] mx-auto" />, // Home icon for Residential Sales
+    icon: <FaHome className="w-16 h-16 text-[#005fa3] mx-auto" />, 
   },
   {
     title: "Property Management",
     description:
       "Our property management service ensures your property is well-maintained and profitable. From tenant screening to regular maintenance, we handle it all.",
-    icon: <FaTools className="w-16 h-16 text-[#005fa3] mx-auto" />, // Tools icon for Property Management
+    icon: <FaTools className="w-16 h-16 text-[#005fa3] mx-auto" />, 
   },
   {
     title: "Real Estate Investment",
     description:
       "Explore lucrative investment opportunities in the real estate market. We provide expert guidance to maximize your returns.",
-    icon: <FaChartLine className="w-16 h-16 text-[#005fa3] mx-auto" />, // Chart icon for Real Estate Investment
+    icon: <FaChartLine className="w-16 h-16 text-[#005fa3] mx-auto" />, 
   },
   {
     title: "Real Estate Management",
     description:
       "Comprehensive real estate management solutions tailored to your portfolio. Let us take the hassle out of managing your properties.",
-    icon: <FaTools className="w-16 h-16 text-[#005fa3] mx-auto" />, // Tools icon for Real Estate Management (same as Property Management)
+    icon: <FaTools className="w-16 h-16 text-[#005fa3] mx-auto" />, 
   },
   {
     title: "Real Estate Consultancy",
     description:
       "Get professional advice on real estate transactions and strategies. Our consultancy services are designed to meet your unique needs.",
-    icon: <FaChartLine className="w-16 h-16 text-[#005fa3] mx-auto" />, // Chart icon for Real Estate Consultancy (same as Investment)
+    icon: <FaChartLine className="w-16 h-16 text-[#005fa3] mx-auto" />, 
   },
   {
     title: "Commercial Properties",
     description:
       "We specialize in leasing and selling commercial properties, including office spaces, retail outlets, and warehouses.",
-    icon: <FaBuilding className="w-16 h-16 text-[#005fa3] mx-auto" />, // Building icon for Commercial Properties
+    icon: <FaBuilding className="w-16 h-16 text-[#005fa3] mx-auto" />, 
   },
 ];
 

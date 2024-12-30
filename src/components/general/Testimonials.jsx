@@ -20,7 +20,7 @@ const Testimonials = () => {
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
-    return () => AOS.refresh(); // Ensures animations refresh if components re-render
+    return () => AOS.refresh();
   }, []);
 
 

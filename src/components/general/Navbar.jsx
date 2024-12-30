@@ -11,16 +11,19 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import logo from '../../assets/images/logo.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import AuthContext from '../../context/AuthContext';
 
 const pages = ['Home', 'About', 'Service', 'Properties', 'Estate', 'Blog', 'Contact'];
+const estateDropdown = ['Royal Dynasty Estate', 'Indiobi Estate',  'Owerri Estate'];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorElEstate, setAnchorElEstate] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
   const { user, logOutUser } = useContext(AuthContext);
@@ -43,6 +46,14 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
+  const handleOpenEstateMenu = (event) => {
+    setAnchorElEstate(event.currentTarget);
+  };
+
+  const handleCloseEstateMenu = () => {
+    setAnchorElEstate(null);
+  };
+
   const handlePageClick = (page) => {
     setAnchorElNav(null);
     if (page.toLowerCase() === 'home') {
@@ -50,6 +61,11 @@ function Navbar() {
     } else {
       navigate(`/${page.toLowerCase()}`);
     }
+  };
+
+  const handleEstateClick = (estate) => {
+    setAnchorElEstate(null);
+    navigate(`/estate/${estate.toLowerCase().replace(/ /g, '-')}`);
   };
 
   const handleLogout = () => {
@@ -88,7 +104,7 @@ function Navbar() {
   return (
     <AppBar
       position="relative"
-      sx={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}
+      sx={{ backgroundColor: 'black' }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -130,9 +146,7 @@ function Navbar() {
               <MenuIcon />
             </IconButton>
 
-
-
-            <Menu
+          <Menu
             id="menu-appbar"
             anchorEl={anchorElNav}
             anchorOrigin={{
@@ -156,29 +170,32 @@ function Navbar() {
             }}
           >
             {pages.map((page) => (
-              <MenuItem key={page} onClick={() => handlePageClick(page)}>
-                <Typography textAlign="center">{page}</Typography>
-              </MenuItem>
+              page === 'Estate' ? (
+                <Box key={page}>
+                  <MenuItem onClick={handleOpenEstateMenu} sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <Typography textAlign="center">{page}</Typography>
+                    <ArrowDropDownIcon />
+                  </MenuItem>
+                  <Menu
+                    anchorEl={anchorElEstate}
+                    open={Boolean(anchorElEstate)}
+                    onClose={handleCloseEstateMenu}
+                    PaperProps={{ sx: { mt: 1 } }}
+                  >
+                    {estateDropdown.map((estate) => (
+                      <MenuItem key={estate} onClick={() => handleEstateClick(estate)}>
+                        <Typography textAlign="center">{estate}</Typography>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </Box>
+              ) : (
+                <MenuItem key={page} onClick={() => handlePageClick(page)}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              )
             ))}
-
-            {(!isAuthenticated ? [
-              <MenuItem key="login" onClick={() => navigate('/login')}>
-                <Typography textAlign="center">Login</Typography>
-              </MenuItem>,
-              <MenuItem key="signup" onClick={() => navigate('/signup')}>
-                <Typography textAlign="center">Signup</Typography>
-              </MenuItem>,
-            ] : [
-              <MenuItem key="profile" onClick={() => navigate(`/profile/${cookies.user_id}`)}>
-                <Typography textAlign="center">Profile</Typography>
-              </MenuItem>,
-              <MenuItem key="logout" onClick={handleLogout}>
-                <Typography textAlign="center">Logout</Typography>
-              </MenuItem>,
-            ])}
           </Menu>
-
-
 
 
           </Box>
@@ -192,78 +209,126 @@ function Navbar() {
             }}
           >
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={() => handlePageClick(page)}
-                sx={{
-                  mx: 1,
-                  my: 2,
-                  color: getActivePage(page) ? 'red' : 'white',
-                  fontWeight: getActivePage(page) ? 'bold' : 'normal',
-                  textTransform: 'capitalize',
-                }}
-              >
-                {page}
-              </Button>
+              page === 'Estate' ? (
+                <Box key={page} sx={{ position: 'relative' }}>
+                  <Button
+                    onClick={handleOpenEstateMenu}
+                    endIcon={<ArrowDropDownIcon />}
+                    sx={{
+                      mx: 1,
+                      my: 2,
+                      color: 'white',
+                      textTransform: 'capitalize',
+                    }}
+                  >
+                    {page}
+                  </Button>
+                  <Menu
+                    anchorEl={anchorElEstate}
+                    open={Boolean(anchorElEstate)}
+                    onClose={handleCloseEstateMenu}
+                    PaperProps={{ sx: { mt: 2 } }}
+                  >
+                    {estateDropdown.map((estate) => (
+                      <MenuItem key={estate} onClick={() => handleEstateClick(estate)}>
+                        <Typography textAlign="center">{estate}</Typography>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </Box>
+              ) : (
+                <Button
+                  key={page}
+                  onClick={() => handlePageClick(page)}
+                  sx={{
+                    mx: 1,
+                    my: 2,
+                    color: getActivePage(page) ? 'red' : 'white',
+                    fontWeight: getActivePage(page) ? 'bold' : 'normal',
+                    textTransform: 'capitalize',
+                  }}
+                >
+                  {page}
+                </Button>
+              )
             ))}
           </Box>
 
           {/* Authentication Links */}
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
-            {!isAuthenticated ? (
-              <>
-                <Button
-                  onClick={() => navigate('/login')}
-                  sx={{ mx: 1, my: 2, color: 'white', textTransform: 'capitalize' }}
-                >
-                  Login
-                </Button>
-                <Button
-                  onClick={() => navigate('/signup')}
-                  sx={{ mx: 1, my: 2, color: 'white', textTransform: 'capitalize' }}
-                >
-                  Signup
-                </Button>
-              </>
-            ) : (
-              <>
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt={cookies.user?.names || "User"} sx={{background:'#000', color:'#fff'}}>
-                      {avatar}
-                    </Avatar>
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  <MenuItem onClick={handleCloseUserMenu}>
-                    <Typography onClick={() => navigate(`/profile/${userId}`)} textAlign="center" sx={{ textTransform: 'capitalize' }}>
-                      Profile
-                    </Typography>
-                  </MenuItem>
-                  <MenuItem onClick={handleLogout}>
-                    <Typography textAlign="center" sx={{ textTransform: 'capitalize' }}>
-                      Logout
-                    </Typography>
-                  </MenuItem>
-                </Menu>
-              </>
-            )}
-          </Box>
+  {!isAuthenticated ? (
+    <>
+      <Button
+        onClick={() => navigate('/login')}
+        sx={{
+          mx: 1,
+          my: 2,
+          color: 'white',
+          textTransform: 'capitalize',
+          border: '2px solid white',
+          borderRadius: '15px',
+          ':hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
+          display: { xs: 'none', md: 'inline-flex' },
+        }}
+      >
+        Login
+      </Button>
+      <Button
+        onClick={() => navigate('/signup')}
+        sx={{
+          mx: 1,
+          my: 2,
+          color: 'white',
+          textTransform: 'capitalize',
+          border: '2px solid white',
+          borderRadius: '15px',
+          ':hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
+          display: { xs: 'none', md: 'inline-flex' },
+        }}
+      >
+        Signup
+      </Button>
+    </>
+  ) : (
+    <>
+      <Tooltip title="Open settings">
+        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+          <Avatar alt={cookies.user?.names || 'User'} sx={{ background: '#000', color: '#fff' }}>
+            {avatar}
+          </Avatar>
+        </IconButton>
+      </Tooltip>
+      <Menu
+        sx={{ mt: '45px' }}
+        id="menu-appbar"
+        anchorEl={anchorElUser}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        open={Boolean(anchorElUser)}
+        onClose={handleCloseUserMenu}
+      >
+        <MenuItem onClick={handleCloseUserMenu}>
+          <Typography onClick={() => navigate(`/profile/${userId}`)} textAlign="center" sx={{ textTransform: 'capitalize' }}>
+            Profile
+          </Typography>
+        </MenuItem>
+        <MenuItem onClick={handleLogout}>
+          <Typography textAlign="center" sx={{ textTransform: 'capitalize' }}>
+            Logout
+          </Typography>
+        </MenuItem>
+      </Menu>
+    </>
+  )}
+</Box>
+
         </Toolbar>
       </Container>
     </AppBar>
