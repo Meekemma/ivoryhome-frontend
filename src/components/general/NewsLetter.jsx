@@ -56,7 +56,7 @@ const NewsLetter = () => {
         {/* Newsletter Content */}
         <div className="text-center sm:text-left">
           <h2 className="text-3xl font-bold mb-2">Subscribe to Our Newsletter</h2>
-          <p className="text-lg mb-6">
+          <p className="text-lg mb-6 text-left">
             Get the latest updates, exclusive deals, and more delivered straight
             to your inbox.
           </p>

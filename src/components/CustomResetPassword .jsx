@@ -62,8 +62,8 @@ const CustomResetPassword = () => {
   return (
     <>
       <div className="container px-4 min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-          <div className="p-5 border-2 border-[#0077c0] rounded-lg">
+        <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
+          <div className="p-3 rounded-lg">
             <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
               Reset Password
             </h2>

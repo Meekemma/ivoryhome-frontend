@@ -67,7 +67,7 @@ const HomeFooter = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-bold mb-4 text-red-700">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li
@@ -83,7 +83,7 @@ const HomeFooter = () => {
 
           {/* Contact Information */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-red-400">Contact Us</h3>
+            <h3 className="text-lg font-bold mb-4 text-red-700">Contact Us</h3>
             <p className="text-base">
               Phone:{' '}
               {contactDetails.phone.map((line, index) => (
@@ -112,7 +112,7 @@ const HomeFooter = () => {
 
           {/* Legal Information */}
           <div>
-            <h3 className="text-lg font-bold mb-4">Legal Information</h3>
+            <h3 className="text-lg font-bold mb-4 text-red-700">Legal Information</h3>
             <ul className="space-y-2">
               {legalLinks.map((link, index) => (
                 <li
@@ -128,7 +128,7 @@ const HomeFooter = () => {
 
           {/* Social Media */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-red-400">Follow Us</h3>
+            <h3 className="text-lg font-bold mb-4 text-red-700">Follow Us</h3>
             <ul className="flex space-x-4">
               {Object.entries(socialMediaLinks).map(([name, url], index) => (
                 <li key={index}>

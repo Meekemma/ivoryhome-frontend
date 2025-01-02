@@ -58,7 +58,7 @@ const Property = () => {
 
   const handleAddToCart = async () => {
     if (!isAuthenticated) {
-      toast.info("Please login or signup to be able to add properties to cart.");
+      toast.info("Please login or signup to be able to shortlist property.");
       return;
     }
   
@@ -120,7 +120,7 @@ const Property = () => {
       <div className="flex justify-between items-center mb-4">
         <Link
           to={previousPage}
-          className="flex items-center bg-gray-700 text-white p-2 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex items-center bg-black text-white p-2 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <FiArrowLeft className="mr-2 text-2xl" />
           
@@ -129,9 +129,9 @@ const Property = () => {
         {/* Share Button */}
         <button
           onClick={handleShare}
-          className="flex items-center bg-gray-700 text-white p-2 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex items-center bg-black text-white p-2 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <FiShare2 className="text-lg mr-2" />
+          <FiShare2 className="text-lg" />
           Share
         </button>
       </div>

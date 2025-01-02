@@ -4,6 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import carousel from '../../assets/images/carousel.jpg';
 import home from '../../assets/images/home.jpg';
+import homesale from '../../assets/images/homesale.jpg';
 import '../../styles/carousel.css';
 import Spinner from "../blog/Spinner";
 
@@ -29,7 +30,16 @@ const MyCarousel = () => {
         'Discover tailored solutions for luxury living. Schedule your property inspection today!',
       buttonText: 'Book Inspection',
     },
+    {
+      id: 3,
+      src: homesale,
+      title: 'Own Your Future Home',
+      description:
+        'Browse exquisite properties to find the perfect match for your lifestyle. Start your journey today!',
+      buttonText: 'Book Inspection',
+    },
   ];
+
 
   // Duplicate slides to create a loop effect
   const duplicatedSlides = [...slides, ...slides];
@@ -70,7 +80,7 @@ const MyCarousel = () => {
           interval={5000}
           transitionTime={500}
           className="custom-carousel"
-          swipeable={!isMobile} // Prevent swipe on mobile if necessary
+          swipeable={!isMobile} 
         >
           {duplicatedSlides.map((slide, index) => (
             <div key={index} className="carousel-slide">
@@ -82,9 +92,9 @@ const MyCarousel = () => {
               />
               <div className="overlay">
                 <div className="text-content">
-                  <h5>{slide.title}</h5>
+                  
                   <h2>{slide.title}</h2>
-                  <p>{slide.description}</p>
+                  <p className='text-5xl'>{slide.description}</p>
                   <button className="booking-button" onClick={handleOnClick}>
                     {slide.buttonText}
                   </button>

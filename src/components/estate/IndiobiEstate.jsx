@@ -6,6 +6,7 @@ import 'aos/dist/aos.css';
 import indiobiInfo from '../../assets/images/royalInfo.jpeg';
 import NdiobaGallary from './NdiobaGallary';
 import SubscriptionFormNdiobi from './SubscriptionFormNdiobi';
+import '../../styles/main.css';
 
 
 const IndiobiEstate = () => {
@@ -89,7 +90,7 @@ const IndiobiEstate = () => {
 
                 {/* Call-to-Action Button */}
                 <div className="text-center mt-8">
-                    <button className="px-8 py-3 text-lg font-semibold text-white bg-[#007acc] rounded-lg shadow-lg hover:bg-[#005fa3] hover:scale-105 transform transition-all duration-300" onClick={handleConfirmClick}>
+                    <button className="px-8 py-3 text-lg font-semibold text-white btn bg-[#007acc] rounded-lg shadow-lg hover:bg-[#005fa3] hover:scale-105 transform transition-all duration-300" onClick={handleConfirmClick}>
                         Purchase Now
                     </button>
                 </div>
@@ -102,7 +103,7 @@ const IndiobiEstate = () => {
                 {/* Flex Buttons */}
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6">
                     <button
-                        className="px-6 py-3 text-base font-semibold text-white bg-[#005fa3] rounded-lg shadow-md hover:bg-[#003f72] transition-all duration-300"
+                        className="px-6 py-3 text-base font-semibold text-white btn bg-[#005fa3] rounded-lg shadow-md hover:bg-[#003f72] transition-all duration-300"
                         onClick={handleScheduleVisit}
                     >
                         Schedule a Visit

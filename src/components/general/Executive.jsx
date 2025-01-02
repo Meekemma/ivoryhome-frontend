@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import mic from '../../assets/images/mic.jpg';
 import nobert from '../../assets/images/nobert.jpg';
+import ikenna from '../../assets/images/ikenna.svg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -18,7 +19,7 @@ const executives = [
     name: 'Engineer John Ikenna',
     position: 'Chief Executive Officer',
     description: 'John brings over 20 years of experience in the real estate industry, leading our team with passion and strategic vision.',
-    image: nobert,
+    image: ikenna,
   },
   {
     name: 'Mr. Micheal Ihikwoaba',

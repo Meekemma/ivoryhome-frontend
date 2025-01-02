@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import { useCookies} from "react-cookie";
 import '../../styles/consent.css';
 
 const CookieConsent = () => {
+  const navigate = useNavigate();
   const [cookies, setCookies] = useCookies(["CookieConsent"]);
   const location = useLocation();
 
@@ -24,7 +26,7 @@ const CookieConsent = () => {
       path: "/",
       maxAge: THIRTY_DAYS_IN_SECONDS,
     });
-    alert("Thank you! Your preferences have been saved.");
+    toast.success("Thank you! Your preferences have been saved.");
   };
 
   const handleReject = () => {
@@ -50,16 +52,16 @@ const CookieConsent = () => {
         content, and analyze site traffic. By clicking 'Accept', you consent to
         our use of cookies. You can manage your preferences or reject cookies
         at any time. For more details, please refer to our{" "}
-        <a className="text-red-500" href="/privacy-policy">
+        <a className="text-red-500" onClick={() => ("/Privacy_&_Policy")}>
           Privacy Policy
         </a>{" "}
         and{" "}
-        <a className="text-red-500" href="/cookie-policy">
+        <a className="text-red-500" onClick={() => navigate("/Cookie_policy")}>
           Cookie Policy
         </a>.
       </p>
       <div className="cookie-consent-actions">
-        <button className="accept-button" onClick={handleAccept}>
+        <button className="accept-button bg-blue-900" onClick={handleAccept}>
           Accept
         </button>
         <button className="reject-button" onClick={handleReject}>

@@ -1,8 +1,8 @@
 import React, { useEffect,useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css'; // Import the base Swiper styles
-import 'swiper/css/navigation'; // Import navigation styles
-import { Navigation } from 'swiper/modules'; // Adjusted import
+import 'swiper/css'; 
+import 'swiper/css/navigation'; 
+import { Navigation } from 'swiper/modules'; 
 import testimonia from '../../assets/images/testimonia.jpg';
 import testimonia_one from '../../assets/images/testimonia.jpg';
 import testimonia_six from '../../assets/images/testimonia_six.jpg';
@@ -79,7 +79,7 @@ const Testimonials = () => {
     <div className="container test mx-auto px-6 py-12 mt-16 bg-[#FFF5EE]">
       <div className="flex justify-center text-center mb-8" data-aos="fade-up" data-aos-delay="100">
         <div className="max-w-4xl">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 whitespace-nowrap">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-[#005fa3] whitespace-nowrap">
             What Our Clients Say
           </h1>
           <p className="text-base md:text-lg lg:text-xl px-4 md:px-8 lg:px-16 leading-relaxed">
@@ -97,8 +97,8 @@ const Testimonials = () => {
           spaceBetween={20}
           loop={true}
           breakpoints={{
-            640: { slidesPerView: 1 }, // 1 slide for smaller screens
-            1024: { slidesPerView: 3 }, // Show 3 slides for larger screens (desktops)
+            640: { slidesPerView: 1 }, 
+            1024: { slidesPerView: 3 }, 
           }}
           className="mySwiper py-4"
         >

@@ -54,15 +54,15 @@ const CustomLogin = () => {
 
         {/* Login Content */}
         <div className="pt-5 pb-10 flex justify-center items-center">
-          <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+          <div className="bg-white p-6 rounded-lg shadow-2xl w-full max-w-md">
             {/* Inner Border */}
-            <div className="p-5 border-2 border-[#0077c0] rounded-lg">
+            <div className="p-3 rounded-lg">
               {/* Header */}
               <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
                 Login
               </h2>
               <p className="text-center text-gray-600 mb-6">
-                Welcome back! Log in to continue.
+                Welcome back! Login to continue.
               </p>
 
               {/* Social Login */}

@@ -146,56 +146,88 @@ function Navbar() {
               <MenuIcon />
             </IconButton>
 
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-            PaperProps={{
-              sx: {
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                boxShadow: 'none',
-                width: '250px',
-                textAlign: 'left',
-              },
-            }}
-          >
-            {pages.map((page) => (
-              page === 'Estate' ? (
-                <Box key={page}>
-                  <MenuItem onClick={handleOpenEstateMenu} sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              PaperProps={{
+                sx: {
+                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                  boxShadow: 'none',
+                  width: '250px',
+                  textAlign: 'left',
+                  zIndex: 1200,
+                },
+              }}
+            >
+              {pages.map((page) => (
+                page === 'Estate' ? (
+                  <Box key={page}>
+                    <MenuItem onClick={handleOpenEstateMenu} sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <Typography textAlign="center">{page}</Typography>
+                      <ArrowDropDownIcon />
+                    </MenuItem>
+                    <Menu
+                      anchorEl={anchorElEstate}
+                      open={Boolean(anchorElEstate)}
+                      onClose={handleCloseEstateMenu}
+                      PaperProps={{
+                        sx: {
+                          mt: 1,
+                          zIndex: 1300,
+                          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+                        },
+                      }}
+                      anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                      }}
+                      transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                      }}
+                    >
+                      {estateDropdown.map((estate) => (
+                        <MenuItem key={estate} onClick={() => handleEstateClick(estate)}>
+                          <Typography textAlign="center">{estate}</Typography>
+                        </MenuItem>
+                      ))}
+                    </Menu>
+                  </Box>
+                ) : (
+                  <MenuItem key={page} onClick={() => handlePageClick(page)}>
                     <Typography textAlign="center">{page}</Typography>
-                    <ArrowDropDownIcon />
                   </MenuItem>
-                  <Menu
-                    anchorEl={anchorElEstate}
-                    open={Boolean(anchorElEstate)}
-                    onClose={handleCloseEstateMenu}
-                    PaperProps={{ sx: { mt: 1 } }}
-                  >
-                    {estateDropdown.map((estate) => (
-                      <MenuItem key={estate} onClick={() => handleEstateClick(estate)}>
-                        <Typography textAlign="center">{estate}</Typography>
-                      </MenuItem>
-                    ))}
-                  </Menu>
-                </Box>
+                )
+              ))}
+              
+              {!isAuthenticated ? (
+                <>
+                  <MenuItem onClick={() => { handleCloseNavMenu(); navigate('/login'); }}>
+                    <Typography textAlign="center">Login</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={() => { handleCloseNavMenu(); navigate('/signup'); }}>
+                    <Typography textAlign="center">Signup</Typography>
+                  </MenuItem>
+                </>
               ) : (
-                <MenuItem key={page} onClick={() => handlePageClick(page)}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem onClick={() => { handleCloseNavMenu(); navigate(`/profile/${userId}`); }}>
+                  <Typography textAlign="center">Profile</Typography>
                 </MenuItem>
-              )
-            ))}
-          </Menu>
+              )}
+            </Menu>
+
 
 
           </Box>

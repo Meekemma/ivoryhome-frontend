@@ -46,7 +46,7 @@ const NewsletterPopup = () => {
         const popupKey = 'newsletterPopup';
         const expirationTime = 24 * 60 * 60 * 1000; 
 
-        // Save the current time + expiration time to localStorage
+        
         const popupData = {
             expiry: Date.now() + expirationTime,
         };
@@ -67,7 +67,7 @@ const NewsletterPopup = () => {
 
                 {/* Popup Content */}
                 <h2>Stay Connected!</h2>
-                <p>Subscribe to get updates and the latest news directly.</p> 
+                <p>Subscribe to get the latest updates, exclusive property listings, and real estate news delivered to your inbox.</p>
 
                 {/* Lottie Animation */}
                 <div className="lottie">

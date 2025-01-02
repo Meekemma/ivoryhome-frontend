@@ -4,8 +4,10 @@ import { Helmet } from 'react-helmet-async';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import owerriInfo from '../../assets/images/royalInfo.jpeg'; 
-import NdiobaGallary from './NdiobaGallary';
+import OwerriGallary from './OwerriGallary';
 import SubscriptionFormOwerri from './SubscriptionFormOwerri';
+import '../../styles/main.css';
+
 
 const OwerriEstate = () => {
 
@@ -74,7 +76,7 @@ const OwerriEstate = () => {
                             <li>Close proximity to business districts and entertainment hubs</li>
                         </ul>
                         <p className="text-gray-700 mt-4">
-                            Owerri Estate is not just a place to live—it's a lifestyle. Elevate your living experience by becoming part of this premium community today.
+                            Owerri Estate is not just a place to live, it's a lifestyle. Elevate your living experience by becoming part of this premium community today.
                         </p>
                     </div>
 
@@ -90,7 +92,7 @@ const OwerriEstate = () => {
 
                 {/* Call-to-Action Button */}
                 <div className="text-center mt-8">
-                    <button className="px-8 py-3 text-lg font-semibold text-white bg-[#007acc] rounded-lg shadow-lg hover:bg-[#005fa3] hover:scale-105 transform transition-all duration-300" onClick={handleConfirmClick}>
+                    <button className="px-8 py-3 text-lg font-semibold text-white btn bg-[#007acc] rounded-lg shadow-lg hover:bg-[#005fa3] hover:scale-105 transform transition-all duration-300" onClick={handleConfirmClick}>
                         Purchase Now
                     </button>
                 </div>
@@ -98,12 +100,12 @@ const OwerriEstate = () => {
 
             {/* Gallery Section */}
             <section className="mb-12">
-                <NdiobaGallary />
+                <OwerriGallary />
 
                 {/* Flex Buttons */}
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6">
                     <button
-                        className="px-6 py-3 text-base font-semibold text-white bg-[#005fa3] rounded-lg shadow-md hover:bg-[#003f72] transition-all duration-300"
+                        className="px-6 py-3 text-base font-semibold text-white btn bg-[#005fa3] rounded-lg shadow-md hover:bg-[#003f72] transition-all duration-300"
                         onClick={handleScheduleVisit}
                     >
                         Schedule a Visit

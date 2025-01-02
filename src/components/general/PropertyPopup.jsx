@@ -28,13 +28,23 @@ const PropertyPopup = () => {
             }
         }
 
-        // Show popup after 15 seconds
-        const timer = setTimeout(() => {
-            setShowPopup(true);
-        }, 20000);
+        
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            const scrollThreshold = document.body.scrollHeight * 0.3; 
 
-        return () => clearTimeout(timer); 
-    }, [expirationTime]);
+            if (scrollPosition > scrollThreshold) {
+                setShowPopup(true);
+                window.removeEventListener('scroll', handleScroll); 
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll); 
+        };
+    }, []);
 
     const handlePopupClose = () => {
         const popupKey = 'propertyPopup';

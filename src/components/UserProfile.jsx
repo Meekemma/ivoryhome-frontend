@@ -112,7 +112,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="container max-w-lg mx-auto mt-10 p-6 border rounded-lg shadow-lg bg-white">
+    <div className="container max-w-lg mx-auto mt-10 p-6 border rounded-lg shadow-2xl bg-white">
       <div className="flex items-center justify-center mb-6">
         <FaUserCircle className="mr-2 text-blue-500 text-3xl" /> {/* Icon */}
         <h2 className="text-2xl font-semibold text-center">User Profile</h2>

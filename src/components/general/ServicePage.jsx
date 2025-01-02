@@ -3,7 +3,7 @@ import { FaHome, FaTools, FaChartLine, FaBuilding } from 'react-icons/fa'; // Im
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useNavigate } from 'react-router-dom';
 
 const services = [
   {
@@ -45,6 +45,10 @@ const services = [
 ];
 
 const ServicePage = () => {
+  const navigate = useNavigate();
+  const handleContact = () => {
+    navigate('/contact');
+  }
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
     return () => AOS.refresh(); // Ensures animations refresh if components re-render
@@ -91,8 +95,8 @@ const ServicePage = () => {
           Get in touch to learn more about our services or to start your real estate journey with us.
         </p>
         <a
-          href="/contact"
-          className="bg-[#005fa3] text-white px-6 py-3 rounded-lg shadow-md hover:bg-[#003f73] transition"
+          onClick={handleContact}
+          className="bg-[#005fa3] text-white px-6 py-3 rounded-lg shadow-md hover:bg-[#003f73] transition cursor-pointer"
         >
           Contact Us
         </a>

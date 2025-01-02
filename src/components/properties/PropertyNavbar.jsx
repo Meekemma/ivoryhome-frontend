@@ -140,8 +140,8 @@ const PropertyNavbar = () => {
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
       ) : (
         [
-          <MenuItem onClick={() => navigate('/signup')} key="signup">Sign Up</MenuItem>,
-          <MenuItem onClick={() => navigate('/login')} key="login">Log In</MenuItem>
+          <MenuItem onClick={() => navigate('/signup')} key="signup">Signup</MenuItem>,
+          <MenuItem onClick={() => navigate('/login')} key="login">Login</MenuItem>
         ]
       )}
     </Menu>
@@ -149,15 +149,15 @@ const PropertyNavbar = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}>
+      <AppBar position="static" sx={{ backgroundColor: 'black' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           
           {/* Logo */}
           <Box
             sx={{
-              height: '50px',
+              height: '60px',
               padding: '2px',
-              background: 'white', // This gives the white background to the logo container
+              background: 'white', 
               borderRadius: '10px',
               mt: 2,
               ml: 2,
@@ -171,16 +171,15 @@ const PropertyNavbar = () => {
               alt="Company Logo"
               style={{
                 maxHeight: '100%',
-                objectFit: 'contain',
-                borderRadius: '5px', // Optional: you can add a little border radius to the logo itself for a softer look
+                borderRadius: '5px',
               }}
             />
           </Box>
 
 
           {/* Search Bar */}
-          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', mx: 2 }}>
-            <Search sx={{ width: { xs: '70%', sm: '50%', md: '40%' } }}>
+          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', mx: 1 }}>
+            <Search sx={{ width: { xs: '80%', sm: '40%', md: '50%' } }}>
               <SearchIconWrapper>
                 <SearchIcon />
               </SearchIconWrapper>

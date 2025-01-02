@@ -171,7 +171,7 @@ const SubscriptionForm = ({ showPopup, closePopup }) => {
                   isLoading
                     ? "bg-blue-400 cursor-not-allowed"
                     : "bg-blue-900 hover:bg-black"
-                } text-white px-6 py-2 rounded-lg shadow-md transition-all duration-200`}
+                } text-white px-6 py-2 rounded-lg shadow-md w-full transition-all duration-200`}
                 disabled={isLoading}
               >
                 {isLoading ? (

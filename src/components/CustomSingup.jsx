@@ -124,8 +124,8 @@ const CustomSignup = () => {
 
                 {/* Signup Content */}
                 <div className="pt-5 pb-10 flex justify-center items-center">
-                    <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-                        <div className="p-5 border-2 border-[#0077c0] rounded-lg">
+                    <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
+                        <div className="p-3 rounded-lg">
                             {/* Header */}
                             <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">Create an Account</h2>
                             <p className="text-center text-gray-600 mb-6">
