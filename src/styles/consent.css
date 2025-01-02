@@ -1,52 +1,67 @@
+/* Prevent horizontal scrolling */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Cookie consent banner styling */
 .cookie-consent-banner {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #202020;
-    color: #fff;
-    padding: 15px;
-    text-align: center;
-    z-index: 1000;
-    font-size: 14px;
-    overflow-x: hidden;
-  }
-  
-  .cookie-consent-banner a {
-    color: #4caf50;
-    text-decoration: underline;
-  }
-  
-  .cookie-consent-banner a:hover {
-    text-decoration: none;
-  }
-  
-  .cookie-consent-actions {
-    margin-top: 10px;
-  }
-  
-  .accept-button,
-  .reject-button {
-    background-color: #005fa3;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .reject-button {
-    background-color: #f32a2a;
-  }
-  
-  .accept-button:hover,
-  .reject-button:hover {
-    opacity: 0.9;
-  }
-  
-  .accept-button:focus,
-  .reject-button:focus {
-    outline: 2px solid #000;
-  }
-  
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100vw; /* Prevent overflow */
+  background-color: #202020;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  z-index: 1000;
+  font-size: 14px;
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+/* Links in the cookie banner */
+.cookie-consent-banner a {
+  color: #4caf50;
+  text-decoration: underline;
+}
+
+.cookie-consent-banner a:hover {
+  text-decoration: none;
+}
+
+/* Actions in the cookie banner */
+.cookie-consent-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Add spacing between buttons */
+}
+
+/* Buttons in the cookie banner */
+.accept-button,
+.reject-button {
+  background-color: #005fa3;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0; /* Remove extra margins */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.reject-button {
+  background-color: #f32a2a;
+}
+
+.accept-button:hover,
+.reject-button:hover {
+  opacity: 0.9;
+}
+
+.accept-button:focus,
+.reject-button:focus {
+  outline: 2px solid #000;
+}

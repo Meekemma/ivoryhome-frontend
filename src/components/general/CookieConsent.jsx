@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { useCookies} from "react-cookie";
 import '../../styles/consent.css';
-import '../../styles/main.css';
 
 const CookieConsent = () => {
   const navigate = useNavigate();
@@ -48,7 +47,7 @@ const CookieConsent = () => {
 
   return (
     <div className="cookie-consent-banner">
-      <p className="text-left">
+      <p >
         We use cookies to enhance your browsing experience, provide personalized
         content, and analyze site traffic. By clicking 'Accept', you consent to
         our use of cookies. You can manage your preferences or reject cookies
