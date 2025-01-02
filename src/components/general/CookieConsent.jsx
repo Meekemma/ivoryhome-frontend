@@ -34,7 +34,7 @@ const CookieConsent = () => {
       path: "/",
       maxAge: THIRTY_DAYS_IN_SECONDS,
     });
-    alert("You have rejected cookies. Optional features are disabled.");
+    toast.success("You have rejected cookies. Optional features are disabled.");
   };
 
   // Hide banner if consent exists or on specific routes
