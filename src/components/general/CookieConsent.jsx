@@ -52,11 +52,11 @@ const CookieConsent = () => {
         content, and analyze site traffic. By clicking 'Accept', you consent to
         our use of cookies. You can manage your preferences or reject cookies
         at any time. For more details, please refer to our{" "}
-        <a className="text-red-500" onClick={() => ("/Privacy_&_Policy")}>
+        <a className="text-red-500 cursor-pointer" onClick={() => navigate("/Privacy_&_Policy")}>
           Privacy Policy
         </a>{" "}
         and{" "}
-        <a className="text-red-500" onClick={() => navigate("/Cookie_policy")}>
+        <a className="text-red-500 cursor-pointer" onClick={() => navigate("/Cookie_policy")}>
           Cookie Policy
         </a>.
       </p>
