@@ -31,8 +31,11 @@ function Navbar() {
   const [avatar, setAvatar] = useState("");
 
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
+    if (event.currentTarget) {
+      setAnchorElNav(event.currentTarget);
+    }
   };
+  
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -47,12 +50,14 @@ function Navbar() {
   };
 
   const handleOpenEstateMenu = (event) => {
+    handleCloseNavMenu(); 
     setAnchorElEstate(event.currentTarget);
   };
-
+  
   const handleCloseEstateMenu = () => {
     setAnchorElEstate(null);
   };
+  
 
   const handlePageClick = (page) => {
     setAnchorElNav(null);

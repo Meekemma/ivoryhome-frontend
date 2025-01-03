@@ -62,7 +62,7 @@ const ServicePage = () => {
           Our Services
         </h1>
         <p className="text-gray-700 text-lg sm:text-xl">
-          At Ivory Home Limited, we provide a wide range of real estate services designed to meet your every need.
+          At Ivory Homes Limited, we provide a wide range of real estate services designed to meet your every need.
         </p>
       </section>
 

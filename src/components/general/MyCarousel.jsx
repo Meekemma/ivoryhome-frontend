@@ -40,10 +40,6 @@ const MyCarousel = () => {
     },
   ];
 
-
-  // Duplicate slides to create a loop effect
-  const duplicatedSlides = [...slides, ...slides];
-
   // Handle navigation to the booking page
   const handleOnClick = () => {
     navigate('/booking');
@@ -52,7 +48,7 @@ const MyCarousel = () => {
   // Preload images
   useEffect(() => {
     const preloadImages = () => {
-      const imagePromises = duplicatedSlides.map((slide) => {
+      const imagePromises = slides.map((slide) => {
         return new Promise((resolve) => {
           const img = new Image();
           img.src = slide.src;
@@ -66,7 +62,7 @@ const MyCarousel = () => {
     };
 
     preloadImages();
-  }, [duplicatedSlides]);
+  }, [slides]);
 
   return (
     <div className="carousel-container">
@@ -80,9 +76,9 @@ const MyCarousel = () => {
           interval={5000}
           transitionTime={500}
           className="custom-carousel"
-          swipeable={!isMobile} 
+          swipeable={!isMobile}
         >
-          {duplicatedSlides.map((slide, index) => (
+          {slides.map((slide, index) => (
             <div key={index} className="carousel-slide">
               <img
                 src={slide.src}
@@ -92,7 +88,6 @@ const MyCarousel = () => {
               />
               <div className="overlay">
                 <div className="text-content">
-                  
                   <h2>{slide.title}</h2>
                   <p className='text-5xl'>{slide.description}</p>
                   <button className="booking-button" onClick={handleOnClick}>

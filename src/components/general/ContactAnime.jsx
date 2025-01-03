@@ -51,7 +51,7 @@ const ContactAnime = () => {
     try {
       const res = await axios.post(`${BASE_URL}/booking/inquiries/`, formData);
       if (res.status === 201) {
-        toast.success("Success! We've received your message!");
+        toast.success("Contact form has been submitted");
         setFormData({ name: "", email: "", message: "" });
       }
     } catch (error) {

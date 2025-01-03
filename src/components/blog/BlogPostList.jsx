@@ -188,7 +188,7 @@ const BlogPostList = () => {
 
             <BlogPagination
               count={totalPages}
-              currentPage={currentPage} // Pass currentPage state
+              currentPage={currentPage} 
               onPageChange={handlePageChange}
             />
           </div>
