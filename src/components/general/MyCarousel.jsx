@@ -68,7 +68,7 @@ const MyCarousel = () => {
     <div className="carousel-container">
       {!isLoading && (
         <Carousel
-          infiniteLoop
+        infiniteLoop={false}
           autoPlay
           showThumbs={false}
           showIndicators={false}
@@ -109,3 +109,5 @@ const MyCarousel = () => {
 };
 
 export default MyCarousel;
+
+

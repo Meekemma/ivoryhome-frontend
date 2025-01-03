@@ -1,7 +1,7 @@
 export const uploadImageToCloudinary = async (file) => {
     const formData = new FormData();
     formData.append("file", file); // The file to upload
-    formData.append("upload_preset", "frontend_uploads"); // Replace with your preset name
+    formData.append("upload_preset", "frontend_uploads"); 
   
     try {
       const response = await fetch(`https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`, {
@@ -18,4 +18,3 @@ export const uploadImageToCloudinary = async (file) => {
       console.error("Error uploading image:", error);
     }
   };
-  
