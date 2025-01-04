@@ -27,7 +27,7 @@ const useAxios = () => {
 
   // Function to handle user logout
   const logoutUser = () => {
-    console.log("Logging out user and clearing cookies...");
+    
     removeCookie("user", { path: "/" });
     removeCookie("access_token", { path: "/" });
     removeCookie("refresh_token", { path: "/" });
@@ -39,12 +39,12 @@ const useAxios = () => {
   // Interceptor to refresh token if access token is expired
   axiosInstance.interceptors.request.use(
     async (req) => {
-      console.log("Intercepting request...");
+      
       const access_token = cookies.access_token ? cookies.access_token.replace(/"/g, "") : null;
       const refresh_token = cookies.refresh_token ? cookies.refresh_token.replace(/"/g, "") : null;
 
       if (access_token) {
-        console.log("Access token found, decoding...");
+        
         const user = jwtDecode(access_token);
         const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
 
@@ -57,14 +57,14 @@ const useAxios = () => {
       }
 
       if (refresh_token) {
-        console.log("Refresh token found, attempting to refresh access token...");
+        
         try {
           const response = await axios.post(`${BASE_URL}base/token/refresh/`, {
             refresh: refresh_token,
           });
 
           if (response.status === 200) {
-            console.log("Access token refreshed successfully.");
+            
             const newAccessToken = response.data.access;
 
             // Update the cookies with the new access token
@@ -82,7 +82,7 @@ const useAxios = () => {
           logoutUser();
         }
       } else {
-        console.log("No refresh token found. Logging out user.");
+        
         logoutUser();
       }
 
