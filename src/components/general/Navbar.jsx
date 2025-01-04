@@ -18,7 +18,7 @@ import { useCookies } from 'react-cookie';
 import AuthContext from '../../context/AuthContext';
 
 const pages = ['Home', 'About', 'Service', 'Properties', 'Estate', 'Blog', 'Contact'];
-const estateDropdown = ['Royal Dynasty Estate', 'Indiobi Estate',  'Owerri Estate'];
+const estateDropdown = ['Royal Dynasty Estate', 'Indiobi Estate', 'Owerri Estate'];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -27,15 +27,12 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, logOutUser } = useContext(AuthContext);
-  const [cookies] = useCookies(["access_token", "user", "user_id"]);
-  const [avatar, setAvatar] = useState("");
+  const [cookies] = useCookies(['access_token', 'user', 'user_id']);
+  const [avatar, setAvatar] = useState('');
 
   const handleOpenNavMenu = (event) => {
-    if (event.currentTarget) {
-      setAnchorElNav(event.currentTarget);
-    }
+    setAnchorElNav(event.currentTarget);
   };
-  
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -50,14 +47,12 @@ function Navbar() {
   };
 
   const handleOpenEstateMenu = (event) => {
-    handleCloseNavMenu(); 
     setAnchorElEstate(event.currentTarget);
   };
-  
+
   const handleCloseEstateMenu = () => {
     setAnchorElEstate(null);
   };
-  
 
   const handlePageClick = (page) => {
     setAnchorElNav(null);
@@ -91,9 +86,9 @@ function Navbar() {
     if (cookies.user) {
       if (cookies.user.names) {
         const initials = cookies.user.names
-          .split(" ")
+          .split(' ')
           .map((name) => name[0])
-          .join("")
+          .join('')
           .toUpperCase();
         setAvatar(initials);
       } else if (cookies.user.firstName && cookies.user.lastName) {
@@ -101,19 +96,15 @@ function Navbar() {
           `${cookies.user.firstName[0].toUpperCase()}${cookies.user.lastName[0].toUpperCase()}`
         );
       } else {
-        setAvatar("G");
+        setAvatar('G');
       }
     }
   }, [cookies]);
 
   return (
-    <AppBar
-      position="relative"
-      sx={{ backgroundColor: 'black' }}
-    >
+    <AppBar position="relative" sx={{ backgroundColor: 'black' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* Logo */}
           <Box
             component="img"
             src={logo}
@@ -130,7 +121,6 @@ function Navbar() {
             }}
           />
 
-          {/* Mobile and Small Screens */}
           <Box
             sx={{
               flexGrow: 1,
@@ -178,7 +168,10 @@ function Navbar() {
               {pages.map((page) => (
                 page === 'Estate' ? (
                   <Box key={page}>
-                    <MenuItem onClick={handleOpenEstateMenu} sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <MenuItem
+                      onClick={(event) => handleOpenEstateMenu(event)}
+                      sx={{ display: 'flex', justifyContent: 'space-between' }}
+                    >
                       <Typography textAlign="center">{page}</Typography>
                       <ArrowDropDownIcon />
                     </MenuItem>
@@ -216,7 +209,7 @@ function Navbar() {
                   </MenuItem>
                 )
               ))}
-              
+
               {!isAuthenticated ? (
                 <>
                   <MenuItem onClick={() => { handleCloseNavMenu(); navigate('/login'); }}>
@@ -232,12 +225,8 @@ function Navbar() {
                 </MenuItem>
               )}
             </Menu>
-
-
-
           </Box>
 
-          {/* Desktop Menu */}
           <Box
             sx={{
               flexGrow: 1,
@@ -291,81 +280,77 @@ function Navbar() {
             ))}
           </Box>
 
-          {/* Authentication Links */}
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
-  {!isAuthenticated ? (
-    <>
-      <Button
-        onClick={() => navigate('/login')}
-        sx={{
-          mx: 1,
-          my: 2,
-          color: 'white',
-          textTransform: 'capitalize',
-          border: '2px solid white',
-          borderRadius: '15px',
-          ':hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
-          display: { xs: 'none', md: 'inline-flex' },
-        }}
-      >
-        Login
-      </Button>
-      <Button
-        onClick={() => navigate('/signup')}
-        sx={{
-          mx: 1,
-          my: 2,
-          color: 'white',
-          textTransform: 'capitalize',
-          border: '2px solid white',
-          borderRadius: '15px',
-          ':hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
-          display: { xs: 'none', md: 'inline-flex' },
-        }}
-      >
-        Signup
-      </Button>
-    </>
-  ) : (
-    <>
-      <Tooltip title="Open settings">
-        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <Avatar alt={cookies.user?.names || 'User'} sx={{ background: '#000', color: '#fff' }}>
-            {avatar}
-          </Avatar>
-        </IconButton>
-      </Tooltip>
-      <Menu
-        sx={{ mt: '45px' }}
-        id="menu-appbar"
-        anchorEl={anchorElUser}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        keepMounted
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        open={Boolean(anchorElUser)}
-        onClose={handleCloseUserMenu}
-      >
-        <MenuItem onClick={handleCloseUserMenu}>
-          <Typography onClick={() => navigate(`/profile/${userId}`)} textAlign="center" sx={{ textTransform: 'capitalize' }}>
-            Profile
-          </Typography>
-        </MenuItem>
-        <MenuItem onClick={handleLogout}>
-          <Typography textAlign="center" sx={{ textTransform: 'capitalize' }}>
-            Logout
-          </Typography>
-        </MenuItem>
-      </Menu>
-    </>
-  )}
-</Box>
-
+            {!isAuthenticated ? (
+              <>
+                <Button
+                  onClick={() => navigate('/login')}
+                  sx={{
+                    mx: 1,
+                    my: 2,
+                    color: 'white',
+                    textTransform: 'capitalize',
+                    border: '2px solid white',
+                    borderRadius: '15px',
+                    ':hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
+                  }}
+                >
+                  Login
+                </Button>
+                <Button
+                  onClick={() => navigate('/signup')}
+                  sx={{
+                    mx: 1,
+                    my: 2,
+                    color: 'white',
+                    textTransform: 'capitalize',
+                    border: '2px solid white',
+                    borderRadius: '15px',
+                    ':hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
+                  }}
+                >
+                  Signup
+                </Button>
+              </>
+            ) : (
+              <>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt={cookies.user?.names || 'User'} sx={{ background: '#000', color: '#fff' }}>
+                      {avatar}
+                    </Avatar>
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography onClick={() => navigate(`/profile/${userId}`)} textAlign="center" sx={{ textTransform: 'capitalize' }}>
+                      Profile
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleLogout}>
+                    <Typography textAlign="center" sx={{ textTransform: 'capitalize' }}>
+                      Logout
+                    </Typography>
+                  </MenuItem>
+                </Menu>
+              </>
+            )}
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

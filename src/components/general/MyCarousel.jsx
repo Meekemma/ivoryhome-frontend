@@ -6,7 +6,7 @@ import carousel from '../../assets/images/carousel.jpg';
 import home from '../../assets/images/home.jpg';
 import homesale from '../../assets/images/homesale.jpg';
 import '../../styles/carousel.css';
-import Spinner from "../blog/Spinner";
+import Spinner from '../blog/Spinner';
 
 const MyCarousel = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -40,12 +40,13 @@ const MyCarousel = () => {
     },
   ];
 
-  // Handle navigation to the booking page
+  // Duplicate slides to avoid Swiper warning
+  const duplicatedSlides = [...slides, ...slides];
+
   const handleOnClick = () => {
     navigate('/booking');
   };
 
-  // Preload images
   useEffect(() => {
     const preloadImages = () => {
       const imagePromises = slides.map((slide) => {
@@ -68,7 +69,7 @@ const MyCarousel = () => {
     <div className="carousel-container">
       {!isLoading && (
         <Carousel
-        infiniteLoop={false}
+          infiniteLoop={true} // Ensures the loop works
           autoPlay
           showThumbs={false}
           showIndicators={false}
@@ -78,7 +79,7 @@ const MyCarousel = () => {
           className="custom-carousel"
           swipeable={!isMobile}
         >
-          {slides.map((slide, index) => (
+          {duplicatedSlides.map((slide, index) => (
             <div key={index} className="carousel-slide">
               <img
                 src={slide.src}
@@ -89,7 +90,7 @@ const MyCarousel = () => {
               <div className="overlay">
                 <div className="text-content">
                   <h2>{slide.title}</h2>
-                  <p className='text-5xl'>{slide.description}</p>
+                  <p className="text-5xl">{slide.description}</p>
                   <button className="booking-button" onClick={handleOnClick}>
                     {slide.buttonText}
                   </button>
@@ -109,5 +110,3 @@ const MyCarousel = () => {
 };
 
 export default MyCarousel;
-
-
