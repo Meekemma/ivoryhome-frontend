@@ -41,10 +41,10 @@ const AboutUsDetailed = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center" data-aos="fade-up">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-[#005fa3] mb-6 leading-tight">
-                About Ivory Home Limited
+                About Ivory Homes Limited
               </h2>
               <p className="text-gray-700 text-base sm:text-lg mb-4">
-                Welcome to <span className="font-bold">Ivory Home Limited</span>, your trusted partner in real estate. Whether
+                Welcome to <span className="font-bold">Ivory Homes Limited</span>, your trusted partner in real estate. Whether
                 you’re buying, selling, or renting, we strive to simplify the property market with confidence and ease.
               </p>
               <p className="text-gray-700 text-base sm:text-lg mb-4">
@@ -52,7 +52,7 @@ const AboutUsDetailed = () => {
                 finding your dream home or securing your next investment.
               </p>
               <p className="text-gray-700 text-base sm:text-lg mb-4">
-                At Ivory Home Limited, we take pride in our personalized approach to real estate. With a dedicated team of
+                At Ivory Home Limited, We take pride in our personalised approach to Real Estate business. With a dedicated team of
                 experts, we ensure every client's needs are understood and fulfilled. Our deep understanding of the market,
                 combined with our innovative strategies, has helped us bridge the gap between clients and their ideal properties.
               </p>
