@@ -115,7 +115,7 @@ function Navbar() {
               background: 'white',
               borderRadius: '10px',
               mt: 2,
-              ml: 2,
+            
               mb: 1,
               display: { xs: 'flex', md: 'flex' },
             }}
