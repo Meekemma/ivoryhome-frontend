@@ -28,7 +28,7 @@ const AboutUsDetailed = () => {
       <div className="container mx-auto py-12 px-6 bg-[#FFF5EE]">
         {/* Meta Tags for SEO */}
         <Helmet>
-          <title>About Ivory Home Limited | Transparent Real Estate Solutions</title>
+          <title>About Ivory Homes Limited | Transparent Real Estate Solutions</title>
           <meta
             name="description"
             content="Learn about Ivory Home Limited, your trusted real estate partner offering transparent solutions for buying, selling, and renting properties. Discover our mission, vision, and core values."
@@ -38,7 +38,7 @@ const AboutUsDetailed = () => {
 
         {/* Introduction Section */}
         <section className="mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center" data-aos="fade-up">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start" data-aos="fade-up">
             <div>
               <h2 className="text-4xl sm:text-5xl font-bold text-[#005fa3] mb-6 leading-tight">
                 About Ivory Homes Limited

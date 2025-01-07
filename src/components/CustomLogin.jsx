@@ -38,7 +38,7 @@ const CustomLogin = () => {
 
   return (
     <>
-      <div className="container px-4 min-h-screen bg-gradient-to-b from-gray-100 to-gray-200">
+      <div className="container px-4 min-h-screen">
         {/* Fixed Logo Navbar */}
         <div className="top-0 left-0 w-full z-50">
           <div className="container mx-auto py-4">
