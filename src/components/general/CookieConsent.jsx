@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
 import { useCookies} from "react-cookie";
 import '../../styles/consent.css';
 
@@ -17,7 +16,7 @@ const CookieConsent = () => {
       // Initialize analytics or other cookie-dependent features
     } else if (cookies.CookieConsent === "rejected") {
       
-      // Disable analytics or other features
+      
     }
   }, [cookies]);
 
@@ -26,7 +25,7 @@ const CookieConsent = () => {
       path: "/",
       maxAge: THIRTY_DAYS_IN_SECONDS,
     });
-    toast.success("Thank you! Your preferences have been saved.");
+    
   };
 
   const handleReject = () => {
@@ -34,7 +33,6 @@ const CookieConsent = () => {
       path: "/",
       maxAge: THIRTY_DAYS_IN_SECONDS,
     });
-    toast.success("You have rejected cookies. Optional features are disabled.");
   };
 
   // Hide banner if consent exists or on specific routes

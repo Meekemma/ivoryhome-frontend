@@ -46,12 +46,6 @@ const AboutUs = () => {
             className="rounded-lg shadow-lg max-w-full h-auto"
             effect="blur"
             data-aos="fade-up"
-            wrapperProps={{
-              style: { 
-                transition: "opacity 1s ease-in-out", // Smoother transitions
-                
-              },
-            }}
           />
         </div>
       </div>
