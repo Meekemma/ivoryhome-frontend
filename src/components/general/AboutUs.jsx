@@ -41,11 +41,17 @@ const AboutUs = () => {
         {/* Right Image */}
         <div className="flex justify-center">
           <LazyLoadImage
-            src={kindelmedia} // Replace with your image path
+            src={kindelmedia} 
             alt="Modern Home"
             className="rounded-lg shadow-lg max-w-full h-auto"
             effect="blur"
             data-aos="fade-up"
+            wrapperProps={{
+              style: { 
+                transition: "opacity 1s ease-in-out", 
+                
+              },
+            }}
           />
         </div>
       </div>
