@@ -12,7 +12,7 @@ import Spinner from "./blog/Spinner";
 import AuthContext from "../context/AuthContext";
 
 const CustomSignup = () => {
-    const BASE_URL = import.meta.env.VITE_BASE_URL;
+    const BASE_URL = window.env.VITE_BASE_URL;
     const { loginWithGoogle } = useContext(AuthContext);
     const [cookies, setCookie, removeCookie] = useCookies(['email', 'access_token']); 
     const [showPassword, setShowPassword] = useState(false);

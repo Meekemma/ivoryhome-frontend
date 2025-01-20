@@ -5,7 +5,7 @@ import Spinner from "../blog/Spinner";
 import axios from "axios";
 
 const BookingForm = () => {
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = window.env.VITE_BASE_URL;
   const [formData, setFormData] = useState({
     property_name: "",
     fullname: "",

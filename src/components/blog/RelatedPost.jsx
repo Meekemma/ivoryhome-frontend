@@ -9,7 +9,7 @@ const RelatedPost = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showAllPosts, setShowAllPosts] = useState(false); // State to toggle view
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = window.env.VITE_BASE_URL;
 
   useEffect(() => {
     fetchRelatedPosts();

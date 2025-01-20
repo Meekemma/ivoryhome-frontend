@@ -7,7 +7,7 @@ import "../styles/main.css";
 import Spinner from "./blog/Spinner";
 
 const CustomResetPasswordConfirm = () => {
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = window.env.VITE_BASE_URL;
 
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();

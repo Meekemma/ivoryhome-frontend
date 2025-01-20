@@ -6,7 +6,7 @@ import { FaTimes } from "react-icons/fa";
 import '../../styles/subscription.css';
 
 const SubscriptionForm = ({ showPopup, closePopup }) => {
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = window.env.VITE_BASE_URL;
   const [isLoading, setIsLoading] = useState(false);
 
   const PLOT_COST = 1200000;
