@@ -6,7 +6,7 @@ import "../styles/main.css";
 import Spinner from "./blog/Spinner";
 
 const CustomResetPassword = () => {
-  const BASE_URL = window.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({

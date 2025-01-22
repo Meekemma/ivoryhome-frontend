@@ -36,8 +36,8 @@ const BlogPostList = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   
-  const BASE_URL = "https://ivoryhomes-db77ae25a989.herokuapp.com";
-  const CLOUD_URL = "https://res.cloudinary.com/dc9pb66nk";
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
 
 
 

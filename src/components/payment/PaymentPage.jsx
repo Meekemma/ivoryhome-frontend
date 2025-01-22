@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { FiCreditCard } from "react-icons/fi";
 
 const PaymentPage = () => {
-  const BASE_URL = window.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const api = useAxios();
   const [loading, setLoading] = useState(false);
   const [cookies] = useCookies(["order_id", "total_price"]);

@@ -8,7 +8,7 @@ import useGoogleResponse from '../utils/useGoogleResponse';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const BASE_URL = window.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   const [cookies, setCookie, removeCookie] = useCookies();
   const navigate = useNavigate();
@@ -100,8 +100,8 @@ export const AuthProvider = ({ children }) => {
 
   const loginWithGoogle = () => {
     const GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
-    const BASE_API_URL = window.env.VITE_BASE_URL;
-    const GOOGLE_OAUTH_CLIENT_ID = window.env.VITE_GOOGLE_OAUTH_CLIENT_ID;
+    const BASE_API_URL = import.meta.env.VITE_BASE_URL;
+    const GOOGLE_OAUTH_CLIENT_ID = import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID;
     
     // Correctly concatenate BASE_API_URL with the endpoint
     const REDIRECT_URI = `${BASE_API_URL}/base/google-login/`;

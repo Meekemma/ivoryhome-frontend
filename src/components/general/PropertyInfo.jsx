@@ -14,8 +14,8 @@ const PropertyInfo = () => {
   const location = useLocation();
   const navigate = useNavigate(); // Initialize navigate
 
-  const BASE_URL = window.env.VITE_BASE_URL;
-  const CLOUD_URL = window.env.VITE_CLOUD_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const CLOUD_URL = import.meta.env.VITE_CLOUD_URL;
 
 
   const fetchProperties = async () => {

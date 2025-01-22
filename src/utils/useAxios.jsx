@@ -5,7 +5,7 @@ import {jwtDecode} from "jwt-decode";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 
-const BASE_URL = window.env.VITE_BASE_URL;
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 
 const useAxios = () => {

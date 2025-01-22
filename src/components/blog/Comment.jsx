@@ -17,7 +17,7 @@ const Comment = () => {
   const [error, setError] = useState(null);
   const [showAllComments, setShowAllComments] = useState(false);
   
-  const BASE_URL = window.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   const [formData, setFormData] = useState({
     body: "",

@@ -11,7 +11,7 @@ const PopularPost = () => {
   const [showAllPosts, setShowAllPosts] = useState(false); 
   const navigate = useNavigate();
   
-  const BASE_URL = window.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     fetchPopularPost();

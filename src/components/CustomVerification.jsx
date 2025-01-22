@@ -8,7 +8,7 @@ import Spinner from "./blog/Spinner";
 import { useCookies } from "react-cookie";
 
 const CustomVerification = () => {
-  const BASE_URL = window.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const [cookies] = useCookies(["email"]);
   const [codes, setCodes] = useState(Array(5).fill(""));
   const [error, setError] = useState(null);
