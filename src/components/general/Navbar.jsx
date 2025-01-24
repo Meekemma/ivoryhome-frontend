@@ -118,7 +118,9 @@ function Navbar() {
             
               mb: 1,
               display: { xs: 'flex', md: 'flex' },
+              cursor: 'pointer',
             }}
+            onClick={() => navigate('/')}
           />
 
           <Box
