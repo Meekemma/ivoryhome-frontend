@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import carousel from '../../assets/images/carousel.jpg';
 import home from '../../assets/images/home.jpg';
 import homesale from '../../assets/images/homesale.jpg';
@@ -10,7 +8,7 @@ import Spinner from '../blog/Spinner';
 
 const MyCarousel = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const isMobile = window.innerWidth <= 768;
+  const [currentSlide, setCurrentSlide] = useState(0);
   const navigate = useNavigate();
 
   const slides = [
@@ -40,13 +38,16 @@ const MyCarousel = () => {
     },
   ];
 
-  // Duplicate slides to avoid Swiper warning
-  const duplicatedSlides = [...slides, ...slides];
+  // Auto-slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000); // Change slide every 5 seconds
 
-  const handleOnClick = () => {
-    navigate('/booking');
-  };
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [slides.length]);
 
+  // Preload images
   useEffect(() => {
     const preloadImages = () => {
       const imagePromises = slides.map((slide) => {
@@ -65,42 +66,32 @@ const MyCarousel = () => {
     preloadImages();
   }, [slides]);
 
+  // Handle button click
+  const handleOnClick = () => {
+    navigate('/booking');
+  };
+
   return (
     <div className="carousel-container">
-      {!isLoading && (
-        <Carousel
-          infiniteLoop={true} // Ensures the loop works
-          autoPlay
-          showThumbs={false}
-          showIndicators={false}
-          showStatus={false}
-          interval={5000}
-          transitionTime={500}
-          className="custom-carousel"
-          swipeable={!isMobile}
-        >
-          {duplicatedSlides.map((slide, index) => (
-            <div key={index} className="carousel-slide">
-              <img
-                src={slide.src}
-                alt={`Slide ${index + 1}`}
-                className="carousel-image"
-                loading="lazy"
-              />
-              <div className="overlay">
-                <div className="text-content">
-                  <h2>{slide.title}</h2>
-                  <p className="text-5xl">{slide.description}</p>
-                  <button className="booking-button" onClick={handleOnClick}>
-                    {slide.buttonText}
-                  </button>
-                </div>
-              </div>
+      {!isLoading ? (
+        <div className="carousel-slide">
+          <img
+            src={slides[currentSlide].src}
+            alt={`Slide ${currentSlide + 1}`}
+            className="carousel-image"
+            loading="lazy"
+          />
+          <div className="overlay">
+            <div className="text-content">
+              <h2>{slides[currentSlide].title}</h2>
+              <p className="text-5xl">{slides[currentSlide].description}</p>
+              <button className="booking-button" onClick={handleOnClick}>
+                {slides[currentSlide].buttonText}
+              </button>
             </div>
-          ))}
-        </Carousel>
-      )}
-      {isLoading && (
+          </div>
+        </div>
+      ) : (
         <div className="loading-placeholder">
           <Spinner size={20} color="#fff" />
         </div>
