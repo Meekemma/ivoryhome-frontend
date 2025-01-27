@@ -172,7 +172,9 @@ const PropertyNavbar = () => {
               style={{
                 maxHeight: '100%',
                 borderRadius: '5px',
+                cursor: 'pointer',
               }}
+              onClick={() => navigate('/')}
             />
           </Box>
 
