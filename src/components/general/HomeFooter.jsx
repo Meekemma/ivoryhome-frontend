@@ -38,15 +38,19 @@ const HomeFooter = () => {
   ];
 
   const contactDetails = {
-    phone: ['+234 817 999 9961', '+234 817 999 9953'],
-    email: 'info@IvoryHomes.com',
-    address: [
-      'HFP Eastline shopping complex',
-      'Block A3 Office 471',
-      'Abraham Adesaya',
-      'Ajah, Lagos',
-      'Nigeria',
-    ],
+      phone: [
+        { number: '+234 817 999 9961', label: '' },
+        { number: '+234 817 999 9953', label: '' },
+        { number: '+234 916 064 3000', label: 'WhatsApp Only' },
+      ],
+      email: 'info@IvoryHomes.com',
+      address: [
+        'HFP Eastline shopping complex',
+        'Block A3 Office 471',
+        'Abraham Adesaya',
+        'Ajah, Lagos',
+        'Nigeria',
+      ],
   };
   
 
@@ -89,10 +93,10 @@ const HomeFooter = () => {
               {contactDetails.phone.map((line, index) => (
                 <a
                   key={index}
-                  href={`tel:${line.replace(/\s/g, '')}`}
+                  href={`tel:${line.number.replace(/\s/g, '')}`}
                   className="block "
                 >
-                  {line}
+                  {line.number} {line.label && <span className="text-sm text-gray-400">({line.label})</span>}
                 </a>
               ))}{' '}
             </p>

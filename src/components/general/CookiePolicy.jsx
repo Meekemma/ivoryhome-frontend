@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CookiePolicy = () => {
-    const contactEmail = "hr@ivoryhomesng.com";
+    const contactEmail = "info@ivoryhomesng.com";
 
     return (
         <main className="container mx-auto px-4 py-8 bg-white text-gray-800">

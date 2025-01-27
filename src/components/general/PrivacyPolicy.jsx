@@ -85,7 +85,7 @@ const PrivacyPolicy = () => {
             <hr className="border-gray-300 my-4" />
 
             <h2 className="text-2xl font-semibold text-gray-900">12. Contact Us</h2>
-            <p>If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:hr@ivoryhomesng.com" className="text-blue-700 underline">hr@ivoryhomesng.com</a>.</p>
+            <p>If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:info@ivoryhomesng.com" className="text-blue-700 underline">info@ivoryhomesng.com</a>.</p>
 
             <hr className="border-gray-300 my-4" />
 

@@ -68,7 +68,7 @@ const TermsAndConditions = () => {
             <p>Payments are facilitated through Paystack. By using these services, you agree to their respective terms and policies.</p>
 
             <h3 className="text-xl font-medium text-blue-700 mt-4">6.2 Refund Policy</h3>
-            <p>Refunds, if applicable, will be processed as per our refund policy. For refund inquiries, please contact <a href="mailto:hr@ivoryhomesng.com" className="text-blue-700 underline">hr@ivoryhomesng.com</a>.</p>
+            <p>Refunds, if applicable, will be processed as per our refund policy. For refund inquiries, please contact <a href="mailto:info@ivoryhomesng.com" className="text-blue-700 underline">info@ivoryhomesng.com</a>.</p>
 
             <hr className="border-gray-300 my-4" />
 
@@ -111,7 +111,7 @@ const TermsAndConditions = () => {
             <hr className="border-gray-300 my-4" />
 
             <h2 className="text-2xl font-semibold text-gray-900 mt-6">13. Contact Information</h2>
-            <p>For questions or concerns about these Terms, please contact us at <a href="mailto:hr@ivoryhomesng.com" className="text-blue-700 underline">hr@ivoryhomesng.com</a>.</p>
+            <p>For questions or concerns about these Terms, please contact us at <a href="mailto:info@ivoryhomesng.com" className="text-blue-700 underline">info@ivoryhomesng.com</a>.</p>
 
             <hr className="border-gray-300 my-4" />
 
