@@ -162,8 +162,8 @@ const HomeFooter = () => {
         </div>
 
         {/* Footer Bottom Section */}
-        <div className="mt-8 text-center text-sm border-t border-white/20 pt-4">
-          <p>&copy; 2024 Ivory homes Limited. All rights reserved.</p>
+        <div className="text-sm text-center mt-4 md:mt-0">
+          &copy; {new Date().getFullYear()} Ivory Homes Limited. All rights reserved.
         </div>
       </footer>
     </>
