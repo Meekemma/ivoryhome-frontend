@@ -101,7 +101,7 @@ export const AuthProvider = ({ children }) => {
   const loginWithGoogle = () => {
     const GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
     const BASE_API_URL = import.meta.env.VITE_BASE_URL;
-    const GOOGLE_OAUTH_CLIENT_ID = import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID;
+    const GOOGLE_OAUTH_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
     
     // Correctly concatenate BASE_API_URL with the endpoint
     const REDIRECT_URI = `${BASE_API_URL}/base/google-login/`;
