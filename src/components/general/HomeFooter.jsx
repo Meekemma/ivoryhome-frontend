@@ -38,21 +38,18 @@ const HomeFooter = () => {
   ];
 
   const contactDetails = {
-      phone: [
-        { number: '+234 817 999 9961', label: '' },
-        { number: '+234 817 999 9953', label: '' },
-        { number: '+234 916 064 3000', label: 'WhatsApp Only' },
-      ],
-      email: 'info@IvoryHomes.com',
-      address: [
-        'HFP Eastline shopping complex',
-        'Block A3 Office 471',
-        'Abraham Adesaya',
-        'Ajah, Lagos',
-        'Nigeria',
-      ],
+    phone: [
+      { number: '+234 916 064 3000', label: '' }
+    ],
+    email: 'info@Ivoryhomesng.com',
+    address: [
+      'HFP Eastline shopping complex',
+      'Block A3 Office 471',
+      'Abraham Adesaya',
+      'Ajah, Lagos',
+      'Nigeria',
+    ],
   };
-  
 
   const navigate = useNavigate();
 
@@ -63,12 +60,9 @@ const HomeFooter = () => {
   return (
     <>
       <footer className="mx-auto px-8 py-8 mt-10 bg-black text-gray-100">
-        
-            <NewsLetter />
-    
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        
+        <NewsLetter />
 
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-bold mb-4 text-red-700">Quick Links</h3>
@@ -94,11 +88,11 @@ const HomeFooter = () => {
                 <a
                   key={index}
                   href={`tel:${line.number.replace(/\s/g, '')}`}
-                  className="block "
+                  className="block"
                 >
-                  {line.number} {line.label && <span className="text-sm text-gray-400">({line.label})</span>}
+                  {line.number}
                 </a>
-              ))}{' '}
+              ))}
             </p>
             <p className="text-base">
               Email:{' '}

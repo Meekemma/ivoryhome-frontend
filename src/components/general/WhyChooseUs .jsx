@@ -30,10 +30,8 @@ const reasons = [
 ];
 
 const WhyChooseUs = () => {
-  // Initialize AOS
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
-    return () => AOS.refresh();
   }, []);
 
   return (
@@ -52,27 +50,28 @@ const WhyChooseUs = () => {
 
         {/* Swiper on small screens */}
         <div className="block sm:hidden" data-aos="fade-up" data-aos-delay="200">
-          <Swiper
-            modules={[Pagination, Autoplay]}
-            spaceBetween={16}
-            slidesPerView={1}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            loop={true}
-            className="swiper-container"
-          >
-            {reasons.map((reason, index) => (
-              <SwiperSlide key={index}>
-                <div className="flex flex-col items-center text-center p-6 border-2 border-[#005fa3] rounded-lg shadow-lg bg-white transform transition-transform duration-300">
-                  <div className="flex items-center justify-center mb-4 px-0">
-                    {reason.icon}
-                    <h3 className="text-xl font-bold text-[#005fa3]">{reason.title}</h3>
-                  </div>
-                  <p className="text-sm text-gray-700 mt-2">{reason.description}</p>
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          spaceBetween={16}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          loop={reasons.length > 2}
+          className="swiper-container"
+        >
+          {reasons.map((reason, index) => (
+            <SwiperSlide key={index}>
+              <div className="flex flex-col items-center text-center p-6 border-2 border-[#005fa3] rounded-lg shadow-lg bg-white transform transition-transform duration-300">
+                <div className="flex items-center justify-center mb-4 px-0">
+                  {reason.icon}
+                  <h3 className="text-xl font-bold text-[#005fa3]">{reason.title}</h3>
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                <p className="text-sm text-gray-700 mt-2">{reason.description}</p>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
         </div>
 
         {/* Grid on larger screens */}
