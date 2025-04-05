@@ -18,7 +18,7 @@ const HomeFooter = () => {
     tiktok: 'https://www.tiktok.com',
     linkedin: 'https://www.linkedin.com',
     whatsapp: 'https://wa.me/+2349076309004',
-    twitter: 'https://wa.me/+2349076309004',
+    twitter: 'https://twitter.com/your_handle',
   };
 
   const quickLinks = [
@@ -38,9 +38,7 @@ const HomeFooter = () => {
   ];
 
   const contactDetails = {
-    phone: [
-      { number: '+234 916 064 3000', label: '' }
-    ],
+    Tel : '+234 916 064 3000',
     email: 'info@Ivoryhomesng.com',
     address: [
       'HFP Eastline shopping complex',
@@ -83,16 +81,13 @@ const HomeFooter = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 text-red-700">Contact Us</h3>
             <p className="text-base">
-              Phone:{' '}
-              {contactDetails.phone.map((line, index) => (
-                <a
-                  key={index}
-                  href={`tel:${line.number.replace(/\s/g, '')}`}
-                  className="block"
-                >
-                  {line.number}
-                </a>
-              ))}
+              Tel:{' '}
+              <a
+                href={`tel:${contactDetails.Tel.replace(/\s/g, '')}`}
+                className="block underline"
+              >
+                {contactDetails.Tel}
+              </a>
             </p>
             <p className="text-base">
               Email:{' '}
