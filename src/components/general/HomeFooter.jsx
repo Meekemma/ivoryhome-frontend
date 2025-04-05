@@ -80,11 +80,11 @@ const HomeFooter = () => {
           {/* Contact Information */}
           <div>
             <h3 className="text-lg font-bold mb-4 text-red-700">Contact Us</h3>
-            <p className="text-base">
-              Tel:{' '}
+            <p className="text-base flex items-center">
+              <span className="mr-2">Tel:</span>
               <a
                 href={`tel:${contactDetails.Tel.replace(/\s/g, '')}`}
-                className="block underline"
+                className="underline"
               >
                 {contactDetails.Tel}
               </a>
