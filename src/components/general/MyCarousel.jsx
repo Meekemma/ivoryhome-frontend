@@ -82,7 +82,7 @@ const MyCarousel = () => {
             loading="lazy"
           />
           <div className="overlay">
-            <div style={{ position: 'absolute', top: '10px', left: '10px', color: 'white' }}>
+            <div style={{ position: 'absolute', top: '10px', left: '10px', color: 'white', fontWeight: 'bold' }}>
               Rc. 1748963
             </div>
             <div className="text-content">
