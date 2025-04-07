@@ -82,6 +82,9 @@ const MyCarousel = () => {
             loading="lazy"
           />
           <div className="overlay">
+            <div style={{ position: 'absolute', top: '10px', left: '10px', color: 'white' }}>
+              Rc. 1748963
+            </div>
             <div className="text-content">
               <h2>{slides[currentSlide].title}</h2>
               <p className="text-5xl">{slides[currentSlide].description}</p>
