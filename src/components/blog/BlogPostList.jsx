@@ -219,12 +219,12 @@ const BlogPostList = () => {
               </Swiper>
             ) : (
               <>
-                <img src={event} alt="Wayforward" className="w-full rounded-lg mb-6" />
-                <img src={event_tip} alt="Wayforward" className="w-full rounded-lg mb-6" />
                 <img src={emotion} alt="Wayforward" className="w-full rounded-lg mb-6" />
                 <img src={epe} alt="Wayforward" className="w-full rounded-lg mb-6" />
                 <img src={epke} alt="Wayforward" className="w-full rounded-lg mb-6" />
                 <img src={even} alt="Wayforward" className="w-full rounded-lg mb-6" />
+                <img src={event} alt="Wayforward" className="w-full rounded-lg mb-6" />
+                <img src={event_tip} alt="Wayforward" className="w-full rounded-lg mb-6" />
               </>
             )}
           </aside>
