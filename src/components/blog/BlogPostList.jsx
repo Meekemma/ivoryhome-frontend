@@ -17,7 +17,10 @@ import { Helmet } from 'react-helmet-async';
 import { useSearch } from '../../context/SearchContext';
 import event from '../../assets/images/event.jpeg';
 import event_tip from '../../assets/images/even_tip.jpeg';
-import event_clock from '../../assets/images/event_clock.jpeg';
+import emotion from '../../assets/images/emotion.jpeg';
+import epe from '../../assets/images/epe.jpeg';
+import epke from '../../assets/images/epke.jpeg';
+import even from '../../assets/images/even.jpeg';
 
 const BlogPostList = () => {
   const { searchQuery } = useSearch();
@@ -218,7 +221,10 @@ const BlogPostList = () => {
               <>
                 <img src={event} alt="Wayforward" className="w-full rounded-lg mb-6" />
                 <img src={event_tip} alt="Wayforward" className="w-full rounded-lg mb-6" />
-                <img src={event_clock} alt="Wayforward" className="w-full rounded-lg mb-6" />
+                <img src={emotion} alt="Wayforward" className="w-full rounded-lg mb-6" />
+                <img src={epe} alt="Wayforward" className="w-full rounded-lg mb-6" />
+                <img src={epke} alt="Wayforward" className="w-full rounded-lg mb-6" />
+                <img src={even} alt="Wayforward" className="w-full rounded-lg mb-6" />
               </>
             )}
           </aside>
