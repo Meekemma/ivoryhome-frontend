@@ -3,6 +3,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import outreach from '../../assets/images/outreach.jpeg';
+import outreach_one from '../../assets/images/outreach_four.jpeg';
+import outreach_two from '../../assets/images/outreach_two.jpeg';
+import outreach_three from '../../assets/images/outreach_three.jpeg';
 import royal from '../../assets/images/royal.jpg';
 import royal_one from '../../assets/images/royal_one.jpg';
 import royal_two from '../../assets/images/royal_two.jpg';
@@ -14,6 +18,10 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const royals = [
+  { image: outreach },
+  { image: outreach_two },
+  { image : outreach_three },
+  { image: outreach_one },
   { image: royal },
   { image: royal_one },
   { image: royal_two },
