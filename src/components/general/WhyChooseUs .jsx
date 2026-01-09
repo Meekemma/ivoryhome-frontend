@@ -56,7 +56,7 @@ const WhyChooseUs = () => {
           slidesPerView={1}
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
-          loop={reasons.length > 2}
+          loop={false}
           className="swiper-container"
         >
           {reasons.map((reason, index) => (

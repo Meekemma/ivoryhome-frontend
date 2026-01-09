@@ -17,7 +17,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import AuthContext from '../../context/AuthContext';
 
-const pages = ['Home', 'About', 'Service', 'Properties', 'Estate', 'Blog', 'Contact'];
+const pages = ['Home', 'About', 'Service', 'Properties', 'Estate', 'Gallery', 'Blog', 'Contact'];
 const estateDropdown = ['Royal Dynasty Estate', 'Indiobi Estate', 'Owerri Estate'];
 
 function Navbar() {
