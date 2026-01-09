@@ -16,7 +16,7 @@ const HomeFooter = () => {
     facebook: 'https://www.facebook.com/share/1DWkcqtLsr/',
     instagram: 'https://www.instagram.com/ivoryhomesproperties?igsh=MXV0Mzk3c2RjbWJweA==',
     tiktok: 'https://www.tiktok.com/@ivory.homes.ltd?_r=1&_t=ZS-92vOCzhsrr6',
-    whatsapp: 'https://wa.me/+2349076309004',
+    whatsapp: 'https://wa.me/2348136302112',
   };
 
   const quickLinks = [
