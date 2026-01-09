@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import carousel from '../../assets/images/carousel.jpg';
 import home from '../../assets/images/home.jpg';
 import homesale from '../../assets/images/homesale.jpg';
+import gallery_two from '../../assets/images/gallery_two.jpg';
+import gallery_five from '../../assets/images/gallery_five.jpg';
 import '../../styles/carousel.css';
 import Spinner from '../blog/Spinner';
 
@@ -34,6 +36,22 @@ const MyCarousel = () => {
       title: 'Own Your Future Home',
       description:
         'Browse exquisite properties to find the perfect match for your lifestyle. Start your journey today!',
+      buttonText: 'Book Inspection',
+    },
+    {
+      id: 4,
+      src: gallery_two,
+      title: 'Quality Living Spaces',
+      description:
+        'Experience excellence in real estate with our premium properties. Book your inspection now!',
+      buttonText: 'Book Inspection',
+    },
+    {
+      id: 5,
+      src: gallery_five,
+      title: 'Your Perfect Property Awaits',
+      description:
+        'Discover stunning properties designed for modern living. Schedule a viewing today!',
       buttonText: 'Book Inspection',
     },
   ];
