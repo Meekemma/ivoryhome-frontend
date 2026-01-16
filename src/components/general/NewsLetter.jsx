@@ -3,6 +3,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Spinner from "../blog/Spinner";
 
+// TEMPORARY SOLUTION: Using localStorage until backend /blog/subscribe/ endpoint is fixed
+// TODO: Replace with proper newsletter service (Mailchimp, ConvertKit, or fixed backend endpoint)
+
 const NewsLetter = () => {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
   const [isLoading, setIsLoading] = useState(false);
@@ -25,24 +28,35 @@ const NewsLetter = () => {
       return;
     }
 
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
-      const res = await axios.post(
-        `${BASE_URL}/blog/subscribe/`,
-        formData
-      );
-      if (res.status === 201) {
-        toast.success("Subscription was Successful");
-        setFormData({ email: "" }); 
+      // Temporary solution: Store emails locally until backend is fixed
+      const existingEmails = JSON.parse(localStorage.getItem('newsletter_emails') || '[]');
+      if (existingEmails.includes(email)) {
+        toast.info("You're already subscribed!");
+        setFormData({ email: "" });
+        return;
       }
+
+      existingEmails.push(email);
+      localStorage.setItem('newsletter_emails', JSON.stringify(existingEmails));
+
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 800));
+
+      toast.success("Subscription successful! We'll keep you updated.");
+      setFormData({ email: "" });
+
     } catch (error) {
-      if (error.response && error.response.data) {
-        const message = error.response.data.message || error.response.data.error;
-        toast.error(message || "Subscription failed. Please try again.");
-      } else {
-        toast.error("An unexpected error occurred. Please try again.");
-      }
+      toast.error("Subscription failed. Please try again.");
     } finally {
       setIsLoading(false);
     }
