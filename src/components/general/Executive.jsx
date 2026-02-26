@@ -27,12 +27,12 @@ const executives = [
     description: 'Micheal drives our marketing strategies, fostering relationships and expanding our brand reach in the real estate market.',
     image: mic,
   },
-  {
-    name: 'Mr. Nobert Emeka Osakwe',
-    position: 'Project Manager',
-    description: 'With a keen eye for detail, Nobert oversees projects to ensure timely delivery and high-quality outcomes.',
-    image: nobert,
-  },
+  // {
+  //   name: 'Mr. Nobert Emeka Osakwe',
+  //   position: 'Project Manager',
+  //   description: 'With a keen eye for detail, Nobert oversees projects to ensure timely delivery and high-quality outcomes.',
+  //   image: nobert,
+  // },
 ];
 
 const Executive = () => {
@@ -61,40 +61,41 @@ const Executive = () => {
 
 
       <div className="container mx-auto py-12 px-6 bg-[#FFF5EE]" data-aos="fade-up" data-aos-delay="100">
-        <h2 className="text-4xl sm:text-5xl font-bold text-[#005fa3] mb-8 text-center">
+        <h2 className="text-4xl sm:text-5xl font-bold text-[#005fa3] mb-12 text-center">
           Meet Our Executives
         </h2>
-        <Swiper
-          modules={[Autoplay, Pagination]}
-          spaceBetween={30}
-          slidesPerView={1}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          className="swiper-container"
-        >
-          {executives.map((executive, index) => (
-            <SwiperSlide key={index}>
-              <div className="flex flex-col items-center text-center p-6 border-2 bg-[#005fa3] border-zinc-50 rounded-lg shadow-lg " data-aos="fade-up" data-aos-delay="100">
-                <LazyLoadImage
-                  src={executive.image}
-                  alt={executive.name}
-                  className="w-24 h-24 rounded-full mb-4 object-cover"
-                  effect="blur"
-
-                  
-                />
-                <h3 className="text-xl font-bold text-[#fff]">{executive.name}</h3>
-                <p className="text-sm text-red-200 font-semibold">{executive.position}</p>
-                <p className="text-sm text-gray-100 mt-2">{executive.description}</p>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <div className="max-w-5xl mx-auto">
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            spaceBetween={40}
+            slidesPerView={1}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
+            centeredSlides={true}
+            breakpoints={{
+              640: { slidesPerView: 1, spaceBetween: 30 },
+              768: { slidesPerView: 2, spaceBetween: 40, centeredSlides: false },
+              1024: { slidesPerView: 2, spaceBetween: 50, centeredSlides: false },
+            }}
+            className="swiper-container pb-12"
+          >
+            {executives.map((executive, index) => (
+              <SwiperSlide key={index}>
+                <div className="flex flex-col items-center text-center p-8 border-2 bg-[#005fa3] border-zinc-50 rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 h-full" data-aos="fade-up" data-aos-delay={index * 100}>
+                  <LazyLoadImage
+                    src={executive.image}
+                    alt={executive.name}
+                    className="w-32 h-32 rounded-full mb-6 object-cover border-4 border-white shadow-lg"
+                    effect="blur"
+                  />
+                  <h3 className="text-2xl font-bold text-[#fff] mb-2">{executive.name}</h3>
+                  <p className="text-base text-red-200 font-semibold mb-4">{executive.position}</p>
+                  <p className="text-base text-gray-100 leading-relaxed">{executive.description}</p>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </>
   );
