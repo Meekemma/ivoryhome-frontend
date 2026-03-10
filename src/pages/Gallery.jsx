@@ -13,6 +13,17 @@ const Gallery = () => {
         <meta name="description" content="View our gallery showcasing company events, team meetings, property launches, and community activities at Ivory Homes Limited." />
         <meta name="keywords" content="Ivory Homes events, company gallery, team activities, corporate events, real estate company Nigeria" />
         <link rel="canonical" href="https://www.ivoryhomesng.com/gallery" />
+        <meta property="og:title" content="Gallery - Ivory Homes Limited | Our Events & Activities" />
+        <meta property="og:description" content="View our gallery showcasing company events, team meetings, and community activities." />
+        <meta property="og:image" content="https://res.cloudinary.com/dc9pb66nk/image/upload/v1773132699/logo_zvpfu6.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:url" content="https://www.ivoryhomesng.com/gallery" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Gallery - Ivory Homes Limited" />
+        <meta name="twitter:description" content="View our gallery and company events." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dc9pb66nk/image/upload/v1773132699/logo_zvpfu6.png" />
       </Helmet>
 
       <Navbar />

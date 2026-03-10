@@ -1,0 +1,18 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Specific rules for Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Specific rules for Bingbot
+User-agent: Bingbot
+Allow: /
+
+# Disallow admin paths (if backend served from same domain)
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.ivoryhomesng.com/sitemap.xml

@@ -15,6 +15,17 @@ const Blog = () => {
           <meta name="description" content="Stay updated with the latest real estate news, property investment tips, market insights, and expert advice from Ivory Homes Limited." />
           <meta name="keywords" content="real estate blog, property news Nigeria, investment tips, market updates" />
           <link rel="canonical" href="https://www.ivoryhomesng.com/blog" />
+          <meta property="og:title" content="Real Estate Blog - Ivory Homes Limited | News & Insights" />
+          <meta property="og:description" content="Stay updated with the latest real estate news, property investment tips, market insights, and expert advice." />
+          <meta property="og:image" content="https://res.cloudinary.com/dc9pb66nk/image/upload/v1773132699/logo_zvpfu6.png" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:url" content="https://www.ivoryhomesng.com/blog" />
+          <meta property="og:type" content="website" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Real Estate Blog - Ivory Homes Limited" />
+          <meta name="twitter:description" content="Latest real estate news and investment tips from Ivory Homes Limited." />
+          <meta name="twitter:image" content="https://res.cloudinary.com/dc9pb66nk/image/upload/v1773132699/logo_zvpfu6.png" />
         </Helmet>
 
         <SearchProvider>

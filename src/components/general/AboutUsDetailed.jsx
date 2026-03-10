@@ -34,6 +34,13 @@ const AboutUsDetailed = () => {
             content="Learn about Ivory Home Limited, your trusted real estate partner offering transparent solutions for buying, selling, and renting properties. Discover our mission, vision, and core values."
           />
           <meta name="keywords" content="real estate, properties, Ivory Home, buy, rent, sell" />
+          <meta property="og:title" content="About Ivory Homes Limited | Transparent Real Estate Solutions" />
+          <meta property="og:description" content="Learn about Ivory Homes Limited, your trusted real estate partner offering transparent solutions. Discover our mission, vision, and core values." />
+          <meta property="og:image" content="https://res.cloudinary.com/dc9pb66nk/image/upload/v1773132699/logo_zvpfu6.png" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content="https://res.cloudinary.com/dc9pb66nk/image/upload/v1773132699/logo_zvpfu6.png" />
         </Helmet>
 
         {/* Introduction Section */}

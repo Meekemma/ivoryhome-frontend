@@ -22,6 +22,17 @@ const Home = () => {
         <meta name="description" content="Discover luxury homes and prime properties in Nigeria with Ivory Homes Limited. We offer Royal Dynasty Estate, Indiobi Estate, and Owerri Estate with world-class amenities." />
         <meta name="keywords" content="real estate Nigeria, luxury homes, property investment, Royal Dynasty Estate, Indiobi Estate, Owerri Estate" />
         <link rel="canonical" href="https://www.ivoryhomesng.com/" />
+        <meta property="og:title" content="Ivory Homes Limited - Premium Real Estate Properties in Nigeria" />
+        <meta property="og:description" content="Discover luxury homes and prime properties in Nigeria with Ivory Homes Limited. We offer Royal Dynasty Estate, Indiobi Estate, and Owerri Estate with world-class amenities." />
+        <meta property="og:image" content="https://res.cloudinary.com/dc9pb66nk/image/upload/v1773132699/logo_zvpfu6.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:url" content="https://www.ivoryhomesng.com/" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Ivory Homes Limited - Premium Real Estate Properties in Nigeria" />
+        <meta name="twitter:description" content="Discover luxury homes and prime properties in Nigeria with Ivory Homes Limited." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dc9pb66nk/image/upload/v1773132699/logo_zvpfu6.png" />
       </Helmet>
       
       <Navbar />
